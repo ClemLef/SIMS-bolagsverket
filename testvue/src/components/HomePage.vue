@@ -43,7 +43,7 @@
       </v-navigation-drawer>
       <v-btn
         elevation="2"
-        @click="go_back"
+        @click="greet"
       >Button</v-btn>
     </v-card>
   </template>
@@ -54,16 +54,18 @@
       data: () => ({
         drawer: false,
         group: null,
+        
       }),
-    }
-    methods: {
-    go_back(event) {
-      // `this` inside methods points to the current active instance
-      alert(`Hello ${this.name}!`)
-      // `event` is the native DOM event
-      if (event) {
-        alert(event.target.tagName)
+      methods: {
+      greet(event) {
+        // `this` inside methods points to the current active instance
+        alert(`Hello ${this.name}!`)
+        // `event` is the native DOM event
+        if (event) {
+          alert(event.target.tagName)
+        }
       }
     }
-  }
+      
+    }
   </script>
