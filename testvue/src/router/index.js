@@ -1,8 +1,8 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import HomeView from '../views/HomeView.vue'
-import HomePage from '../components/HomePage.vue'
-import FormPage from '../components/FormPage.vue'
+import HomePage from '../views/HomePage.vue'
+import FormPage from '../views/FormPage.vue'
 
 Vue.use(VueRouter)
 
