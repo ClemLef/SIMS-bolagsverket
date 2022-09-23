@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import HomePage from '../components/HomePage.vue'
+import FormPage from '../components/FormPage.vue'
 
 Vue.use(VueRouter)
 
@@ -15,6 +16,11 @@ const routes = [
     path: '/landing',
     name: 'landing',
     component: HomePage
+  },
+  {
+    path: '/form',
+    name: 'form',
+    component: FormPage
   },
   {
     path: '/about',
