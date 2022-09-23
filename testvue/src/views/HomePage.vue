@@ -57,9 +57,9 @@
         
       }),
       methods: {
-      /*greet(event) {
-       // router.push('/')
-      }*/
+      greet() {
+        this.$router.push('/form')
+      }
     }
       
     }
