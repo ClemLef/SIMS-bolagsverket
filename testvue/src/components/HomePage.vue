@@ -41,6 +41,9 @@
           </v-list-item-group>
         </v-list>
       </v-navigation-drawer>
+      <v-btn
+        elevation="2"
+      >Button</v-btn>
     </v-card>
   </template>
 
