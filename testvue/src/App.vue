@@ -1,11 +1,12 @@
 <template>
-  <div id="app">
-    <nav>
-      <router-link to="/">Home</router-link> |
-      <router-link to="/landing">landing</router-link>
-    </nav>
-    <router-view/>
-  </div>
+    <v-app>
+        <div id="app">
+
+            <AppHeader/>
+            <router-view/>
+        
+        </div>
+    </v-app>
 </template>
 
 <style lang="scss">
