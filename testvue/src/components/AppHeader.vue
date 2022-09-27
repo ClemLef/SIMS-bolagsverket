@@ -26,7 +26,7 @@
                 v-for="item in items"
                 :key="item.title"
                 link
-                @click="this.$router.push(item.path)"
+                @click="redirect(item)"
             >
                 <v-list-item-icon>
                 <v-icon>{{ item.icon }}</v-icon>
@@ -49,10 +49,17 @@
                 items: [
                 { title: 'Home', icon: 'mdi-home-circle-outline', path: '/' },
                 { title: 'Sustainability Test', icon: 'mdi-leaf-circle-outline', path: '/form' },
-                { title: 'Results', icon: 'mdi-gauge', path: '/' },
-                { title: 'Help', icon: 'mdi-help-circle-outline', path: '/' },
+                { title: 'Results', icon: 'mdi-gauge', path: '/results' },
+                { title: 'Help', icon: 'mdi-help-circle-outline', path: '/help' },
                 ],
             }
         },
+        methods: {
+            redirect(item) {
+                if (this.$route.path != item.path) {
+                    this.$router.push(item.path)
+                }
+            }
+        }
     }
   </script>
