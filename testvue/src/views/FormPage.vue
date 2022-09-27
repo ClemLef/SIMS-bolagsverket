@@ -1,106 +1,107 @@
 <template>
 
-    <v-card elevation="5" width="80%" class="mx-auto mt-5">
-        <v-tabs
-          v-model='tab'
-          background-color="deep-purple accent-4"
-          center-active
-          dark >
+  <v-card elevation="5" width="80%" class="mx-auto mt-5">
+    <v-tabs
+      v-model='tab'
+      background-color="deep-purple accent-4"
+      center-active
+      dark>
 
-          <!-- ############################################################# TAB 1 -->
-        <v-tab ripple href='#tab-1' @click="setCurrentTab(1)"> Economical </v-tab>
-          <v-tab-item value='tab-1'> 
-          
-            <!-- Tab Content -->
-            <v-card-text class="text-left font-weight-black my-5"
-              v-show="currentTab == 1"                     
-              v-for="(question, index) in ecoQuestions" 
-              :key="question.text">
+      <!-- ############################################################# TAB 1 -->
+      <v-tab ripple href='#tab-1' @click="setCurrentTab(1)"> Economical </v-tab>
 
-              <p> {{question.text}} </p>
+      <v-tab-item value='tab-1'>
 
-              <!-- Answer buttons -->
-              <v-row class="my-5 mx-2">
-                <v-btn-toggle v-model="listOfAnswer[index]" multiple >
-                  <v-btn elevation="2" class="mx-2" v-for="button in answerButton" :key="button.text" @click="debugLog"> {{button.text}} </v-btn>
-                </v-btn-toggle>
-              </v-row>
-            </v-card-text>  
+        <!-- Tab Content -->
+        <v-card-text class="text-left font-weight-black my-5"
+          v-show="currentTab == 1"
+          v-for="(question, index) in ecoQuestions"
+          :key="question.text">
 
-            <!-- Prev and Next button -->
-            <v-row class="my-5 mx-2">
-              <v-btn class="mx-2" depressed color="primary" large @click="prevTab"> Prev </v-btn>
-              <v-btn class="mx-2" depressed color="success" large @click="nextTab"> Next </v-btn>
-            </v-row>
+          <p> {{question.text}} </p>
 
-          </v-tab-item>
+          <!-- Answer buttons -->
+          <v-row class="my-5 mx-2">
+            <v-btn-toggle v-model="listOfAnswer[index]" multiple >
+              <v-btn elevation="2" class="mx-2" v-for="button in answerButton" :key="button.text" @click="debugLog"> {{button.text}} </v-btn>
+            </v-btn-toggle>
+          </v-row>
+        </v-card-text>
 
-        <!-- ############################################################# TAB 2 -->     
-        <v-tab ripple href='#tab-2' @click="setCurrentTab(2)"> Social </v-tab>
-          <v-tab-item value='tab-2'> 
+        <!-- Prev and Next button -->
+        <v-row class="my-5 mx-2">
+          <v-btn class="mx-2" depressed color="primary" large @click="prevTab"> Prev </v-btn>
+          <v-btn class="mx-2" depressed color="success" large @click="nextTab"> Next </v-btn>
+        </v-row>
 
-            <v-card-text class="text-left font-weight-black my-5"
-              v-show="currentTab == 2"                     
-              v-for="(question, index) in socQuestions" 
-              :key="question.text">
+      </v-tab-item>
 
-              <p> {{question.text}} </p>
+      <!-- ############################################################# TAB 2 -->
+      <v-tab ripple href='#tab-2' @click="setCurrentTab(2)"> Social </v-tab>
 
-              <!-- Answer buttons -->
-              <v-row class="my-5 mx-2">
-                <v-btn-toggle v-model="listOfAnswer[index]" multiple >
-                  <v-btn elevation="2" class="mx-2" v-for="button in answerButton" :key="button.text" @click="debugLog"> {{button.text}} </v-btn>
-                </v-btn-toggle>
-              </v-row>
-            </v-card-text>  
+      <v-tab-item value='tab-2'>
 
-            <!-- Prev and Next button -->
-            <v-row class="my-5 mx-2">
-              <v-btn class="mx-2" depressed color="primary" large @click="prevTab"> Prev </v-btn>
-              <v-btn class="mx-2" depressed color="success" large @click="nextTab"> Next </v-btn>
-            </v-row>
- 
-          </v-tab-item>   
+        <v-card-text class="text-left font-weight-black my-5"
+          v-show="currentTab == 2"
+          v-for="(question, index) in socQuestions"
+          :key="question.text">
 
-        <!-- ############################################################# TAB 3 -->     
-        <v-tab ripple href='#tab-3'> Economical </v-tab>
-          <v-tab-item value='tab-3'> 
+          <p> {{question.text}} </p>
 
-          </v-tab-item>
-        </v-tabs>
+          <!-- Answer buttons -->
+          <v-row class="my-5 mx-2">
+            <v-btn-toggle v-model="listOfAnswer[index]" multiple >
+              <v-btn elevation="2" class="mx-2" v-for="button in answerButton" :key="button.text" @click="debugLog"> {{button.text}} </v-btn>
+            </v-btn-toggle>
+          </v-row>
+        </v-card-text>
 
-        <!-- ############################################################# TAB 3 -->     
-        <v-tab ripple href='#tab-4'> Other </v-tab>
-          <v-tab-item value='tab-4'> 
+        <!-- Prev and Next button -->
+        <v-row class="my-5 mx-2">
+          <v-btn class="mx-2" depressed color="primary" large @click="prevTab"> Prev </v-btn>
+          <v-btn class="mx-2" depressed color="success" large @click="nextTab"> Next </v-btn>
+        </v-row>
 
-          </v-tab-item>
+      </v-tab-item>
 
-      </v-card>
+      <!-- ############################################################# TAB 3 -->
+      <v-tab ripple href='#tab-3'> Economical </v-tab>
+      <v-tab-item value='tab-3'>
+      </v-tab-item>
 
-      <!--  ANSWER TYPES -->
+      <!-- ############################################################# TAB 4 -->
+      <v-tab ripple href='#tab-4'> Other </v-tab>
+      <v-tab-item value='tab-4'>
+      </v-tab-item>
 
-      <!-- 
-        <v-slider class="my-5"
-          v-model="value"
-          step="25"
-          ticks="always"
-          :tick-labels="tickLabels"
-        > </v-slider>
+    <!-- End of tabs -->
+    </v-tabs>
 
-        <v-col cols="12" sm="3" md="8" >
-            <v-text-field label="Solo" solo>
+  <!-- End of Cad -->
+  </v-card>
 
-            </v-text-field>
-        </v-col> -->
+<!--
+  <v-slider class="my-5"
+    v-model="value"
+    step="25"
+    ticks="always"
+    :tick-labels="tickLabels"
+  > </v-slider>
+
+  <v-col cols="12" sm="3" md="8" >
+      <v-text-field label="Solo" solo>
+
+      </v-text-field>
+  </v-col> -->
 
 
 
 </template>
-  
+
   <script>
     export default {
       name: 'FormPage',
-  
+
       data: () => ({
         // Used right now
 
@@ -171,7 +172,7 @@
       }
     }
   </script>
-  
+
 <style>
 
 </style>
