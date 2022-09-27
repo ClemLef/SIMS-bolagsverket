@@ -1,33 +1,35 @@
 <template>
     <v-app>
-      <AppHeader/>
+        <AppHeader />
         <div id="app">
-            <router-view/>
+            <router-view />
         </div>
-        <AppFooter/>
+        <AppFooter />
     </v-app>
 </template>
 
 <style lang="scss">
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  height: fit-content;
+    font-family: Avenir, Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-align: center;
+    height: fit-content;
+    background-image: url("./assets/home_background_blur.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 nav {
-  padding: 30px;
+    padding: 30px;
 
-  a {
-    font-weight: bold;
-    color: #2c3e50;
+    a {
+        font-weight: bold;
+        color: #2c3e50;
 
-    &.router-link-exact-active {
-      color: #42b983;
+        &.router-link-exact-active {
+            color: #42b983;
+        }
     }
-  }
 }
 </style>

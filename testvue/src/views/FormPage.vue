@@ -3,7 +3,7 @@
   <v-card elevation="5" width="80%" class="mx-auto my-8">
     <v-tabs
     v-model='tab'
-    background-color="deep-purple accent-4"
+    background-color="green"
     center-active
     dark>
     
