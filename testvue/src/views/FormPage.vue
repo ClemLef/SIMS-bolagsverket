@@ -2,39 +2,48 @@
 
   <v-card elevation="5" width="80%" class="mx-auto mt-5">
     <v-tabs
-      v-model='tab'
-      background-color="deep-purple accent-4"
-      center-active
-      dark>
-
-      <!-- ############################################################# TAB 1 -->
-      <v-tab ripple href='#tab-1' @click="setCurrentTab(1)"> Economical </v-tab>
-
-      <v-tab-item value='tab-1'>
-
+    v-model='tab'
+    background-color="deep-purple accent-4"
+    center-active
+    dark>
+    
+    <!-- ############################################################# TAB 1 -->
+    <v-tab ripple href='#tab-1' @click="setCurrentTab(1)"> Economical </v-tab>
+    <v-tab-item value='tab-1'>
+      
         <!-- Tab Content -->
         <v-card-text class="text-left font-weight-black my-5"
-          v-show="currentTab == 1"
-          v-for="(question, index) in ecoQuestions"
-          :key="question.text">
-
-          <p> {{question.text}} </p>
-
+        v-show="currentTab == 1"
+        v-for="(question, index) in ecoQuestions"
+        :key="question.text">
+            
+        
+        
+        <v-row class="mx-auto">
+          <v-col>
+            <p> {{question.text}} </p>
+          </v-col>
+          <v-col >
+            <v-icon large right>  mdi-progress-question </v-icon>
+          </v-col>
+        </v-row>
+  
           <!-- Answer buttons -->
           <v-row class="my-5 mx-2">
-            <v-btn-toggle v-model="listOfAnswer[index]" multiple >
-              <v-btn elevation="2" class="mx-2" v-for="button in answerButton" :key="button.text" @click="debugLog"> {{button.text}} </v-btn>
-            </v-btn-toggle>
+              <v-btn-toggle v-model="listOfAnswer[index]" multiple >
+                <v-btn elevation="2" class="mx-2" v-for="button in answerButton" :key="button.text" @click="debugLog"> {{button.text}} </v-btn>
+              </v-btn-toggle>
+            </v-row>
+          </v-card-text>
+  
+          <!-- Prev and Next button -->
+          <v-row class="my-5 mx-2">
+            <v-btn class="mx-2" depressed color="primary" large @click="prevTab"> Prev </v-btn>
+            <v-btn class="mx-2" depressed color="success" large @click="nextTab"> Next </v-btn>
           </v-row>
-        </v-card-text>
+  
+        </v-tab-item>
 
-        <!-- Prev and Next button -->
-        <v-row class="my-5 mx-2">
-          <v-btn class="mx-2" depressed color="primary" large @click="prevTab"> Prev </v-btn>
-          <v-btn class="mx-2" depressed color="success" large @click="nextTab"> Next </v-btn>
-        </v-row>
-
-      </v-tab-item>
 
       <!-- ############################################################# TAB 2 -->
       <v-tab ripple href='#tab-2' @click="setCurrentTab(2)"> Social </v-tab>
@@ -114,7 +123,7 @@
 
         ecoQuestions: [
           { text: 'This is eco question 1?'},
-          { text: 'This is eco question 2?'},
+          { text: 'This is an example of a very long eco question, how will the form handle this, no one knows. But one thing is for sure, it probably wont work as inteaded in the first try?'},
           { text: 'This is eco question 3?'},
           { text: 'This is eco question 4?'},
         ],
