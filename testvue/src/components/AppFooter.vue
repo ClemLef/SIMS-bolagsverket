@@ -1,7 +1,6 @@
 <template>
     <v-footer 
         padless
-        fixed
     >
       <v-col
         class="text-center"
