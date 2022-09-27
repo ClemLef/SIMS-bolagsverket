@@ -4,8 +4,10 @@
 
             <AppHeader/>
             <router-view/>
+            
         
         </div>
+        <AppFooter/>
     </v-app>
 </template>
 
