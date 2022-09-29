@@ -1,11 +1,36 @@
 <template>
     <v-card elevation="5" width="80%" class="mx-auto my-8">
-        <v-tabs v-model='tab' background-color="green darken-4" center-active dark></v-tabs>
-        <h5 class="text-md-h5 mt-5">Here you can see your results, just click on a section to display details.</h5>
+        <v-tabs v-model='tab' background-color="green darken-4" center-active dark right>
+            <v-tooltip top color="green darken-4">
+                <template v-slot:activator="{ on, attrs }">
+                    <v-btn icon class="ml-auto my-auto mr-3" v-bind="attrs" v-on="on">
+                        <v-icon>mdi-download</v-icon>
+                    </v-btn>
+                </template>
+                <span>Download your result as pdf</span>
+            </v-tooltip>
+
+            <v-tooltip top color="green darken-4">
+                <template v-slot:activator="{ on, attrs }">
+                    <v-btn icon class="my-auto mr-5" v-bind="attrs" v-on="on">
+                        <v-icon>mdi-share-variant</v-icon>
+                    </v-btn>
+                </template>
+                <span >Share this result</span>
+            </v-tooltip>
+
+
+
+        </v-tabs>
+        <h1 class="mt-5">Great results ! Your business idea is <span style="color: orange">quite sustainable</span>.
+        </h1>
+        <h5 class="text-md-h5 mt-5">You can see your results for each category below, just click on a section to display
+            details.</h5>
         <div class="pa-5">
             <v-expansion-panels popout>
                 <v-expansion-panel>
-                    <v-expansion-panel-header disable-icon-rotate class="grey lighten-4 body-2 text-left font-weight-medium">
+                    <v-expansion-panel-header disable-icon-rotate
+                        class="grey lighten-4 body-2 text-left font-weight-medium">
                         Economical
                         <template v-slot:actions>
                             <v-icon color="grey darken-2">
@@ -14,20 +39,18 @@
                         </template>
                     </v-expansion-panel-header>
                     <v-expansion-panel-content class="mt-5">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                        incididunt ut
-                        labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                        ullamco
-                        laboris nisi ut aliquip ex ea commodo consequat.
-                        <v-item-group>
+                        We're sorry but we weren't able to assess the econonomical part of your business idea.
+                        <br>If you think it's not normal, you can <router-link to="/contact">contact us here
+                        </router-link>
+                        <v-item-group class="mt-8">
                             <v-container>
                                 <v-row>
                                     <v-col v-for="card in cards" :key="card" cols="12" md="4">
                                         <v-item>
-                                            <v-card class="mx-auto" max-width="400">
-                                                <v-img class="white--text align-end" height="200px"
-                                                    :src="card.src">
-                                                    <v-card-title> {{ card.title }} </v-card-title>
+                                            <v-card class="mx-auto d-flex flex-column" height="100%" max-width="400">
+                                                <v-img class="white--text align-end" height="200px" :src="card.img_src">
+                                                    <v-card-title style="text-shadow: black 1px 0 10px;"> {{ card.title
+                                                    }} </v-card-title>
                                                 </v-img>
 
                                                 <v-card-subtitle class="pb-0">
@@ -37,9 +60,9 @@
                                                 <v-card-text class="text--primary">
                                                     <div>{{ card.description }}</div>
                                                 </v-card-text>
-
-                                                <v-card-actions>
-                                                    <v-btn color="green" text>
+                                                <v-spacer></v-spacer>
+                                                <v-card-actions style="position: absolute, bottom: 0">
+                                                    <v-btn color="green" text @click="redirect_link(card.link)">
                                                         Read more
                                                     </v-btn>
                                                 </v-card-actions>
@@ -53,7 +76,8 @@
                 </v-expansion-panel>
 
                 <v-expansion-panel>
-                    <v-expansion-panel-header disable-icon-rotate class="green lighten-4 body-2 text-left font-weight-medium">
+                    <v-expansion-panel-header disable-icon-rotate
+                        class="green lighten-4 body-2 text-left font-weight-medium">
                         Social
                         <template v-slot:actions>
                             <v-icon color="teal">
@@ -62,16 +86,44 @@
                         </template>
                     </v-expansion-panel-header>
                     <v-expansion-panel-content class="mt-5">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                        incididunt ut
-                        labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                        ullamco
-                        laboris nisi ut aliquip ex ea commodo consequat.
+                        Your answers show that your business idea is sustainable for the social part.
+                        <br>You can find additional ressources here :
+                        <v-item-group class="mt-8">
+                            <v-container>
+                                <v-row>
+                                    <v-col v-for="card in cards" :key="card" cols="12" md="4">
+                                        <v-item>
+                                            <v-card class="mx-auto d-flex flex-column" height="100%" max-width="400">
+                                                <v-img class="white--text align-end" height="200px" :src="card.img_src">
+                                                    <v-card-title style="text-shadow: black 1px 0 10px;"> {{ card.title
+                                                    }} </v-card-title>
+                                                </v-img>
+
+                                                <v-card-subtitle class="pb-0">
+                                                    {{ card.source }}
+                                                </v-card-subtitle>
+
+                                                <v-card-text class="text--primary">
+                                                    <div>{{ card.description }}</div>
+                                                </v-card-text>
+                                                <v-spacer></v-spacer>
+                                                <v-card-actions style="position: absolute, bottom: 0">
+                                                    <v-btn color="green" text @click="redirect_link(card.link)">
+                                                        Read more
+                                                    </v-btn>
+                                                </v-card-actions>
+                                            </v-card>
+                                        </v-item>
+                                    </v-col>
+                                </v-row>
+                            </v-container>
+                        </v-item-group>
                     </v-expansion-panel-content>
                 </v-expansion-panel>
 
                 <v-expansion-panel>
-                    <v-expansion-panel-header disable-icon-rotate class="red lighten-4 body-2 text-left font-weight-medium">
+                    <v-expansion-panel-header disable-icon-rotate
+                        class="red lighten-4 body-2 text-left font-weight-medium">
                         Environmental
                         <template v-slot:actions>
                             <v-icon color="error">
@@ -80,29 +132,39 @@
                         </template>
                     </v-expansion-panel-header>
                     <v-expansion-panel-content class="mt-5">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                        incididunt ut
-                        labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                        ullamco
-                        laboris nisi ut aliquip ex ea commodo consequat.
-                    </v-expansion-panel-content>
-                </v-expansion-panel>
+                        Your answers show that you still have progress to make in the environmental part of
+                        sustainability.
+                        Don't worry, we've gathered some useful links for you to reand and explore.
+                        <v-item-group class="mt-8">
+                            <v-container>
+                                <v-row>
+                                    <v-col v-for="card in cards" :key="card" cols="12" md="4">
+                                        <v-item>
+                                            <v-card class="mx-auto d-flex flex-column" height="100%" max-width="400">
+                                                <v-img class="white--text align-end" height="200px" :src="card.img_src">
+                                                    <v-card-title style="text-shadow: black 1px 0 10px;"> {{ card.title
+                                                    }} </v-card-title>
+                                                </v-img>
 
-                <v-expansion-panel>
-                    <v-expansion-panel-header disable-icon-rotate class="red lighten-4 body-2 text-left font-weight-medium">
-                        Positive influence
-                        <template v-slot:actions>
-                            <v-icon color="error">
-                                mdi-alert-circle
-                            </v-icon>
-                        </template>
-                    </v-expansion-panel-header>
-                    <v-expansion-panel-content class="mt-5">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                        incididunt ut
-                        labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                        ullamco
-                        laboris nisi ut aliquip ex ea commodo consequat.
+                                                <v-card-subtitle class="pb-0">
+                                                    {{ card.source }}
+                                                </v-card-subtitle>
+
+                                                <v-card-text class="text--primary">
+                                                    <div>{{ card.description }}</div>
+                                                </v-card-text>
+                                                <v-spacer></v-spacer>
+                                                <v-card-actions style="position: absolute, bottom: 0">
+                                                    <v-btn color="green" text @click="redirect_link(card.link)">
+                                                        Read more
+                                                    </v-btn>
+                                                </v-card-actions>
+                                            </v-card>
+                                        </v-item>
+                                    </v-col>
+                                </v-row>
+                            </v-container>
+                        </v-item-group>
                     </v-expansion-panel-content>
                 </v-expansion-panel>
             </v-expansion-panels>
@@ -114,10 +176,23 @@
 export default {
     data: () => ({
         cards: [
-            { title: 'Pre-fab homes', src: 'https://cdn.vuetifyjs.com/images/cards/house.jpg', source: "Bolagsverket", description: "This is a description for the first article"},
-            { title: 'Favorite road trips', src: 'https://cdn.vuetifyjs.com/images/cards/road.jpg', source: "Skatteverket", description: "This is a description for the second article" },
-            { title: 'Best airlines', src: 'https://cdn.vuetifyjs.com/images/cards/plane.jpg', source: "Naturvardsverket", description: "This is a description for the third article" },
+            { title: 'What is sustainable investing ?', img_src: 'https://cloudinary.hbs.edu/hbsit/image/upload/s--YvTQW8XL--/f_auto,c_fill,h_375,w_750,/v20200101/9DD1E295483AB53C37A95A0D4BFE6F5D.jpg', source: "online.hbs.edu", description: "Investors can use several strategies to build and diversify their portfolios to ensure financial success. One emerging trend changing the way businesses and investors think about investing is a concept known as sustainable investing.", link: "https://online.hbs.edu/blog/post/sustainable-investing" },
+            { title: 'F-skatt', img_src: 'https://skatteverket.se/images/18.1c68351d170ce554527e35/1584713519347/Logo_vit_bakgrund_FB.png', source: "skatteverket.se", description: "Om du bedriver näringsverksamhet i Sverige kan du efter ansökan hos Skatteverket bli godkänd för F-skatt", link: "https://www.skatteverket.se/foretag/etjansterochblanketter/svarpavanligafragor/fskatt/foretagfskattfaq/vemkanbligodkandforfskattochvadinnebardet.5.18e1b10334ebe8bc8000118949.html" },
+            { title: 'Sustainable funds', img_src: 'https://www.fondbolagen.se/globalassets/om-oss/hallbarhet-artikelbild2-ny-webb.jpg?preset=jumbotron', source: "fondbolagen.se", description: "Knowing that the money they invest contributes to sustainable development is becoming increasingly important to savers.", link: "https://www.fondbolagen.se/en/Facts_Indices/sustainable-funds/" },
         ],
     }),
+    methods: {
+        redirect_link(link) {
+            window.open(link);
+        }
+    }
 }
 </script>
+
+<style>
+.flex-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+</style>
