@@ -1,7 +1,7 @@
 <template>
     <v-app>
         <AppHeader />
-        <div id="app">
+        <div id="app" class="flex-wrapper">
             <router-view />
         </div>
         <AppFooter />
@@ -31,5 +31,12 @@ nav {
             color: #42b983;
         }
     }
+}
+
+.flex-wrapper {
+    display: flex;
+    min-height: 90vh;
+    flex-direction: column;
+    justify-content: flex-start;
 }
 </style>
