@@ -7,6 +7,7 @@
     v-model='tab'
     background-color="green darken-4"
     dark
+    fixed-tabs
     >
     
     <!-- ############################################################# TAB 1 -->
