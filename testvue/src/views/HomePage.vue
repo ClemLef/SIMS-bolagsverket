@@ -9,7 +9,7 @@
         <h3 class="text-md-h4">This website will let you assess the sustainability of your business idea.</h3>
         <v-hover v-slot="{ hover }">
           <v-btn class="v-btn ma-10 pa-6 white--text " elevation="5" x-large rounded
-            :style="{ 'background-color': hover ? '#81C784' : 'green' }">Take the test !<v-icon right>mdi-chevron-right</v-icon></v-btn>
+            :style="{ 'background-color': hover ? '#81C784' : 'green' }" @click="redirect">Take the test !<v-icon right>mdi-chevron-right</v-icon></v-btn>
         </v-hover>
         
       </v-col>
