@@ -16,17 +16,15 @@
         v-show="currentTab == 1"
         v-for="(question, index) in ecoQuestions"
         :key="question.text">
-            
-        
-        
-        <v-row class="mx-auto">
-          <v-col>
-            <p> {{question.text}} </p>
-          </v-col>
-          <v-col >
-            <v-icon large right>  mdi-progress-question </v-icon>
-          </v-col>
-        </v-row>
+               
+          <v-row class="mx-auto">
+            <v-col>
+              <p> {{question.text}} </p>
+            </v-col>
+            <v-col >
+              <v-icon large right>  mdi-progress-question </v-icon>
+            </v-col>
+          </v-row>
   
           <!-- Answer buttons -->
           <v-row class="my-5 mx-2">
