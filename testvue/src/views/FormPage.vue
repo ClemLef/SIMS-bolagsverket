@@ -2,17 +2,16 @@
 
   <v-card elevation="5" width="85%" class="mx-auto my-8">
 
-    <!-- Tabs for the question form -->
     <v-tabs
-    v-model='tab'
-    background-color="green darken-4"
-    dark
-    fixed-tabs
+      background-color="green darken-4"
+      dark
+      fixed-tabs
+      v-model='tab' 
     >
-    
+
     <!-- ############################################################# TAB 1 -->
-    <v-tab ripple href='#tab-1' @click="setCurrentTab(1)"> Economical </v-tab>
-    <v-tab-item value='tab-1'>
+    <v-tab ripple href=#tab-1 @click="setCurrentTab(1)"> Economical </v-tab>
+    <v-tab-item value=tab-1>
 
       <!-- Tab Content -->
       <v-card-text 
@@ -55,12 +54,12 @@
 
             <v-flex>
               <!-- Answer question have answer set 1, show buttons with option: No, Probably Not, Probably, Yes -->
-              <v-btn-toggle v-model="listOfAnswer[index]" multiple v-if="question.answerSet == 1">
+              <v-btn-toggle v-model="listOfAnswer[index]" v-if="question.answerSet == 1">
                 <v-btn elevation="2" class="mx-2" v-for="button in answerButtonTextSet_1" :key="button.text" @click="debugLog"> {{button.text}} </v-btn>
               </v-btn-toggle>
     
               <!-- Answer question have answer set 2, show buttons with option: None, Very Little, Some, A lot -->
-              <v-btn-toggle v-model="listOfAnswer[index]" multiple v-if="question.answerSet == 2">
+              <v-btn-toggle v-model="listOfAnswer[index]" v-if="question.answerSet == 2">
                 <v-btn elevation="2" class="mx-2" v-for="button in answerButtonTextSet_2" :key="button.text" @click="debugLog"> {{button.text}} </v-btn>
               </v-btn-toggle>
             </v-flex>
@@ -78,8 +77,8 @@
     </v-tab-item>
         
         
-      <!-- ############################################################# TAB 2 -->
-      <v-tab ripple href='#tab-2' @click="setCurrentTab(2)"> Social </v-tab>
+    <!-- ############################################################# TAB 2 -->
+    <v-tab ripple href='#tab-2' @click="setCurrentTab(2)"> Social </v-tab>
     <v-tab-item value='tab-2'>
 
       <!-- Tab Content -->
@@ -171,6 +170,7 @@
     data: () => ({
       // Used right now
 
+      
       answerButtonTextSet_1: [
         { text: 'No'          },
         { text: 'Probably not'},
@@ -191,7 +191,7 @@
         info: 'this is test info for eco question 1', 
         showInfo: false,
         answerSet: 1},
-
+        
         {text: 'Do you plan to use Fskattsedel for your business ?', 
         info: 'this is test info for eco question 2', 
         showInfo: false,
@@ -216,7 +216,7 @@
         info: 'this is test info for eco question 6', 
         showInfo: false,
         answerSet: 1},
-
+        
         {text:'How many existing competing market solutions would you estimate exist ?', 
         info: 'this is test info for eco question 7', 
         showInfo: false,
@@ -226,17 +226,17 @@
         info: 'this is test info for eco question 8', 
         showInfo: false,
         answerSet: 2},
-
+        
         {text:'Do you plan to use green energy for most of the energy consumption ?', 
         info: 'this is test info for eco question 9', 
         showInfo: false,
         answerSet: 1},
-
+        
         {text:'How much do you plan to invest to make your business more green?', 
         info: 'this is test info for eco question 10', 
         showInfo: false,
         answerSet: 2},
-
+        
         {text:'Is it ahead of the technology compared to existing market solutions?', 
         info: 'this is test info for eco question 11', 
         showInfo: false,
@@ -247,30 +247,35 @@
         showInfo: false,
         answerSet: 1},
       ],
-
+      
       // Here is the group of question with help info that will be shown in the Social tab
       socQuestions: [
         {text: 'Are there any measures taken to improve working conditions ? example: Work from home, schedule, workload..',
         info: 'this is test info for soc question 1', 
         showInfo: false,
         answerSet: 2},
-
+        
         {text: 'Are there any measures taken to improve safety in the work environment ?', 
         info: 'this is test info for soc question 2', 
         showInfo: false,
         answerSet: 2},
       ],
-
       
-
+      // tabs:[
+      //   { title: 'Economical', href: '#tab1', id:1, value:'tab-1', question: this.ecoQuestions},
+      //   { title: 'Social', href: '#tab2', id:2, value:'tab-2', question: this.socQuestions},
+      //   // { title: 'Ecological', href: '#tab1', id:2, value:'tab-3', question: ecoQuestions},
+      // ],
+      
+      
       listOfAnswer: [],
       currentTab: 1,
       tab: 'tab-1',
     }),
     
-
+    
     methods: {   
-
+      
       prevTab(){
         if(this.currentTab != 1){
           this.currentTab -= 1;
