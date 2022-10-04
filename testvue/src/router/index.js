@@ -2,7 +2,6 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import HomePage from '../views/HomePage.vue'
 import FormPage from '../views/FormPage.vue'
-import FormPage2 from '../views/FormPage2.vue'
 
 import ResultsPage from '../views/ResultsPage.vue'
 import HelpPage from '../views/HelpPage.vue'
@@ -19,11 +18,6 @@ const routes = [
     path: '/form',
     name: 'form',
     component: FormPage
-  },
-  {
-    path: '/form2',
-    name: 'form2',
-    component: FormPage2
   },
   {
     path: '/results',
