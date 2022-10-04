@@ -70,10 +70,20 @@
         
       <!-- Prev and Next button, increment or decrement current tab counter -->
       <v-row class="mx-8 my-15">
-        <v-btn class="mx-2" depressed color="primary" large @click="prevTab"> Prev </v-btn>
-        <v-btn class="mx-2" depressed color="success" large @click="nextTab"> Next </v-btn>
+        <v-btn class="mx-2" depressed color="primary" large @click="prevTab"> Prev 
+          <v-icon right> mdi-arrow-left </v-icon>
+        </v-btn>
+
+        <v-btn class="mx-2" depressed color="success" large @click="nextTab"> Next 
+          <v-icon left> mdi-arrow-right </v-icon>
+        </v-btn>
+
+        <!-- kanske inte behöver v-show eftersom hela kortet endast visas med v-show=currenttab -->
+        <v-btn v-show="currentTab == 1" class="mx-2" depressed color="accent" large @click="resultTab"> Result  
+          <v-icon right> mdi-form-select </v-icon>
+        </v-btn>
       </v-row>
-          
+      
     </v-tab-item>
         
         
@@ -288,6 +298,10 @@
           this.currentTab += 1;
         }
         this.switchCurrentTab();
+      },
+
+      resultTab(){
+        this.$router.push('/results')
       },
 
       switchCurrentTab(){
