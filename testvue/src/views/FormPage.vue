@@ -99,7 +99,7 @@
         },
         {
           id: 4,
-          title: 'Other',
+          title: 'Influence',
           questions: [      
             {
               text: 'Do you plan to cooperate with other entepreneurs or companies with assignments regarding sustainibility?',

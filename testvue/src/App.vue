@@ -1,9 +1,9 @@
 <template>
     <v-app>
         <AppHeader />
-        <div id="app" class="flex-wrapper">
-            <router-view />
-        </div>
+            <div class="flex-wrapper">
+                <router-view />
+            </div>
         <AppFooter />
     </v-app>
 </template>

@@ -1,6 +1,6 @@
 <template>
     <v-card elevation="5" width="80%" class="mx-auto my-8">
-        <v-tabs v-model='tab' background-color="green darken-4" center-active dark right>
+        <v-tabs background-color="green darken-4" center-active dark right>
             <v-tooltip top color="green darken-4">
                 <template v-slot:activator="{ on, attrs }">
                     <v-btn icon class="ml-auto my-auto mr-3" v-bind="attrs" v-on="on">
@@ -45,7 +45,7 @@
                         <v-item-group class="mt-8">
                             <v-container>
                                 <v-row>
-                                    <v-col v-for="card in cards" :key="card" cols="12" md="4">
+                                    <v-col v-for="(card, index) in cards" :key="card[index]" cols="12" md="4">
                                         <v-item>
                                             <v-card class="mx-auto d-flex flex-column" height="100%" max-width="400">
                                                 <v-img class="white--text align-end" height="200px" :src="card.img_src">
@@ -91,7 +91,7 @@
                         <v-item-group class="mt-8">
                             <v-container>
                                 <v-row>
-                                    <v-col v-for="card in cards" :key="card" cols="12" md="4">
+                                    <v-col v-for="(card, index) in cards" :key="card[index]" cols="12" md="4">
                                         <v-item>
                                             <v-card class="mx-auto d-flex flex-column" height="100%" max-width="400">
                                                 <v-img class="white--text align-end" height="200px" :src="card.img_src">
@@ -138,7 +138,7 @@
                         <v-item-group class="mt-8">
                             <v-container>
                                 <v-row>
-                                    <v-col v-for="card in cards" :key="card" cols="12" md="4">
+                                    <v-col v-for="(card, index) in cards" :key="card[index]" cols="12" md="4">
                                         <v-item>
                                             <v-card class="mx-auto d-flex flex-column" height="100%" max-width="400">
                                                 <v-img class="white--text align-end" height="200px" :src="card.img_src">
@@ -170,6 +170,8 @@
             </v-expansion-panels>
         </div>
     </v-card>
+
+
 </template>
 
 <script>
@@ -186,7 +188,10 @@ export default {
             window.open(link);
         }
     }
+    
 }
+
+
 </script>
 
 <style>
@@ -196,3 +201,4 @@ export default {
     justify-content: flex-start;
 }
 </style>
+
