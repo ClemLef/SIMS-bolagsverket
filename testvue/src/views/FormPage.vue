@@ -7,11 +7,17 @@
   </FormData>
 </template>
 
+
 <script>
+
+  
   // Gets formdata from file
   import FormData from '../components/FormData.vue'
+  
 
   export default {
+    
+  
 
     //My components
     components :{
@@ -21,6 +27,7 @@
     name: 'FormPage',
 
     data: () => ({
+      
       // Used right now
       answerTextSet_1: [
         { text: 'No'          },
@@ -40,7 +47,7 @@
         {
           id: 1,
           title: 'Economical',
-          
+          toggle: [],
           questions: [
             {
               text: 'Will responsible purchasing policies be used within your business ?',
@@ -60,20 +67,20 @@
         {
           id: 2,
           title: 'Social',
-
+          toggle: [],
           questions: [
             
             {
               text: 'Are there any measures taken to improve working conditions ? example: Work from home, schedule, workload..',
               info: 'test info for soc question 1', 
               showInfo: false,
-              answerSet: 2
+              answerSet: 1
             },
             { 
               text: 'Are there any measures taken to improve safety in the work environment ?', 
               info: 'test info for soc question 2', 
               showInfo: false,
-              answerSet: 2
+              answerSet: 1
             },
             
           ]
@@ -81,7 +88,7 @@
         {
           id: 3,
           title: 'Enviromental',
-
+          toggle: [],
           questions: [
             
             {
@@ -102,7 +109,7 @@
         {
           id: 4,
           title: 'Influence',
-
+          toggle: [],
           questions: [      
             {
               text: 'Do you plan to cooperate with other entepreneurs or companies with assignments regarding sustainibility?',
@@ -123,7 +130,6 @@
           id: 5,
           title: 'Business',
           toggle: [],
-
           questions: [      
             {
               text: 'What is your business goal?',
