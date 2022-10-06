@@ -12,8 +12,10 @@
             > 
             {{row.title}} 
         </v-btn>
-
+        
         <v-card elevation="5" width="85%" class="mx-auto">  
+            
+            <!-- <p> {{created()}} </p> -->
 
             <!-- Showing correct page content -->
             <div v-for="(row, tabIndex) in tabData" :key="row[tabIndex]" v-show="currentTab == row.id">
@@ -83,10 +85,11 @@
                     <v-btn v-show="currentTab == 5" class="mx-2 my-4" depressed color="accent" large @click="resultTab"> Result  
                         <v-icon right> mdi-form-select </v-icon>
                     </v-btn>
-                </v-row>          
-                    
-            </div>
-            
+                </v-row>  
+                
+                
+            </div> 
+            <!-- <p v-for="(row, tabIndex) in tabData" :key="row[tabIndex]"> {{row.toggle}} </p> -->
         </v-card>
 
     </div>
@@ -95,6 +98,9 @@
 
 <script>
     export default{
+
+        // url: 'http://35.184.240.64/api/questions',
+        // url: 'http://35.184.240.64/api/questions/1000'
         
         props: {
             tabData: Array,
@@ -108,6 +114,14 @@
 
 
         methods: {   
+
+            // async created() {
+            //     // GET request using fetch with async/await
+            //     const response = await fetch('http://35.184.240.64/api/questions');
+            //     const data = await response.json();
+            //     console.log(data);
+            //     // return data
+            // },
 
             prevTab(){
                 if(this.currentTab != 1)

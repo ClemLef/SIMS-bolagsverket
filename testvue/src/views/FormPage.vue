@@ -2,8 +2,7 @@
   <FormData 
     :tabData="tabData" 
     :answerTextSet_1="answerTextSet_1" 
-    :answerTextSet_2="answerTextSet_2"
-    >
+    :answerTextSet_2="answerTextSet_2">
   </FormData>
 </template>
 
@@ -16,8 +15,6 @@
   
 
   export default {
-    
-  
 
     //My components
     components :{
@@ -25,6 +22,13 @@
     },
 
     name: 'FormPage',
+    // url: 'http://35.184.240.64/api/questions',
+
+    methods: {
+        // retrieveData(){
+        //   console.log(this.url)
+        // }   
+    },
 
     data: () => ({
       
@@ -150,7 +154,6 @@
 
       ],
       
-      listOfAnswer: [],
     }),
   }
 </script>
