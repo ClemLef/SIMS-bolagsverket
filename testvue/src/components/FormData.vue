@@ -1,35 +1,35 @@
 <template>
 
-    <div>
+    <div class="my-10">
 
+        <!-- Card that contains all questions, answers and content of each page -->
         <!-- Create Page buttons dynamically -->
         <v-btn 
             @click="setCurrentTab(row.id)"
-            Rounded Large elevation="3" width="16%" height="10%" class="mt-15 white--text" color="green darken-4"
-            v-for="row in content" :key="row.id"
+            large elevation="3" width="17%" class="mt-10 white--text" color="green darken-4"
+            :class="{'mb-1' : currentTab == row.id}"
+            v-for="row in tabData" :key="row.id"
             > 
             {{row.title}} 
         </v-btn>
 
-
-        <!-- Card that contains all questions, answers and content of each page -->
-        <v-card elevation="5" width="85%" class="mx-auto my-auto" >  
+        <v-card elevation="5" width="85%" class="mx-auto">  
 
             <!-- Showing correct page content -->
-            <div v-for="(row, index) in content" 
-                :key="row[index]" 
+            <div v-for="(row, tabIndex) in tabData" 
+                :key="row[tabIndex]" 
                 v-show="currentTab == row.id">
 
                 <!-- Row 1 contains question text, help button for extra information and help information -->
                 <!-- Retrieving question object from correct page, then displaying question with corresponding answer options and help text -->
                 <v-card-text 
                     class="text-left font-weight-black mx-5" 
-                    v-for="(question, index) in row.questions"
-                    :key="question[index]">
+                    v-for="(question, questionIndex) in row.questions"
+                    :key="question[questionIndex]">
 
                     <v-layout row class="mx-auto my-5">      
                         <!-- Question text -->
-                        <v-flex md8 >
+                        <v-flex md9 >
                             <p> {{question.text}} </p>
                         </v-flex>
                         
@@ -44,7 +44,7 @@
                     
                             
                         <!-- Card that displayes help text about the question -->
-                        <v-flex md4 class="mx-5">
+                        <v-flex md3 class="mx-5">
                             <v-card elevation="5" shaped v-if="question.showInfo">
                                 <v-card-text class="text--primary font-weight-black">
                                     <p > {{question.info}} </p>
@@ -57,19 +57,19 @@
                               
                     <!-- Second row contains answer buttons -->
                     <v-flex>
-
                         <!-- Answer question have answer set 1, show buttons with option: No, Probably Not, Probably, Yes -->
-                        <v-btn-toggle v-model="listOfAnswer[index]" v-if="question.answerSet == 1">
-                            <v-btn elevation="2" class="mx-2" v-for="button in answerTextSet_1" :key="button.text"> {{button.text}} </v-btn>
+                        <v-btn-toggle v-model="toggle[questionIndex]"  v-if="question.answerSet == 1">
+                            <v-btn elevation="2" class="mx-2" @click="debugFunction(toggle)" v-for="button in answerTextSet_1" :key="button.text" > {{button.text}} </v-btn>
                         </v-btn-toggle>
                 
                         <!-- Answer question have answer set 2, show buttons with option: None, Very Little, Some, A lot -->
-                        <v-btn-toggle v-model="listOfAnswer[index]" v-if="question.answerSet == 2">
+                        <v-btn-toggle v-model="toggle[questionIndex]"  v-if="question.answerSet == 2">
                             <v-btn elevation="2" class="mx-2" v-for="button in answerTextSet_2" :key="button.text"> {{button.text}} </v-btn>
                         </v-btn-toggle>
                     </v-flex>
-
+                    
                 </v-card-text>  
+                
 
                 <!-- Prev and Next button, increment or decrement current tab counter -->
                 <v-row class="mx-8 my-10">
@@ -101,14 +101,14 @@
     export default{
         
         props: {
-            content: Array,
+            tabData: Array,
             answerTextSet_1: Array,
             answerTextSet_2: Array
         },
 
         data: () => ({
             currentTab: 1,
-            listOfAnswer: [],
+            toggle: [],
         }),
 
 
@@ -139,6 +139,10 @@
                     question.showInfo = true;
                 }
             },
+
+            debugFunction(debug){
+                console.log(debug);
+            }
 
 
         }

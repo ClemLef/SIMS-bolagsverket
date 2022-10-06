@@ -1,6 +1,6 @@
 <template>
   <FormData 
-    :content="tabData" 
+    :tabData="tabData" 
     :answerTextSet_1="answerTextSet_1" 
     :answerTextSet_2="answerTextSet_2"
     >
@@ -40,7 +40,7 @@
         {
           id: 1,
           title: 'Economical',
-
+          
           questions: [
             {
               text: 'Will responsible purchasing policies be used within your business ?',
@@ -60,6 +60,7 @@
         {
           id: 2,
           title: 'Social',
+
           questions: [
             
             {
@@ -80,6 +81,7 @@
         {
           id: 3,
           title: 'Enviromental',
+
           questions: [
             
             {
@@ -100,6 +102,7 @@
         {
           id: 4,
           title: 'Influence',
+
           questions: [      
             {
               text: 'Do you plan to cooperate with other entepreneurs or companies with assignments regarding sustainibility?',
@@ -119,6 +122,8 @@
         {
           id: 5,
           title: 'Business',
+          toggle: [],
+
           questions: [      
             {
               text: 'What is your business goal?',
