@@ -10,7 +10,7 @@ from random import randrange
 
 
 
-# Load a CSV file          sepal_length,sepal_width,petal_length,petal_width,species
+# Load a CSV file          
 def load_csv(filename):
 	dataset = list()
 	with open(filename, 'r') as file:
@@ -164,7 +164,7 @@ def naive_bayes(train, test):
 	return(predictions)
 
 
-# Make a prediction with Naive Bayes on ???????? Dataset
+# Make a prediction with Naive Bayes on Dataset
 seed(1)
 filename = 'testdata.csv'
 dataset = load_csv(filename)
