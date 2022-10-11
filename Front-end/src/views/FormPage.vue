@@ -28,10 +28,12 @@
         // retrieveData(){
         //   console.log(this.url)
         // }   
+        
     },
 
     data: () => ({
-      
+    
+        postId: null,
       // Used right now
       answerTextSet_1: [
         { text: 'No'          },
