@@ -56,12 +56,12 @@
                     <v-flex>
                         <!-- Answer question have answer set 1, show buttons with option: No, Probably Not, Probably, Yes -->
                         <!-- If a button is toggled, the value of that button is saved in an array "toggle" for that page-->
-                        <v-btn-toggle v-model="tab.toggleList[index]" v-if="question.answerSet == 1">
+                        <v-btn-toggle v-model="tab.answerList[index]" v-if="question.answerSet == 1">
                             <v-btn elevation="2" class="mx-2" v-for="button in answerTextSet_1" :key="button.text" > {{button.text}} </v-btn>
                         </v-btn-toggle>
 
                         <!-- Answer question have answer set 2, show buttons with option: None, Very Little, Some, A lot -->
-                        <v-btn-toggle v-model="tab.toggleList[index]" v-if="question.answerSet == 2">
+                        <v-btn-toggle v-model="tab.answerList[index]" v-if="question.answerSet == 2">
                             <v-btn elevation="2" class="mx-2" v-for="button in answerTextSet_2" :key="button.text"> {{button.text}} </v-btn>
                         </v-btn-toggle>
                     </v-flex>
@@ -90,6 +90,8 @@
                 
             </div> 
         </v-card>
+
+        <!-- {{this.info}} -->
     </div>
 
 </template>
@@ -110,23 +112,37 @@
             currentTab: 1,
         }),
 
-
+        // mounted(){
+        //     axios
+        //         .get('http://35.184.240.64/api/questions/1000')
+        //         .then(response => (this.info = response))
+        //         .catch(error => console.log(error))
+        // },
+        
+        // async created() {
+        //     // GET request using fetch with async/await
+        //     const response = await fetch('http://35.184.240.64/api/questions');
+        //     const data = await response.json();
+        //     console.log(data);
+        //     // return data
+        // },
+        
         methods: {  
             
             calcTabResult(tab){
-                var numberOfAnswers = tab.toggleList.length;
-                var categorySum = 0;
+                var numberOfAnswers = tab.answerList.length;
+                var tabResult = 0;
                 
-                if(numberOfAnswers > 0){ // maby remove this
+                if(numberOfAnswers > 0){ // add zero as the result of tab of no buttons are pressed
                     
                     for(var i = 0; i < numberOfAnswers; i++){
-                        categorySum += tab.toggleList[i] + 1;
-                        console.log("tab: " + tab.id + "     Q" + (i + 1) + ": " + (tab.toggleList[i] + 1));
+                        tabResult += tab.answerList[i] + 1;
+                        console.log("tab: " + tab.id + "     Q" + (i + 1) + ": " + (tab.answerList[i] + 1));
                     }
-                    var average = categorySum / numberOfAnswers;
+                    var average = tabResult / numberOfAnswers;
                     tab.result = average;
 
-                    // console.log("tab: " + tab.id + "     categorySum: " + categorySum);
+                    // console.log("tab: " + tab.id + "     tabResult: " + tabResult);
                     // console.log("tab: " + tab.id + "     average:     " + average);
                     console.log("tab: " + tab.id + "     result: " + tab.result);
                     console.log(" ");
@@ -142,20 +158,13 @@
                     this.calcTabResult(this.tabData[i]);
                     result.push(this.tabData[i].result);
                     
-                    // console.log(this.tabData.toggleList);
-                    // console.log("length: " + this.tabData[i].toggleList.length);
+                    // console.log(this.tabData.answerList);
+                    // console.log("length: " + this.tabData[i].answerList.length);
                 }
                 console.log("Form result: ", result);
                 return result;
             },
 
-            // async created() {
-            //     // GET request using fetch with async/await
-            //     const response = await fetch('http://35.184.240.64/api/questions');
-            //     const data = await response.json();
-            //     console.log(data);
-            //     // return data
-            // },
 
             prevTab(){
                 if(this.currentTab != 1)

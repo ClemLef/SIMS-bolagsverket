@@ -59,7 +59,7 @@
         {
           id: 1,
           title: 'Economical',
-          toggleList: [],
+          answerList: [],
           result: 0,
           questions: [
             {
@@ -80,7 +80,7 @@
         {
           id: 2,
           title: 'Social',
-          toggleList: [],
+          answerList: [],
           result: 0,
           questions: [
             
@@ -102,7 +102,7 @@
         {
           id: 3,
           title: 'Enviromental',
-          toggleList: [],
+          answerList: [],
           result: 0,
           questions: [
             
@@ -124,7 +124,7 @@
         {
           id: 4,
           title: 'Influence',
-          toggleList: [],
+          answerList: [],
           result: 0,
           questions: [      
             {
