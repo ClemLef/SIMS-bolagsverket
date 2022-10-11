@@ -11,6 +11,9 @@
                         :style="{ 'background-color': hover ? '#81C784' : 'green' }" @click="redirect">Take the test !
                         <v-icon right>mdi-chevron-right</v-icon>
                     </v-btn>
+                    <v-btn class="v-btn ma-10 pa-6 white--text " elevation="5" x-large rounded
+                        :style="{ 'background-color': hover ? '#81C784' : 'green' }" @click="send_data_AI">Take the test !
+                    </v-btn>
                 </v-hover>
 
             </v-col>
@@ -30,22 +33,18 @@ export default {
         group: null,
         resultId: null,
     }),
-    created() {
-        // Simple POST request with a JSON body using axios
-        const article = { title: "Vue POST Request Example" };
-        const config = {
-            headers:{
-                "Access-Control-Allow-Origin": "*"
-            }
-        }
-        axios.post("http://127.0.0.1:5000", article, config)
-            .then(response => this.articleId = response.data.id);
-    },
+
 
     methods: {
         redirect() {
             this.$router.push('/form')
-        }
+        },
+        send_data_AI() {
+            // Simple POST request with a JSON body using axios
+            const result = { result: "2 3 1 2" };
+            axios.post("http://127.0.0.1:5000", article)
+                .then(response => this.articleId = response.data.id);
+        },
     },
 }
 </script>
