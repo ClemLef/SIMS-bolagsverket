@@ -29,6 +29,17 @@
         //   console.log(this.url)
         // }   
         
+
+      // getResult(){
+
+      //   for(const answerList in this.tabData){
+      //     // console.log(answerList.toggle);
+      //     console.log("this.toggle.length: " + answerList.length);
+      //   }
+      // }
+      // retrieveData(){
+      //   console.log(this.url)
+      // }   
     },
 
     data: () => ({
@@ -53,7 +64,8 @@
         {
           id: 1,
           title: 'Economical',
-          toggle: [],
+          answerList: [],
+          result: 0,
           questions: [
             {
               text: 'Will responsible purchasing policies be used within your business ?',
@@ -73,7 +85,8 @@
         {
           id: 2,
           title: 'Social',
-          toggle: [],
+          answerList: [],
+          result: 0,
           questions: [
             
             {
@@ -94,7 +107,8 @@
         {
           id: 3,
           title: 'Enviromental',
-          toggle: [],
+          answerList: [],
+          result: 0,
           questions: [
             
             {
@@ -115,7 +129,8 @@
         {
           id: 4,
           title: 'Influence',
-          toggle: [],
+          answerList: [],
+          result: 0,
           questions: [      
             {
               text: 'Do you plan to cooperate with other entepreneurs or companies with assignments regarding sustainibility?',
@@ -132,28 +147,6 @@
             
           ]
         },
-        {
-          id: 5,
-          title: 'Business',
-          toggle: [],
-          questions: [      
-            {
-              text: 'What is your business goal?',
-              info: 'test info for business question 1', 
-              showInfo: false,
-              answerSet: 1
-            },
-            { 
-              text: 'How do you plan to achieve your goal', 
-              info: 'test info for business question 2', 
-              showInfo: false,
-              answerSet: 1
-            },
-            
-          ]
-        },
-        
-
       ],
       
     }),
