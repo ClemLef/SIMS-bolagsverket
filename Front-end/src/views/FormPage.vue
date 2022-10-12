@@ -76,6 +76,7 @@
               text: 'Will responsible purchasing policies be used within your business ?',
               info: 'test info for eco question 1', 
               showInfo: false,
+              answerSet: 1,
             },
             {  
               text: 'Do you plan to use Fskattsedel for your business ?', 
@@ -83,6 +84,7 @@
               showInfo: false,
               hasSubquestion: true,
               showSubquestion: false,
+              answerSet: 1,
               
               subQuestion: [{
                 text: 'sub question for skattesedel ?',

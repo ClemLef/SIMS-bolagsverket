@@ -56,17 +56,17 @@
                     <v-flex>
                         <!-- Answer set 1, show buttons for option: No, Probably Not, Probably, Yes -->
                         <!-- If a button is toggled, the value of that button is saved in an array "toggle" for that page-->
-                        <v-btn-toggle v-model="tab.toggle[index]" v-if="question.answerSet == 1">
-                            <v-btn elevation="2" class="mx-2" @click="debugFunction(tab.toggle)" v-for="button in answerTextSet_1" :key="button.text" > {{button.text}} </v-btn>
+                        <v-btn-toggle v-model="tab.answerList[index]" v-if="question.answerSet == 1">
+                            <v-btn elevation="2" class="mx-2" v-for="button in answerTextSet_1" :key="button.text" > {{button.text}} </v-btn>
                         </v-btn-toggle>
 
                         <!-- Answer set 2, show buttons for option: None, Very Little, Some, A lot -->
-                        <v-btn-toggle v-model="tab.toggle[index]" v-if="question.answerSet == 1">
+                        <v-btn-toggle v-model="tab.answerList[index]" v-if="question.answerSet == 2">
                             <v-btn elevation="2" class="mx-2" v-for="button in answerTextSet_1" :key="button.text" > {{button.text}} </v-btn>
                         </v-btn-toggle>
 
                         <!-- Answer set 3, show buttons for option: Yes, no -->
-                        <v-btn-toggle v-model="tab.toggle[index]" v-if="question.answerSet == 3">
+                        <v-btn-toggle v-model="tab.answerList[index]" v-if="question.answerSet == 3">
                             <v-btn elevation="2" class="mx-2" v-for="button in answerTextSet_3" :key="button.text"> {{button.text}} </v-btn>
                         </v-btn-toggle>
                     </v-flex>
