@@ -8,7 +8,7 @@ cors=CORS(app)
 def index():
     return "<p>Hello, World!</p>"
 
-@app.route('/post')
+@app.route('/post', methods=['POST'])
 def result():
     print(request.json)  # json (if content-type of application/json is sent with the request)
 
