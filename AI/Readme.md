@@ -4,4 +4,6 @@ https://computingforgeeks.com/how-to-install-python-on-debian-linux/
 
 # Launch the python http server
 use the command :
-```bash flask --app HTTPListener.py run```
+```bash
+flask --app HTTPListener.py run
+```
