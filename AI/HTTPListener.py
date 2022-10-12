@@ -1,5 +1,6 @@
 from flask import Flask, request
 from flask_cors import CORS
+import json
 
 app = Flask(__name__)
 cors=CORS(app)
@@ -10,8 +11,10 @@ def index():
 
 @app.route('/post', methods=['POST'])
 def result():
-    print(request.form['result'])  # json (if content-type of application/json is sent with the request)
-    return request.json
+    print(request.json)  # json (if content-type of application/json is sent with the request)
+    result = json.dumps(request.json)
+    for x in range(len(result)):
+        print(result[x]),
 
 if __name__ == "__main__":
     app.run()
