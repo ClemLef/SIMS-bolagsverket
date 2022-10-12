@@ -18,16 +18,22 @@
             <!-- <p> {{created()}} </p> -->
 
             <!-- Showing correct page content -->
-            <div v-for="(row, tabIndex) in tabData" :key="row[tabIndex]" v-show="currentTab == row.id">
+            <div v-for="(tab, tabIndex) in tabData" :key="tab[tabIndex]" v-show="currentTab == tab.id">
 
                 <!-- Row 1 contains question text, help button for extra information and help information -->
                 <!-- Retrieving question object from correct page, then displaying question with corresponding answer options and help text -->
-                <v-card-text v-for="(question, index) in row.questions" :key="question[index]" class="text-left font-weight-black mx-5">
+                <v-card-text v-for="(question, index) in tab.questions" :key="question[index]" class="text-left font-weight-black mx-5">
+
+                    <!-- <label v-if="question.hasSubquestion">
+                        {{debug("hello")}}
+                    </label> -->
+                    <!-- {{showAllSubCategory(tab, question)}} -->
+
 
                     <v-layout row class="mx-auto my-5">      
+
                         <!-- Question text -->
                         <v-flex md9 >
-                            <!-- <p > {{row.questions[0].text}} {{debugFunction(row.questions[0].text)}}</p> -->
                             <p> {{question.text}} </p>
                         </v-flex>
                         
@@ -54,15 +60,20 @@
                               
                     <!-- Second row contains answer buttons -->
                     <v-flex>
-                        <!-- Answer question have answer set 1, show buttons with option: No, Probably Not, Probably, Yes -->
+                        <!-- Answer set 1, show buttons for option: No, Probably Not, Probably, Yes -->
                         <!-- If a button is toggled, the value of that button is saved in an array "toggle" for that page-->
-                        <v-btn-toggle v-model="row.toggle[index]" v-if="question.answerSet == 1">
-                            <v-btn elevation="2" class="mx-2" @click="debugFunction(row.toggle)" v-for="button in answerTextSet_1" :key="button.text" > {{button.text}} </v-btn>
+                        <v-btn-toggle v-model="tab.toggle[index]" v-if="question.answerSet == 1">
+                            <v-btn elevation="2" class="mx-2" @click="debugFunction(tab.toggle)" v-for="button in answerTextSet_1" :key="button.text" > {{button.text}} </v-btn>
                         </v-btn-toggle>
 
-                        <!-- Answer question have answer set 2, show buttons with option: None, Very Little, Some, A lot -->
-                        <v-btn-toggle v-model="row.toggle[index]" v-if="question.answerSet == 2">
+                        <!-- Answer set 2, show buttons for option: None, Very Little, Some, A lot -->
+                        <v-btn-toggle v-model="tab.toggle[index]" v-if="question.answerSet == 2">
                             <v-btn elevation="2" class="mx-2" v-for="button in answerTextSet_2" :key="button.text"> {{button.text}} </v-btn>
+                        </v-btn-toggle>
+
+                        <!-- Answer set 3, show buttons for option: Yes, no -->
+                        <v-btn-toggle v-model="tab.toggle[index]" v-if="question.answerSet == 3">
+                            <v-btn elevation="2" class="mx-2" v-for="button in answerTextSet_3" :key="button.text"> {{button.text}} </v-btn>
                         </v-btn-toggle>
                     </v-flex>
                     
@@ -85,6 +96,7 @@
                     <v-btn v-show="currentTab == 5" class="mx-2 my-4" depressed color="accent" large @click="resultTab"> Result  
                         <v-icon right> mdi-form-select </v-icon>
                     </v-btn>
+
                 </v-row>  
                 
                 
@@ -97,19 +109,23 @@
 </template>
 
 <script>
+
     export default{
 
         // url: 'http://35.184.240.64/api/questions',
         // url: 'http://35.184.240.64/api/questions/1000'
         
+        
         props: {
             tabData: Array,
             answerTextSet_1: Array,
-            answerTextSet_2: Array
+            answerTextSet_2: Array,
+            answerTextSet_3: Array
         },
 
         data: () => ({
             currentTab: 1,
+            
         }),
 
 
@@ -149,7 +165,22 @@
                 }
             },
 
-            debugFunction(debug){
+            // showAllSubCategory(tab, question){
+                
+            //     if(question.subCategory != 0){
+            //         // debug("question.subcategory: " + question.subCategory)
+            //         var i = question.subCategory;
+            //         this.debug(i);
+            //         for(question in tab.questions){
+            //             if(question.subCategory == i){
+            //                 question.show == true;
+            //                 // debug(question.show);
+            //             }
+            //         }
+            //     }
+            // },
+
+            debug(debug){
                 console.log(debug);
             }
 
