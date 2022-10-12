@@ -62,7 +62,7 @@
 
                         <!-- Answer set 2, show buttons for option: None, Very Little, Some, A lot -->
                         <v-btn-toggle v-model="tab.answerList[index]" v-if="question.answerSet == 2">
-                            <v-btn elevation="2" class="mx-2" v-for="button in answerTextSet_1" :key="button.text" > {{button.text}} </v-btn>
+                            <v-btn elevation="2" class="mx-2" v-for="button in answerTextSet_2" :key="button.text" > {{button.text}} </v-btn>
                         </v-btn-toggle>
 
                         <!-- Answer set 3, show buttons for option: Yes, no -->
