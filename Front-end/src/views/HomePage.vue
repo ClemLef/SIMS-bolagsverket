@@ -10,10 +10,11 @@
                         :style="{ 'background-color': hover ? '#81C784' : 'green' }" @click="redirect">Take the test !
                         <v-icon right>mdi-chevron-right</v-icon>
                     </v-btn>
-                    
+
                 </v-hover>
-                <v-btn class="v-btn ma-10 pa-6 white--text " elevation="5" x-large rounded @click="send_data_AI">send data
-                    </v-btn>
+                <v-btn class="v-btn ma-10 pa-6 white--text " elevation="5" x-large rounded @click="send_data_AI">send
+                    data
+                </v-btn>
 
             </v-col>
         </v-row>
@@ -40,9 +41,16 @@ export default {
         },
         send_data_AI() {
             // Simple POST request with a JSON body using axios
-            const result = { result: "2 3 1 2" };
-            axios.post("http://127.0.0.1:5000", result)
-                .then(response => this.resultId = response.data.id);
+            const result = [2, 3, 4, 1];
+            axios.post("http://34.136.8.129:5000/post", result)
+                .then(function (response) {
+                    // your action after success
+                    console.log(response);
+                })
+                .catch(function (error) {
+                    // your action on error success
+                    console.log(error);
+                });
         }
     }
 }
