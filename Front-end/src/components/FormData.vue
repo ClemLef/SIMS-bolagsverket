@@ -54,15 +54,20 @@
                               
                     <!-- Second tab contains answer buttons -->
                     <v-flex>
-                        <!-- Answer question have answer set 1, show buttons with option: No, Probably Not, Probably, Yes -->
+                        <!-- Answer set 1, show buttons for option: No, Probably Not, Probably, Yes -->
                         <!-- If a button is toggled, the value of that button is saved in an array "toggle" for that page-->
                         <v-btn-toggle v-model="tab.answerList[index]" v-if="question.answerSet == 1">
                             <v-btn elevation="2" class="mx-2" v-for="button in answerTextSet_1" :key="button.text" > {{button.text}} </v-btn>
                         </v-btn-toggle>
 
-                        <!-- Answer question have answer set 2, show buttons with option: None, Very Little, Some, A lot -->
+                        <!-- Answer set 2, show buttons for option: None, Very Little, Some, A lot -->
                         <v-btn-toggle v-model="tab.answerList[index]" v-if="question.answerSet == 2">
-                            <v-btn elevation="2" class="mx-2" v-for="button in answerTextSet_2" :key="button.text"> {{button.text}} </v-btn>
+                            <v-btn elevation="2" class="mx-2" v-for="button in answerTextSet_1" :key="button.text" > {{button.text}} </v-btn>
+                        </v-btn-toggle>
+
+                        <!-- Answer set 3, show buttons for option: Yes, no -->
+                        <v-btn-toggle v-model="tab.answerList[index]" v-if="question.answerSet == 3">
+                            <v-btn elevation="2" class="mx-2" v-for="button in answerTextSet_3" :key="button.text"> {{button.text}} </v-btn>
                         </v-btn-toggle>
                     </v-flex>
                     
@@ -85,6 +90,7 @@
                     <v-btn v-show="currentTab == 4" class="mx-2 my-4" depressed color="accent" large @click="calcFormResult(); resultTab();"> Result  
                         <v-icon right> mdi-form-select </v-icon>
                     </v-btn>
+
                 </v-row>  
                 
                 
@@ -97,19 +103,23 @@
 </template>
 
 <script>
+
     export default{
 
         // url: 'http://35.184.240.64/api/questions',
         // url: 'http://35.184.240.64/api/questions/1000'
         
+        
         props: {
             tabData: Array,
             answerTextSet_1: Array,
-            answerTextSet_2: Array
+            answerTextSet_2: Array,
+            answerTextSet_3: Array
         },
 
         data: () => ({
             currentTab: 1,
+            
         }),
 
         // mounted(){
@@ -192,7 +202,22 @@
                 }
             },
 
-            debugFunction(debug){
+            // showAllSubCategory(tab, question){
+                
+            //     if(question.subCategory != 0){
+            //         // debug("question.subcategory: " + question.subCategory)
+            //         var i = question.subCategory;
+            //         this.debug(i);
+            //         for(question in tab.questions){
+            //             if(question.subCategory == i){
+            //                 question.show == true;
+            //                 // debug(question.show);
+            //             }
+            //         }
+            //     }
+            // },
+
+            debug(debug){
                 console.log(debug);
             }
 
