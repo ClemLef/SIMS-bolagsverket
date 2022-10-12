@@ -13,8 +13,7 @@ def index():
 def result():
     print(request.json)  # json (if content-type of application/json is sent with the request)
     result = json.dumps(request.json)
-    for x in range(len(result)):
-        print(result[x]),
+    return "sustainable"
 
 if __name__ == "__main__":
     app.run()
