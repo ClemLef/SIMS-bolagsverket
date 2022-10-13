@@ -12,8 +12,8 @@
                     </v-btn>
 
                 </v-hover>
-                <v-btn class="v-btn ma-10 pa-6 white--text " elevation="5" x-large rounded @click="send_data_AI">send
-                    data
+                <v-btn class="v-btn ma-10 pa-6 white--text " :loading="loading" elevation="5" x-large rounded
+                    @click="send_data_AI(result)">{{button_txt}}
                 </v-btn>
 
             </v-col>
@@ -24,14 +24,16 @@
 
 <script>
 
-import axios from 'axios';
+import AI_Post from '@/controller/AI_Post.js';
 
 export default {
     name: 'HomePage',
     data: () => ({
         drawer: false,
         group: null,
-        resultId: null,
+        result: [2, 3, 4, 1],
+        button_txt: "Send Data",
+        loading: false,
     }),
 
 
@@ -39,18 +41,16 @@ export default {
         redirect() {
             this.$router.push('/form')
         },
-        send_data_AI() {
-            // Simple POST request with a JSON body using axios
-            const result = [2, 3, 4, 1];
-            axios.post("http://34.136.8.129:5000/post", result)
-                .then(function (response) {
-                    // your action after success
-                    console.log(response);
-                })
-                .catch(function (error) {
-                    // your action on error success
-                    console.log(error);
-                });
+        send_data_AI(result) {
+            console.log(result)
+            const send = async () => {
+                this.loading = true;
+                const response = await AI_Post.send_data(result);
+                this.loading = false;
+                console.log(response);
+                this.button_txt = response
+            }
+            send()
         }
     }
 }
