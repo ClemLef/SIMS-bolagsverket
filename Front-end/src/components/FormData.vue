@@ -95,7 +95,7 @@
                     </v-btn>
 
                     <!-- kanske inte behöver v-show eftersom hela kortet endast visas med v-show=currenttab -->
-                    <v-btn v-show="currentTab == 4" class="mx-2 my-4" depressed color="accent" large @click="calcFormResult(); resultTab();"> Result  
+                    <v-btn v-show="currentTab == 4" class="mx-2 my-4" :loading="loading" depressed color="accent" large @click="calcFormResult()"> Result  
                         <v-icon right> mdi-form-select </v-icon>
                     </v-btn>
                 </v-row>  
@@ -109,6 +109,7 @@
 </template>
 
 <script>
+    import axios from 'axios';//can't separated my code from the file
 
     export default{
 
@@ -125,6 +126,7 @@
 
         data: () => ({
             currentTab: 1,
+            loading: false,
         }),
         
         methods: {  
@@ -196,6 +198,7 @@
             },
 
             calcFormResult(){
+                
                 var numberOfTabs = this.tabData.length;
                 var result = [];
                 
@@ -208,7 +211,17 @@
                     // console.log("length: " + this.tabData[i].answerList.length);
                 }
                 console.log("Form result: ", result);
-                return result;
+                (async () => {
+                    var aiResult = await this.send_data_AI(result);
+                    console.log(aiResult)
+                    window.$cookies.config('30d');
+                    window.$cookies.set('isSustainable', aiResult.data);
+                    this.$router.push('/results')
+                })()
+                
+                
+                
+                //return result;
             },
 
 
@@ -220,10 +233,6 @@
             nextTab(){
                 if(this.currentTab != 5)
                     this.currentTab += 1;
-            },
-
-            resultTab(){
-                this.$router.push('/results')
             },
 
             setCurrentTab(selectedTab){
@@ -240,8 +249,29 @@
 
             debugFunction(debug){
                 console.log(debug);
-            }
+            },
 
+            async send_data_AI(result) {
+                this.loading = true;
+                // eslint-disable-next-line
+                const response = await axios.post("http://34.136.8.129:5000/post", result)
+                    .then(function (response) {
+                        // your action after success
+                        //console.log(response);
+                        return response;
+                    })
+                    .catch(function (error) {
+                        // your action on error success
+                        //console.log(error);
+                        return error;
+                    });
+                //this.loading = false;
+                //this.button_txt = response.data;
+                //console.log(response.data);
+                
+                return response;
+                
+            },
 
         }
     }
