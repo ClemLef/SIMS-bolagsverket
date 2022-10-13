@@ -2,6 +2,7 @@
 from flask import Flask, request
 from flask_cors import CORS
 import json
+import time
 
 # Init the app and CORS
 app = Flask(__name__)
@@ -19,6 +20,7 @@ def result():
     # Put this info in a variable
     result = json.dumps(request.json)
     # Use return to return the result of the AI processing to the front end
+    time.sleep(10);    
     return "sustainable"
 
 # Main function run indefinitely
