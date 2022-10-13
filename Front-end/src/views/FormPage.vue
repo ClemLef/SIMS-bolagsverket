@@ -4,7 +4,7 @@
     :answerTextSet_1="answerTextSet_1" 
     :answerTextSet_2="answerTextSet_2"
     :answerTextSet_3="answerTextSet_3"
-    :data="data">
+    :questionsList="questionsList">
   </FormData>
 </template>
 
@@ -22,20 +22,23 @@
     
     name: 'FormPage',
 
-    
-    setup(){   
+    methods: {
       
-      const loadQuote = async () => {
-        const response = await FormAPI.getQuestion();
-        console.log(response.data);
-      }
+      async loadQuestion() {
+        const questions = await FormAPI.getQuestion();
+        console.log(questions.data);
+        this.questionsList = questions.data;
+      },
 
-      loadQuote();
     },
 
+    created(){
+      this.loadQuestion();
+    },  
+    
     data: () => ({
 
-      data: [],
+      questionsList: {},
 
       answerTextSet_1: [
         { text: 'No' },
