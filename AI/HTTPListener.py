@@ -20,7 +20,7 @@ def result():
     # Put this info in a variable
     result = json.dumps(request.json)
     # Use return to return the result of the AI processing to the front end
-    time.sleep(10);    
+    time.sleep(3);    
     return "sustainable"
 
 # Main function run indefinitely
