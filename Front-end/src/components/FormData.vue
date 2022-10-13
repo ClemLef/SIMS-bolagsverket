@@ -100,7 +100,7 @@
                     </v-btn>
                 </v-row>  
                 
-                
+                <!-- {{printQuestion()}} -->
             </div> 
         </v-card>
 
@@ -115,36 +115,23 @@
         // url: 'http://35.184.240.64/api/questions',
         // url: 'http://35.184.240.64/api/questions/1000'
         
-        
         props: {
             tabData: Array,
             answerTextSet_1: Array,
             answerTextSet_2: Array,
             answerTextSet_3: Array,
-            // data: Object,
+            questionsList: Object,
         },
 
         data: () => ({
             currentTab: 1,
-            
         }),
-
-        // mounted(){
-        //     axios
-        //         .get('http://35.184.240.64/api/questions/1000')
-        //         .then(response => (this.info = response))
-        //         .catch(error => console.log(error))
-        // },
-        
-        // async created() {
-        //     // GET request using fetch with async/await
-        //     const response = await fetch('http://35.184.240.64/api/questions');
-        //     const data = await response.json();
-        //     console.log(data);
-        //     // return data
-        // },
         
         methods: {  
+
+            printQuestion(){
+                console.log(this.questionsList.question);
+            },
 
             hasSubQuestion(currentQuestion){
                 if(currentQuestion.hasSubQuestion == true)
