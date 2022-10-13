@@ -23,22 +23,57 @@
     name: 'FormPage',
 
     methods: {
-      
+    
+      //loads one question from db and puts it in this.allquestion list in data
       async loadQuestion() {
         const questions = await FormAPI.getQuestion();
-        console.log(questions.data);
         this.questionsList = questions.data;
+        console.log(this.questionsList.id);
       },
+
+      //loads all question from db and puts them in this.allquestion list in data
+      async loadAllQuestion() {
+        const questions = await FormAPI.getQuestions();
+        this.allQuestionsList = questions.data;
+
+        for(var i = 0; i < this.allQuestionsList.length; i++){
+
+          // logging for testing each result
+          // console.log(this.allQuestionsList[i].question);      // text
+          // console.log(this.allQuestionsList[i].category);      // 2002 / social
+          // console.log(this.allQuestionsList[i].set_categorys); // answer set
+          // console.log(this.allQuestionsList[i].show_sub_category); // has set category, true or false
+          // console.log(this.allQuestionsList[i].sub_categorys); // subquestion group
+
+          //local variables for simplifying conditions 
+          // var text = this.allQuestionsList[i].question;                     // text
+          // var category = this.allQuestionsList[i].category;                // 2002 / social
+          // var answerSet = this.allQuestionsList[i].set_categorys;          // answer set
+          // var hasSubQuestion = this.allQuestionsList[i].show_sub_category; // has sub question, true or false
+          // var subQuestionGroup = this.allQuestionsList[i].sub_categorys;   // subquestion group
+
+          //If category is something, place that question in that category
+          // if(category == 2001){
+            // Question is an economical question.
+          // }
+        }
+
+      },
+
+
 
     },
 
     created(){
       this.loadQuestion();
+      // this.loadAllQuestion();
     },  
     
     data: () => ({
 
       questionsList: {},
+      allQuestionsList: {},
+
 
       answerTextSet_1: [
         { text: 'No' },
@@ -77,6 +112,14 @@
               showSubQuestionList: [],
               show: true
             },
+            { 
+              text: 'Will you use Fskatt för?',
+              info: 'test info for eco question 1', 
+              showInfo: false,
+              answerSet: 2,
+              showSubQuestionList: [],
+              show: true
+            },
             //Main question
             {  
               text: 'Main question 1 ?', 
@@ -87,6 +130,7 @@
 
               hasSubQuestion: true,
               subQuestionGroup: 1,
+
               showSubQuestionList: [],
             },
             //Sub question

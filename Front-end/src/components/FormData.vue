@@ -100,7 +100,7 @@
                     </v-btn>
                 </v-row>  
                 
-                {{printQuestion()}}
+                <!-- {{printQuestion()}} -->
             </div> 
         </v-card>
 
@@ -130,7 +130,7 @@
         methods: {  
 
             printQuestion(){
-                console.log(this.question);
+                console.log(this.questionsList.question);
             },
 
             hasSubQuestion(currentQuestion){
