@@ -105,6 +105,7 @@
       // this.loadQuestion();
       this.loadAnswerSets();
       this.loadAllQuestion();
+      window.$cookies.remove('isSustainable');//to remove
     },  
     
     data: () => ({

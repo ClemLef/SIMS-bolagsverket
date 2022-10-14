@@ -23,7 +23,7 @@
 
         </v-tabs>
         
-    <ResultsVisible />
+    <component :is="formTaken"></component>
     </v-card>
 </template>
 
@@ -32,15 +32,17 @@
 
 <script>
 
-//import ResultsNotVisible from '@/components/ResultsNotVisible.vue';
+import ResultsNotVisible from '@/components/ResultsNotVisible.vue';
 import ResultsVisible from '../components/ResultsVisible.vue'  
 
   
 export default {
 
     components :{
+        // eslint-disable-next-line
       ResultsVisible,
-      //ResultsNotVisible
+      // eslint-disable-next-line
+      ResultsNotVisible, 
     },
 
     data: () => ({
@@ -55,9 +57,20 @@ export default {
         redirectLink(link) {
             window.open(link);
         },
+        /*formTaken(){
+            if(window.$cookies.get('isSustainable') != null){
+                return "ResultsVisible";
+            } else {
+                return "ResultsNotVisible";
+            }
+        }*/
+    },
+    computed: {
         formTaken(){
-            if(window.$cookies.get('isSustainable') == null){
-                console.log("bite")
+            if(this.sustainability != null){
+                return "ResultsVisible";
+            } else {
+                return "ResultsNotVisible";
             }
         }
     }
