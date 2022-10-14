@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\AnswerSets;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Models\Questions;
@@ -27,4 +28,10 @@ Route::get('questions', function() {
  
 Route::get('questions/{id}', function($id) {
     return Questions::find($id);
+});
+
+Route::get('answer_sets', function() {
+    // If the Content-Type and Accept headers are set to 'application/json', 
+    // this will return a JSON structure. This will be cleaned up later.
+    return AnswerSets::all();
 });

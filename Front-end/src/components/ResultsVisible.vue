@@ -1,9 +1,9 @@
 <template>
     
         <div class="pa-5">
-            <h1 class="mt-5">Great results ! Your business idea is <span style="color: orange">{{sustainability}}</span>.
+            <h1>Great results ! Your business idea is <span style="color: orange">{{sustainability}}</span>.
         </h1>
-        <h5 class="text-md-h5 mt-5">You can see your results for each category below, just click on a section to display
+        <h5 class="text-md-h5 my-5">You can see your results for each category below, just click on a section to display
             details.</h5>
             <v-expansion-panels popout>
                 <v-expansion-panel>
@@ -166,11 +166,6 @@ export default {
         redirectLink(link) {
             window.open(link);
         },
-        formTaken(){
-            if(window.$cookies.get('isSustainable') == null){
-                console.log("bite")
-            }
-        }
     }
 }
 
