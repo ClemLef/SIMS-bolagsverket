@@ -6,5 +6,8 @@ export default{
     },
     getQuestions(){
         return API().get('/questions')
+    },
+    getAnswerSets(){
+        return API().get('/answer_sets')
     }
 }
