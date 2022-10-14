@@ -3,7 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Models\Questions;
-use App\Models\QuestionSets;
+use App\Models\SetNameAnswers;
 
 /*
 |--------------------------------------------------------------------------
