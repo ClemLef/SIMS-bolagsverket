@@ -67,6 +67,7 @@
     created(){
       this.loadQuestion();
       // this.loadAllQuestion();
+      window.$cookies.remove('isSustainable');//to remove
     },  
     
     data: () => ({
