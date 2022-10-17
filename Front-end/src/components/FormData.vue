@@ -1,7 +1,7 @@
 <template>
-
+    
     <div class="my-10">
-
+        
         <!-- Card that contains all questions, answers and content of each page -->
         <!-- Create Page buttons dynamically -->
         <v-btn 
@@ -12,7 +12,7 @@
             > 
             {{tab.title}} 
         </v-btn>
-        
+    
         <v-card elevation="5" width="85%" class="mx-auto">  
             
             <!-- <p> {{created()}} </p> -->
@@ -86,8 +86,12 @@
                         <v-icon right> mdi-form-select </v-icon>
                     </v-btn>
                 </v-row>  
+
                 
+<<<<<<< HEAD
                 
+=======
+>>>>>>> ccb6ae6d5be7959f2e52653501bf3c28756e6902
             </div> 
         </v-card>
 
@@ -97,12 +101,24 @@
 </template>
 
 <script>
+<<<<<<< HEAD
     export default{
         
+=======
+
+    export default{
+
+>>>>>>> ccb6ae6d5be7959f2e52653501bf3c28756e6902
         props: {
             tabData: Array,
             answerTextSet_1: Array,
+<<<<<<< HEAD
             answerTextSet_2: Array
+=======
+            answerTextSet_2: Array,
+            answerTextSet_3: Array,
+            answerTextSets: Array,
+>>>>>>> ccb6ae6d5be7959f2e52653501bf3c28756e6902
         },
 
         data: () => ({
@@ -111,7 +127,33 @@
         
         methods: {  
 
+<<<<<<< HEAD
             testFunction(){
+=======
+            // printQuestionSet(x){
+            //     for(var i = 0; i < this.answerTextSets.length; i++){
+            //         if(this.answerTextSets[i].group == x){
+            //             return [this.answerTextSets[i].x]
+            //         }
+            //     }
+            // },
+
+            getAnswerTextSet(question, button){
+                if(question.answerSet == button.group){
+                    return button.text;
+                }
+            },
+
+            hasSubQuestion(currentQuestion){
+                if(currentQuestion.hasSubQuestion == true)
+                    return true;
+                else
+                    return false;
+            },
+
+            // Uses current question to find whats subquestions that belong to it, display or hides those subquestions
+            showSubQuestion(currentQuestion, allQuestion, index){
+>>>>>>> ccb6ae6d5be7959f2e52653501bf3c28756e6902
                 
             },
             
