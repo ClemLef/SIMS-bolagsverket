@@ -9,7 +9,7 @@
 
         <v-navigation-drawer v-model="drawer" absolute temporary>
             <v-list nav dense class="mt-2">
-                <v-list-item-group v-model="group" active-class="green--text lighten-4">
+                <v-list-item-group v-model="group" :value="Home" active-class="green--text lighten-4">
                     <v-list-item v-for="item in items" :key="item.title" link @click="redirect(item)">
                         <v-list-item-icon>
                             <v-icon>{{ item.icon }}</v-icon>
@@ -42,7 +42,17 @@ export default {
             if (this.$route.path != item.path) {
                 this.$router.push(item.path)
             }
+        },
+        pageSelected(item) {
+            if(this.$route.name == item.title.toLowerCase()){
+                return true;
+            } else {
+                return false;
+            }
         }
+    },
+    computed: {
+        
     }
 }
 </script>

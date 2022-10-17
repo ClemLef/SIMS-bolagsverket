@@ -10,12 +10,7 @@
                         :style="{ 'background-color': hover ? '#81C784' : 'green' }" @click="redirect">Take the test !
                         <v-icon right>mdi-chevron-right</v-icon>
                     </v-btn>
-
                 </v-hover>
-                <v-btn class="v-btn ma-10 pa-6 white--text " elevation="5" x-large rounded @click="send_data_AI">send
-                    data
-                </v-btn>
-
             </v-col>
         </v-row>
     </v-img>
@@ -24,34 +19,18 @@
 
 <script>
 
-import axios from 'axios';
-
 export default {
     name: 'HomePage',
     data: () => ({
         drawer: false,
         group: null,
-        resultId: null,
+        result: [2, 3, 4, 1],
     }),
-
 
     methods: {
         redirect() {
             this.$router.push('/form')
         },
-        send_data_AI() {
-            // Simple POST request with a JSON body using axios
-            const result = [2, 3, 4, 1];
-            axios.post("http://34.136.8.129:5000/post", result)
-                .then(function (response) {
-                    // your action after success
-                    console.log(response);
-                })
-                .catch(function (error) {
-                    // your action on error success
-                    console.log(error);
-                });
-        }
     }
 }
 </script>

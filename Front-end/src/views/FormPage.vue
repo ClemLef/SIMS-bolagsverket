@@ -1,10 +1,10 @@
 <template>
   <FormData 
-    :tabData="tabData" 
+    :tabData2="tabData2" 
     :answerTextSet_1="answerTextSet_1" 
     :answerTextSet_2="answerTextSet_2"
     :answerTextSet_3="answerTextSet_3"
-    :questionsList="questionsList">
+    :answerSets="answerSets">
   </FormData>
 </template>
 
@@ -23,28 +23,102 @@
     name: 'FormPage',
 
     methods: {
-      
+    
+      //loads one question from db and puts it in this.allquestion list in data
       async loadQuestion() {
         const questions = await FormAPI.getQuestion();
-        console.log(questions.data);
         this.questionsList = questions.data;
+        // console.log(this.questionsList.id);
       },
+
+      //loads all question from db and puts them in this.allquestion list in data
+      async loadAllQuestion() {
+        const questions = await FormAPI.getQuestions();
+        this.allQuestionsList = questions.data;
+
+        for(var i = 0; i < this.tabData2.length; i++){
+          for(var j = 0; j < this.allQuestionsList.length; j++){
+
+            // logging for testing each result
+            // console.log(this.allQuestionsList[i].question);      // text
+            // console.log(this.allQuestionsList[i].category);      // 2002 / social
+            // console.log(this.allQuestionsList[i].set_categorys); // answer set
+            // console.log(this.allQuestionsList[i].show_sub_category); // has set category, true or false
+            // console.log(this.allQuestionsList[i].sub_categorys); // subquestion group
+
+            // local variables for simplifying conditions 
+            var text = this.allQuestionsList[j].question;                     // text
+            var info = this.allQuestionsList[j].help_information;   // subquestion group
+            var category = this.allQuestionsList[j].category;                // 2002 / social
+            var answerSet = this.allQuestionsList[j].set_question;          // answer set
+            var hasSubQuestion = this.allQuestionsList[j].has_sub_questions; // has sub question, true or false
+            var subQuestionGroup = this.allQuestionsList[j].show_subquestion_group;   // subquestion group
+            var show = this.allQuestionsList[j].active;   // subquestion group
+            
+            if(category == [i]){
+              this.tabData2[i].questions.push({
+                text: text,
+                info: info, 
+                show: show,
+                showInfo: false,
+                answerSet: answerSet,
+                hasSubQuestion: hasSubQuestion,
+                subQuestionGroup: subQuestionGroup,
+
+                showSubQuestionList: [],
+              })
+            }
+
+            
+          }
+        }
+      },
+
+      // TRY TO SHOW ANSWERS IN FORMDATA, THEY ARE LOADED, BUT IN A NEW WAY THAN PREVIOUS METHODS
+      async loadAnswerSets(){
+        const answerSets = await FormAPI.getAnswerSets();
+        this.answerSetList = answerSets.data;
+        // console.log(this.answerSetList);
+        // console.log(this.answerSetList.length);
+
+
+        for(var i = 0; i < this.answerSetList.length; i++){
+
+            // local variables for simplifying conditions 
+            var text = this.answerSetList[i].question;            // text
+            var group = this.answerSetList[i].help_information;   // subquestion group
+
+          if(group == i){
+            this.answerSets.push({
+              text: text,
+              group: group
+            })
+          }
+        }
+      }
+
+
 
     },
 
     created(){
-      this.loadQuestion();
+      // this.loadQuestion();
+      this.loadAnswerSets();
+      this.loadAllQuestion();
+      window.$cookies.remove('isSustainable');//to remove
     },  
     
     data: () => ({
 
-      questionsList: {},
+      allQuestionsList: {},
+      answerSetList: {},
+
+      answerSets: [], 
 
       answerTextSet_1: [
         { text: 'No' },
         { text: 'Yes'  },
       ],
-
 
       answerTextSet_2: [
         { text: 'No'          },
@@ -62,6 +136,39 @@
       ],
 
 
+      tabData2:[
+        {
+          id: 0,
+          title: 'Economical',
+          answerList: [],
+          questions: [],
+          result: 0,
+        },
+        {
+          id: 1,
+          title: 'Social',
+          answerList: [],
+          questions: [],
+          result: 0,
+        },
+        {
+          id: 2,
+          title: 'Enviromental',
+          answerList: [],
+          questions: [],
+          result: 0,
+        },
+        {
+          id: 3,
+          title: 'Positive influence',
+          answerList: [],
+          questions: [],
+          result: 0,
+        }
+      ],
+
+
+
       tabData: [
         {
           id: 1,
@@ -70,56 +177,116 @@
           result: 0,
           questions: [
             { 
-              text: 'Will responsible purchasing policies be used within your business ?',
-              info: 'test info for eco question 1', 
+              text: '',
+              info: '', 
               showInfo: false,
               answerSet: 2,
               showSubQuestionList: [],
               show: true
             },
-            //Main question
-            {  
-              text: 'Main question 1 ?', 
-              info: 'test info for eco question 2', 
+            { 
+              text: '',
+              info: '', 
               showInfo: false,
-              answerSet: 1,
-              show: true,
-
-              hasSubQuestion: true,
-              subQuestionGroup: 1,
-              showSubQuestionList: [],
-            },
-            //Sub question
-            {
-              text: 'sub question 1 ?',
-              info: 'test info for eco question 1', 
-              showInfo: false,
-              subQuestionGroup: 1,
               answerSet: 2,
               showSubQuestionList: [],
-              show: false      
+              show: true
             },
-            //Main question
-            {  
-              text: 'Main question 2 ?', 
-              info: 'test info for eco question 2', 
+            { 
+              text: '',
+              info: '', 
               showInfo: false,
-              answerSet: 1,
-              show: true,
-
-              hasSubQuestion: true,
-              subQuestionGroup: 2,
-              showSubQuestionList: [],
-            },
-            //Sub question
-            {
-              text: 'sub question 2 ?',
-              info: 'test info for eco question 1', 
-              showInfo: false,
-              subQuestionGroup: 2,
               answerSet: 2,
               showSubQuestionList: [],
-              show: false      
+              show: true
+            },
+            { 
+              text: '',
+              info: '', 
+              showInfo: false,
+              answerSet: 2,
+              showSubQuestionList: [],
+              show: true
+            },
+            { 
+              text: '',
+              info: '', 
+              showInfo: false,
+              answerSet: 2,
+              showSubQuestionList: [],
+              show: true
+            },
+            { 
+              text: '',
+              info: '', 
+              showInfo: false,
+              answerSet: 2,
+              showSubQuestionList: [],
+              show: true
+            },
+            { 
+              text: '',
+              info: '', 
+              showInfo: false,
+              answerSet: 2,
+              showSubQuestionList: [],
+              show: true
+            },
+            { 
+              text: '',
+              info: '', 
+              showInfo: false,
+              answerSet: 2,
+              showSubQuestionList: [],
+              show: true
+            },
+            { 
+              text: '',
+              info: '', 
+              showInfo: false,
+              answerSet: 2,
+              showSubQuestionList: [],
+              show: true
+            },
+            { 
+              text: '',
+              info: '', 
+              showInfo: false,
+              answerSet: 2,
+              showSubQuestionList: [],
+              show: true
+            },
+            { 
+              text: '',
+              info: '', 
+              showInfo: false,
+              answerSet: 2,
+              showSubQuestionList: [],
+              show: true
+            },
+            { 
+              text: '',
+              info: '', 
+              showInfo: false,
+              answerSet: 2,
+              showSubQuestionList: [],
+              show: true
+            },
+            { 
+              text: '',
+              info: '', 
+              showInfo: false,
+              answerSet: 2,
+              showSubQuestionList: [],
+              show: true
+            },
+            { 
+              text: '',
+              info: '', 
+              showInfo: false,
+              answerSet: 2,
+              showSubQuestionList: [],
+              show: true
             },
 
 

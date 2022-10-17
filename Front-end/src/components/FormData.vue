@@ -8,7 +8,7 @@
             @click="setCurrentTab(tab.id)"
             large elevation="3" width="20%" class="mt-10 white--text" color="green darken-4"
             :class="{'mb-1' : currentTab == tab.id}"
-            v-for="tab in tabData" :key="tab.id"
+            v-for="tab in tabData2" :key="tab.id"
             > 
             {{tab.title}} 
         </v-btn>
@@ -16,7 +16,7 @@
         <v-card elevation="5" width="85%" class="mx-auto">  
             
             <!-- Showing correct page content -->
-            <div v-for="(tab, tabIndex) in tabData" :key="tab[tabIndex]" v-show="currentTab == tab.id">
+            <div v-for="(tab, tabIndex) in tabData2" :key="tab[tabIndex]" v-show="currentTab == tab.id">
 
                 <!-- Retrieving question object from correct page, then displaying question with corresponding answer options and help text -->
                 <v-card-text v-for="(question, index) in tab.questions" :key="question[index]" class="text-left font-weight-black mx-5">
@@ -95,12 +95,12 @@
                     </v-btn>
 
                     <!-- kanske inte behöver v-show eftersom hela kortet endast visas med v-show=currenttab -->
-                    <v-btn v-show="currentTab == 4" class="mx-2 my-4" depressed color="accent" large @click="calcFormResult(); resultTab();"> Result  
+                    <v-btn v-show="currentTab == 3" class="mx-2 my-4" :loading="loading" depressed color="accent" large @click="calcFormResult()"> Result  
                         <v-icon right> mdi-form-select </v-icon>
                     </v-btn>
                 </v-row>  
                 
-                {{printQuestion()}}
+                <!-- {{printQuestion()}} -->
             </div> 
         </v-card>
 
@@ -109,6 +109,7 @@
 </template>
 
 <script>
+    import axios from 'axios'; //can't separated my code from the file
 
     export default{
 
@@ -116,21 +117,23 @@
         // url: 'http://35.184.240.64/api/questions/1000'
         
         props: {
-            tabData: Array,
+            tabData2: Array,
             answerTextSet_1: Array,
             answerTextSet_2: Array,
             answerTextSet_3: Array,
+            answerSets: Array,
             questionsList: Object,
         },
 
         data: () => ({
             currentTab: 1,
+            loading: false,
         }),
         
         methods: {  
 
             printQuestion(){
-                console.log(this.question);
+                console.log(this.questionsList.question);
             },
 
             hasSubQuestion(currentQuestion){
@@ -196,19 +199,30 @@
             },
 
             calcFormResult(){
-                var numberOfTabs = this.tabData.length;
+                
+                var numberOfTabs = this.tabData2.length;
                 var result = [];
                 
                 for(var i = 0; i < numberOfTabs; i++){
 
-                    this.calcTabResult(this.tabData[i]);
-                    result.push(this.tabData[i].result);
+                    this.calcTabResult(this.tabData2[i]);
+                    result.push(this.tabData2[i].result);
                     
                     // console.log(this.tabData.answerList);
                     // console.log("length: " + this.tabData[i].answerList.length);
                 }
                 console.log("Form result: ", result);
-                return result;
+                (async () => {
+                    var aiResult = await this.send_data_AI(result);
+                    console.log(aiResult)
+                    window.$cookies.config('30d');
+                    window.$cookies.set('isSustainable', aiResult.data);
+                    this.$router.push('/results')
+                })()
+                
+                
+                
+                //return result;
             },
 
 
@@ -220,10 +234,6 @@
             nextTab(){
                 if(this.currentTab != 5)
                     this.currentTab += 1;
-            },
-
-            resultTab(){
-                this.$router.push('/results')
             },
 
             setCurrentTab(selectedTab){
@@ -240,8 +250,29 @@
 
             debugFunction(debug){
                 console.log(debug);
-            }
+            },
 
+            async send_data_AI(result) {
+                this.loading = true;
+                // eslint-disable-next-line
+                const response = await axios.post("http://34.136.8.129:5000/post", result)
+                    .then(function (response) {
+                        // your action after success
+                        //console.log(response);
+                        return response;
+                    })
+                    .catch(function (error) {
+                        // your action on error success
+                        //console.log(error);
+                        return error;
+                    });
+                //this.loading = false;
+                //this.button_txt = response.data;
+                //console.log(response.data);
+                
+                return response;
+                
+            },
 
         }
     }
