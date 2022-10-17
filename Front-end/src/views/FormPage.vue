@@ -4,16 +4,14 @@
     :answerTextSet_1="answerTextSet_1" 
     :answerTextSet_2="answerTextSet_2"
     :answerTextSet_3="answerTextSet_3"
-    :answerTextSets="answerTextSets">
+    :answerSets="answerSets">
   </FormData>
 </template>
 
 
 <script>
-
   import FormData from '../components/FormData.vue'  
   import FormAPI from '../controller/FormAPI.js'
-
   export default {
     
     components :{
@@ -21,7 +19,6 @@
     },
     
     name: 'FormPage',
-
     methods: {
     
       //loads one question from db and puts it in this.allquestion list in data
@@ -30,30 +27,26 @@
         this.questionsList = questions.data;
         // console.log(this.questionsList.id);
       },
-
       //loads all question from db and puts them in this.allquestion list in data
       async loadAllQuestion() {
         const questions = await FormAPI.getQuestions();
         this.allQuestionsList = questions.data;
-
         for(var i = 0; i < this.tabData2.length; i++){
           for(var j = 0; j < this.allQuestionsList.length; j++){
-
             // logging for testing each result
             // console.log(this.allQuestionsList[i].question);      // text
             // console.log(this.allQuestionsList[i].category);      // 2002 / social
             // console.log(this.allQuestionsList[i].set_categorys); // answer set
             // console.log(this.allQuestionsList[i].show_sub_category); // has set category, true or false
             // console.log(this.allQuestionsList[i].sub_categorys); // subquestion group
-
             // local variables for simplifying conditions 
-            var text = this.allQuestionsList[j].question;                    // text
-            var info = this.allQuestionsList[j].help_information;            // subquestion group
+            var text = this.allQuestionsList[j].question;                     // text
+            var info = this.allQuestionsList[j].help_information;   // subquestion group
             var category = this.allQuestionsList[j].category;                // 2002 / social
-            var answerSet = this.allQuestionsList[j].set_question;           // answer set
+            var answerSet = this.allQuestionsList[j].set_question;          // answer set
             var hasSubQuestion = this.allQuestionsList[j].has_sub_questions; // has sub question, true or false
-            var subQuestionGroup = this.allQuestionsList[j].show_subquestion_group; // subquestion group
-            var show = this.allQuestionsList[j].active; // subquestion group
+            var subQuestionGroup = this.allQuestionsList[j].show_subquestion_group;   // subquestion group
+            var show = this.allQuestionsList[j].active;   // subquestion group
             
             if(category == [i]){
               this.tabData2[i].questions.push({
@@ -64,45 +57,32 @@
                 answerSet: answerSet,
                 hasSubQuestion: hasSubQuestion,
                 subQuestionGroup: subQuestionGroup,
-
                 showSubQuestionList: [],
               })
             }
-
             
           }
         }
       },
-
       // TRY TO SHOW ANSWERS IN FORMDATA, THEY ARE LOADED, BUT IN A NEW WAY THAN PREVIOUS METHODS
       async loadAnswerSets(){
         const answerSets = await FormAPI.getAnswerSets();
         this.answerSetList = answerSets.data;
-
-          // local variables for simplifying conditions 
-          var text = this.allAnswerSets[i].set_name;   
-          var group = this.allAnswerSets[i].set_group;   
-          var value = this.allAnswerSets[i].set_value
-
-          // local variables for simplifying conditions 
-          var text = this.answerSetList[i].set_name;     // text
-          var group = this.answerSetList[i].set_group;   // subquestion group
-          var value = this.answerSetList[i].set_value;   // subquestion group
-
-          this.answerSets.push({
-            text: text,
-            group: group, 
-            value: value,
-          })
-          console.log(answerSets);
+        // console.log(this.answerSetList);
+        // console.log(this.answerSetList.length);
+        for(var i = 0; i < this.answerSetList.length; i++){
+            // local variables for simplifying conditions 
+            var text = this.answerSetList[i].question;            // text
+            var group = this.answerSetList[i].help_information;   // subquestion group
+          if(group == i){
+            this.answerSets.push({
+              text: text,
+              group: group
+            })
+          }
         }
-
       }
-      
-
-
     },
-
     created(){
       // this.loadQuestion();
       this.loadAnswerSets();
@@ -111,32 +91,25 @@
     },  
     
     data: () => ({
-
       allQuestionsList: {},
-      allAnswerSets: {},
-
+      answerSetList: {},
+      answerSets: [], 
       answerTextSet_1: [
-        { text: 'No', value: 2},
+        { text: 'No' },
         { text: 'Yes'  },
       ],
-
       answerTextSet_2: [
         { text: 'No'          },
         { text: 'Probably not'},
         { text: 'Probably'    },
         { text: 'Yes'         },
       ],
-
       answerTextSet_3: [
         { text: 'None'       },
         { text: 'Very Little'},
         { text: 'Some'       },
         { text: 'A lot'      },
       ],
-
-      answerTextSets:[],
-
-
       tabData2:[
         {
           id: 0,
@@ -167,9 +140,6 @@
           result: 0,
         }
       ],
-
-
-
       tabData: [
         {
           id: 1,
@@ -289,8 +259,6 @@
               showSubQuestionList: [],
               show: true
             },
-
-
           ]
         },
         {
@@ -306,7 +274,6 @@
               showInfo: false,
               answerSet: 1,
               show: true,
-
               hasSubQuestion: true,
               subQuestionGroup: 3,
               showSubQuestionList: [],
