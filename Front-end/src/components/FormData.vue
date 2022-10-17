@@ -1,7 +1,7 @@
 <template>
-
+    
     <div class="my-10">
-
+        
         <!-- Card that contains all questions, answers and content of each page -->
         <!-- Create Page buttons dynamically -->
         <v-btn 
@@ -12,14 +12,15 @@
             > 
             {{tab.title}} 
         </v-btn>
-        
+    
         <v-card elevation="5" width="85%" class="mx-auto">  
-            
-            <!-- Showing correct page content -->
+        
+        <!-- Showing correct page content -->
             <div v-for="(tab, tabIndex) in tabData2" :key="tab[tabIndex]" v-show="currentTab == tab.id">
-
-                <!-- Retrieving question object from correct page, then displaying question with corresponding answer options and help text -->
-                <v-card-text v-for="(question, index) in tab.questions" :key="question[index]" class="text-left font-weight-black mx-5">
+            
+            <!-- Retrieving question object from correct page, then displaying question with corresponding answer options and help text -->
+            <v-card-text v-for="(question, index) in tab.questions" :key="question[index]" class="text-left font-weight-black mx-5">
+                <!-- {{debugFunction(this.answerTextSets)}} -->
                     
                     <label v-show="question.show == true">
 
@@ -27,9 +28,6 @@
                             {{showSubQuestion(question, tab.questions, index)}}
                         </label>
 
-                        <!-- <p> {{this.answerTextSet_4}} </p> -->
-                        <!-- {{debugFunction(answerTextSet_4)}} -->
-                
                         <!-- First Row of content contains question text, help button for extra information and help information -->
                         <v-layout tab class="mx-auto my-5">      
                             <!-- Question text -->
@@ -65,11 +63,20 @@
                             <v-btn-toggle v-model="question.showSubQuestionList[index]" v-if="question.answerSet == 1">
                                 <v-btn elevation="2" class="mx-2" v-for="button in answerTextSet_1" :key="button.text" > {{button.text}} </v-btn>
                             </v-btn-toggle>
+
+                            <!-- {{debugFunction(answerTextSet_1)}} -->
+                            <!-- {{debugFunction(answerTextSets[0])}} -->
+
                             
                             <!-- Answer set 2, show buttons for option: No, Probably Not, Probably, Yes -->
-                            <v-btn-toggle v-model="tab.answerList[index]" v-if="question.answerSet == 2">
+                            <!-- <v-btn-toggle v-model="tab.answerList[index]" v-if="question.answerSet == 2">
                                 <v-btn elevation="2" class="mx-2" v-for="button in answerTextSet_2" :key="button.text" > {{button.text}} </v-btn>
+                            </v-btn-toggle> -->
+
+                            <v-btn-toggle v-model="tab.answerList[index]" v-if="question.answerSet == 2" >
+                                <v-btn elevation="2" class="mx-2" v-for="(button, index) in answerTextSets" :key="button[index]"> {{getAnswerTextSet(question, button)}} </v-btn>
                             </v-btn-toggle>
+
                             
                             <!-- Answer set 3, show buttons for option: None, Very Little, Some, A lot -->
                             <v-btn-toggle v-model="tab.answerList[index]" v-if="question.answerSet == 3">
@@ -99,8 +106,8 @@
                         <v-icon right> mdi-form-select </v-icon>
                     </v-btn>
                 </v-row>  
+
                 
-                <!-- {{printQuestion()}} -->
             </div> 
         </v-card>
 
@@ -109,20 +116,15 @@
 </template>
 
 <script>
-    import axios from 'axios'; //can't separated my code from the file
 
     export default{
 
-        // url: 'http://35.184.240.64/api/questions',
-        // url: 'http://35.184.240.64/api/questions/1000'
-        
         props: {
             tabData2: Array,
             answerTextSet_1: Array,
             answerTextSet_2: Array,
             answerTextSet_3: Array,
-            answerSets: Array,
-            questionsList: Object,
+            answerTextSets: Array,
         },
 
         data: () => ({
@@ -132,8 +134,18 @@
         
         methods: {  
 
-            printQuestion(){
-                console.log(this.questionsList.question);
+            // printQuestionSet(x){
+            //     for(var i = 0; i < this.answerTextSets.length; i++){
+            //         if(this.answerTextSets[i].group == x){
+            //             return [this.answerTextSets[i].x]
+            //         }
+            //     }
+            // },
+
+            getAnswerTextSet(question, button){
+                if(question.answerSet == button.group){
+                    return button.text;
+                }
             },
 
             hasSubQuestion(currentQuestion){
