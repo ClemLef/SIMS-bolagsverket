@@ -81,7 +81,7 @@
 
         for(var i = 1; i < this.allAnswerSets.length; i++){
 
-          // local variables for simplifying conditions 
+          // local variables for simplifying conditions s
           var text = this.allAnswerSets[i].set_name;   
           var group = this.allAnswerSets[i].set_group;   
           var value = this.allAnswerSets[i].set_value
