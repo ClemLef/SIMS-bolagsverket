@@ -78,22 +78,20 @@
       async loadAnswerSets(){
         const answerSets = await FormAPI.getAnswerSets();
         this.answerSetList = answerSets.data;
-        // console.log(this.answerSetList);
-        // console.log(this.answerSetList.length);
-
 
         for(var i = 0; i < this.answerSetList.length; i++){
 
-            // local variables for simplifying conditions 
-            var text = this.answerSetList[i].question;            // text
-            var group = this.answerSetList[i].help_information;   // subquestion group
+          // local variables for simplifying conditions 
+          var text = this.answerSetList[i].set_name;     // text
+          var group = this.answerSetList[i].set_group;   // subquestion group
+          var value = this.answerSetList[i].set_value;   // subquestion group
 
-          if(group == i){
-            this.answerSets.push({
-              text: text,
-              group: group
-            })
-          }
+          this.answerSets.push({
+            text: text,
+            group: group, 
+            value: value,
+          })
+          console.log(answerSets);
         }
       }
 
@@ -126,7 +124,6 @@
         { text: 'Probably'    },
         { text: 'Yes'         },
       ],
-
 
       answerTextSet_3: [
         { text: 'None'       },
