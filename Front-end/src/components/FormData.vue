@@ -15,7 +15,7 @@
         
         <v-card elevation="5" width="85%" class="mx-auto">  
             
-            <!-- Showing correct page content -->
+            <!-- Showing correct page content /-->
             <div v-for="(tab, tabIndex) in tabData2" :key="tab[tabIndex]" v-show="currentTab == tab.id">
 
                 <!-- Retrieving question object from correct page, then displaying question with corresponding answer options and help text -->
