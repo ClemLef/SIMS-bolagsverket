@@ -68,19 +68,19 @@
       async loadAnswerSets(){
         const answerSets = await FormAPI.getAnswerSets();
         this.answerSetList = answerSets.data;
-        // console.log(this.answerSetList);
-        // console.log(this.answerSetList.length);
-        for(var i = 0; i < this.answerSetList.length; i++){
-            // local variables for simplifying conditions 
-            var text = this.answerSetList[i].question;            // text
-            var group = this.answerSetList[i].help_information;   // subquestion group
-          if(group == i){
-            this.answerSets.push({
-              text: text,
-              group: group
-            })
-          }
-        }
+
+          // // local variables for simplifying conditions s
+          // var text = this.allAnswerSets[i].set_name;   
+          // var group = this.allAnswerSets[i].set_group;   
+          // var value = this.allAnswerSets[i].set_value
+
+          // this.answerSets.push({
+          //   text: text,
+          //   group: group, 
+          //   value: value,
+          // })
+          // console.log(answerSets);
+        
       }
     },
     created(){
