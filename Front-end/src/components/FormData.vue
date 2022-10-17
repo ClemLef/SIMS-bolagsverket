@@ -27,9 +27,6 @@
                             {{showSubQuestion(question, tab.questions, index)}}
                         </label>
 
-                        <!-- <p> {{this.answerTextSet_4}} </p> -->
-                        <!-- {{debugFunction(answerTextSet_4)}} -->
-                
                         <!-- First Row of content contains question text, help button for extra information and help information -->
                         <v-layout tab class="mx-auto my-5">      
                             <!-- Question text -->
@@ -63,17 +60,17 @@
                             <!-- If a button is toggled, the value of that button is saved in an array "toggle" for that page-->
                             <!-- Answer set 1, show buttons for option: Yes, no -->
                             <v-btn-toggle v-model="question.showSubQuestionList[index]" v-if="question.answerSet == 1">
-                                <v-btn elevation="2" class="mx-2" v-for="button in answerTextSet_1" :key="button.text" > {{button.text}} </v-btn>
+                                <v-btn elevation="2" class="mx-2" v-for="button in answerButtonSet_1" :key="button.text" > {{button.text}} </v-btn>
                             </v-btn-toggle>
                             
                             <!-- Answer set 2, show buttons for option: No, Probably Not, Probably, Yes -->
                             <v-btn-toggle v-model="tab.answerList[index]" v-if="question.answerSet == 2">
-                                <v-btn elevation="2" class="mx-2" v-for="button in answerTextSet_2" :key="button.text" > {{button.text}} </v-btn>
+                                <v-btn elevation="2" class="mx-2" v-for="button in answerButtonSet_2" :key="button.text" > {{button.text}} </v-btn>
                             </v-btn-toggle>
                             
                             <!-- Answer set 3, show buttons for option: None, Very Little, Some, A lot -->
                             <v-btn-toggle v-model="tab.answerList[index]" v-if="question.answerSet == 3">
-                                <v-btn elevation="2" class="mx-2" v-for="button in answerTextSet_3" :key="button.text"> {{button.text}} </v-btn>
+                                <v-btn elevation="2" class="mx-2" v-for="button in answerButtonSet_3" :key="button.text"> {{button.text}} </v-btn>
                             </v-btn-toggle>
                         </v-flex>
                             
@@ -100,7 +97,6 @@
                     </v-btn>
                 </v-row>  
                 
-                <!-- {{printQuestion()}} -->
             </div> 
         </v-card>
 
@@ -109,16 +105,13 @@
 </template>
 
 <script>
-    import axios from 'axios'; //can't separated my code from the file
     export default{
-        // url: 'http://35.184.240.64/api/questions',
-        // url: 'http://35.184.240.64/api/questions/1000'
         
         props: {
             tabData2: Array,
-            answerTextSet_1: Array,
-            answerTextSet_2: Array,
-            answerTextSet_3: Array,
+            answerButtonSet_1: Array,
+            answerButtonSet_2: Array,
+            answerButtonSet_3: Array,
             answerSets: Array,
             questionsList: Object,
         },
@@ -128,15 +121,14 @@
         }),
         
         methods: {  
-            printQuestion(){
-                console.log(this.questionsList.question);
-            },
+
             hasSubQuestion(currentQuestion){
                 if(currentQuestion.hasSubQuestion == true)
                     return true;
                 else
                     return false;
             },
+
             // Uses current question to find whats subquestions that belong to it, display or hides those subquestions
             showSubQuestion(currentQuestion, allQuestion, index){
                 
@@ -187,6 +179,7 @@
                     console.log(" ");
                 }
             },
+
             calcFormResult(){
                 
                 var numberOfTabs = this.tabData2.length;
@@ -216,13 +209,16 @@
                 if(this.currentTab != 1)
                     this.currentTab -= 1;        
             },
+
             nextTab(){
                 if(this.currentTab != 5)
                     this.currentTab += 1;
             },
+
             setCurrentTab(selectedTab){
                 this.currentTab = selectedTab;
             },
+
             showInfo(question){
                 if(question.showInfo == true){
                     question.showInfo = false;
@@ -230,9 +226,11 @@
                     question.showInfo = true;
                 }
             },
+
             debugFunction(debug){
                 console.log(debug);
             },
+
             async send_data_AI(result) {
                 this.loading = true;
                 // eslint-disable-next-line
