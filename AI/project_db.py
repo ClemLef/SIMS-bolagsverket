@@ -1,13 +1,13 @@
 
-
-# Make Predictions with Naive Bayes On The  Dataset#####
+#from django.shortcuts import redirect
+from flask import Flask, redirect, url_for, render_template
 from csv import reader
 from math import sqrt
 from math import exp
 from math import pi
 from random import seed
 from random import randrange
-from _connection import _connect
+#from _connection import _connect
 import requests
 import urllib
 import pandas as pd
@@ -17,38 +17,11 @@ from bs4 import BeautifulSoup as bs
 from flask import Flask
 from sklearn.metrics import classification_report
 
-"""
 app = Flask(__name__)
 
-@app.route("/sss")
-def hello_world():
-    return predict(model, row)
-
-if __name__ == "__main__":
-    app.run()
-
-# return "<p>Hello, World!</p>"
-"""
-
-"""
-def getAccuracy(testSet, predictions):
-	correct = 0
-	for x in range(len(testSet)):
-		if testSet[x][-1] == predictions[x]:
-			correct += 1
-			return (correct/float(len(testSet)))*100.0
-"""
 
 
 def get_source(url):
-    """Return the source code for the provided URL. 
-
-    Args: 
-        url (string): URL of the page to scrape.
-
-    Returns:
-        response (object): HTTP response object from requests_html. 
-    """
 
     try:
         session = HTMLSession()
@@ -65,6 +38,7 @@ def scrape_google(query):
 
 
     links = list(response.html.absolute_links)
+	
     google_domains = ('https://www.google.', 
                       'https://google.', 
                       'https://webcache.googleusercontent.', 
@@ -72,16 +46,53 @@ def scrape_google(query):
                       'https://policies.google.',
                       'https://support.google.',
 					  'https://translate.google.',
-                      'https://maps.google.')
+                      'https://maps.google.',
+					  'https://www.com',
+					  'https://scholar.google.')
 
     for url in links[:]:
         if url.startswith(google_domains):
             links.remove(url)
+	
+				
+    return links	
 
-    return links
 
+###############
+##############################################
+def get_source(url):
+    try:
+        session = HTMLSession()
+        response = session.get(url)
+        return response
+    except requests.exceptions.RequestException as e:
+        print(e)
+def get_results(query): 
+    query = urllib.parse.quote_plus(query)
+    response = get_source("https://www.google.co.uk/search?q=" + query)
+    return response
 
-
+def parse_results(response):
+    
+    css_identifier_result = ".tF2Cxc"
+    css_identifier_title = "h3"
+    css_identifier_link = ".yuRUbf a"
+    css_identifier_text = ".VwiC3b"
+    results = response.html.find(css_identifier_result)
+    output = []
+    for result in results:
+        item = {
+            'title': result.find(css_identifier_title, first=True).text,
+            'link': result.find(css_identifier_link, first=True).attrs['href'],
+            'text': result.find(css_identifier_text, first=True).text
+        }
+        output.append(item)
+    return output
+def google_search(query):
+    response = get_results(query)
+    return parse_results(response)
+#################################################
+#############################################
 
 
 # Load a CSV file         
@@ -251,6 +262,7 @@ def predict(summaries, row):
 			best_prob = probability
 			best_label = class_value
 			#print('best_label:best_prob', best_label,best_prob)
+                    
 	return best_label
 
 
@@ -316,15 +328,158 @@ db._close()
 
 row = []
 print("Initial blank List: ")
-row = [3,9,9,3]
+row = [1,2,2,2]
 print(row)
  
 # Addition of Elements
 #print("\nList after Addition of Three elements: ")
 
-label = predict(model, row)
+def hello_valll():
+    sum = predict(model, row)
 
-print('Data=%s, Predicted: %s' % (row, label))
+    global ans_final
+    if thislist_val[0] == "notsustainabil" and thislist_i[0]== 1 and sum== 1:
+        ans_final="NOT sustainable"
+    elif thislist_val[0] == "notsustainabil" and thislist_i[0]== 0 and sum== 0:
+        ans_final="NOT sustainable"
+    elif thislist_val[0] == "notsustainabil" and thislist_i[0]== 0 and sum== 1:
+        ans_final="NOT sustainable"
+    elif thislist_val[0] == "notsustainabil" and thislist_i[0]== 1 and sum== 0:
+        ans_final="NOT sustainable"
+    elif thislist_val[1] == "notsustainabil" and thislist_i[1]== 1 and sum== 1:
+     ans_final="NOT sustainable"
+    elif thislist_val[1] == "notsustainabil" and thislist_i[1]== 0 and sum== 0:
+        ans_final="NOT sustainable"
+    elif thislist_val[1] == "notsustainabil" and thislist_i[1]== 1 and sum== 0:
+        ans_final="NOT sustainable"
+    elif thislist_val[1] == "notsustainabil" and thislist_i[1]== 0 and sum== 1:
+        ans_final="NOT sustainable"
+    else: 
+        ans_final="Sustainable"
+
+    #print("ans_final:",ans_final )
+
+
+    fin_list = []
+
+    aw="Your company is :"+ ans_final
+
+    fin_list.append(aw)
+
+    aa= row[0]
+    bb= row[1]
+    cc= row[2]
+    dd= row[3]
+    print(aa)
+    print(bb)
+    print(cc)
+    print(dd)
+    #'''
+
+
+    # show links
+    if 2 >= aa:
+        eco="eco is not sus"
+        fin_list.append(eco)
+        #links_ec_org =scrape_google("social sustainability.org")
+        links_ec_org =google_search("economic sustainability.org")     # Scraping of Google SERPs isn't a violation of DMCA or CFAA. https://dataforseo.com/blog/is-scraping-google-serps-legal
+        aaa= links_ec_org[0]
+        fin_list.append(aaa)
+        #bbb= links_ec_org[1]
+        #fin_list.append(bbb)
+        print(aaa)
+        #print(bbb)
+
+    if 2 >= aa:
+        links_ec_edu =google_search("economic sustainability.edu")     # environment Scraping of Google SERPs isn't a violation of DMCA or CFAA. https://dataforseo.com/blog/is-scraping-google-serps-legal
+        aaaa= links_ec_edu[0]
+        fin_list.append(aaaa)
+        bbbb= links_ec_edu[1]
+        fin_list.append(bbbb)
+        print(aaaa)
+        print(bbbb)
+
+    if 2 >= bb:
+        soc="soc is not sus"
+        fin_list.append(soc)
+
+        links_ec_org =google_search("social sustainability.org")     # Scraping of Google SERPs isn't a violation of DMCA or CFAA. https://dataforseo.com/blog/is-scraping-google-serps-legal
+        aaa= links_ec_org[0]
+        fin_list.append(aaa)
+        #bbb= links_ec_org[1]
+        #fin_list.append(bbb)
+        print(aaa)
+       #print(bbb)
+
+    if 2 >= bb:
+        links_ec_edu =google_search("social sustainability.edu")     # environment Scraping of Google SERPs isn't a violation of DMCA or CFAA. https://dataforseo.com/blog/is-scraping-google-serps-legal
+        aaaa= links_ec_edu[0]
+        fin_list.append(aaaa)
+        bbbb= links_ec_edu[1]
+        fin_list.append(bbbb)
+        print(aaaa)
+        print(bbbb)
+    
+    if 2 >= cc:
+        env="envi is not sus"
+        fin_list.append(env)
+
+        links_env_org =google_search("environment sustainability.org")     # Scraping of Google SERPs isn't a violation of DMCA or CFAA. https://dataforseo.com/blog/is-scraping-google-serps-legal
+        aaa= links_env_org[0]
+        fin_list.append(aaa)
+        #bbb= links_env_org[1]
+        #fin_list.append(bbb)
+        print(aaa)
+        #print(bbb)
+
+    if 2 >= cc:
+        links_env_edu =google_search("environment sustainability.edu")     # environment Scraping of Google SERPs isn't a violation of DMCA or CFAA. https://dataforseo.com/blog/is-scraping-google-serps-legal
+        aaaa= links_env_edu[0]
+        fin_list.append(aaaa)
+        bbbb= links_env_edu[1]
+        fin_list.append(bbbb)
+        print(aaaa)
+        print(bbbb)
+
+    if 2 >= dd:
+        enf="enf is not sus"
+        fin_list.append(enf)
+
+        links_enf_org =google_search("environment sustainability.org")     # Scraping of Google SERPs isn't a violation of DMCA or CFAA. https://dataforseo.com/blog/is-scraping-google-serps-legal
+        aaa= links_enf_org[0]
+        fin_list.append(aaa)
+        #bbb= links_enf_org[1]
+        #fin_list.append(bbb)
+        print(aaa)
+        #print(bbb)
+
+    if 2 >= dd:
+        links_enf_edu =google_search("environment sustainability.edu")     # environment Scraping of Google SERPs isn't a violation of DMCA or CFAA. https://dataforseo.com/blog/is-scraping-google-serps-legal
+        aaaa= links_enf_edu[0]
+        fin_list.append(aaaa)
+        bbbb= links_enf_edu[1]
+        fin_list.append(bbbb)
+        print(aaaa)
+        print(bbbb)
+    return fin_list
+
+
+'''
+    if 2 >= aa:
+        eco="eco is not sus"
+        fin_list.append(eco)
+    if 2 >= bb:
+        soc="soc is not sus"
+        fin_list.append(soc)
+    if 2 >= cc:
+        env="env is not sus"
+        fin_list.append(env)
+    if 2 >= dd:
+        infl="infl is not sus"
+        fin_list.append(infl)
+'''
+
+#print('Data=%s, Predicted: %s' % (row, label))
 
 #print(label , "labelllllllllll")
 
@@ -333,7 +488,7 @@ print('Data=%s, Predicted: %s' % (row, label))
 
 #print(value_value, "value_value value_value value_value")
 #value_i
-
+'''
 global ans_final
 if thislist_val[0] == "notsustainabil" and thislist_i[0]== 1 and label== 1:
   ans_final="notsustainabil"
@@ -356,13 +511,13 @@ else:
 
  
 print("ans_final:",ans_final )
- 
 
+'''
 
 #print(thislist_val)
 #print(thislist_i)
 
-#'''
+'''
 # show the nummber
 aa= row[0]
 bb= row[1]
@@ -372,29 +527,49 @@ print(aa)
 print(bb)
 print(cc)
 print(dd)
-#'''
 
 
-"""
 # show links
-#if 5 > aa:
 if 4 > aa:
-  #aaaa= "sustainable environment"
-	links =scrape_google("environment sustainability")     # Scraping of Google SERPs isn't a violation of DMCA or CFAA. https://dataforseo.com/blog/is-scraping-google-serps-legal
-  #print(aaaa)
+	links =scrape_google("environment sustainability.org")     # Scraping of Google SERPs isn't a violation of DMCA or CFAA. https://dataforseo.com/blog/is-scraping-google-serps-legal
 	aaa= links[0]
 	bbb= links[1]
-	ccc= links[2]
-	ddd= links[3]
-	ddd4= links[4]
-	ddd5= links[5]
 	print(aaa)
 	print(bbb)
-	print(ccc)
-	print(ddd)
-	print(ddd4)
-	print(ddd5)
+
+if 4 > aa:
+	linkss =scrape_google("environment sustainability.edu")     # Scraping of Google SERPs isn't a violation of DMCA or CFAA. https://dataforseo.com/blog/is-scraping-google-serps-legal
+	aaaa= linkss[0]
+	bbbb= linkss[1]
+	print(aaaa)
+	print(bbbb)
+
+'''
 
 
-"""
+
+
+def hello_vall():
+    sum = 5
+    sum_str = str(sum)
+    return sum_str
+
+
+
+'''
+@app.route("/aaa")
+def hello_val():
+    return "<p>Hello, wwwwww World!</p>"
+'''
+
+
+
+@app.route("/sss")
+def hello_world():
+    
+    return hello_valll()
+    #return "<p>Hello, World!</p>"
+
+if __name__ == "__main__":
+    app.run()
  
