@@ -8,86 +8,66 @@
             @click="setCurrentTab(tab.id)"
             large elevation="3" width="20%" class="mt-10 white--text" color="green darken-4"
             :class="{'mb-1' : currentTab == tab.id}"
-            v-for="tab in tabData2" :key="tab.id"
+            v-for="tab in tabData" :key="tab.id"
             > 
             {{tab.title}} 
         </v-btn>
     
         <v-card elevation="5" width="85%" class="mx-auto">  
-        
-        <!-- Showing correct page content -->
-            <div v-for="(tab, tabIndex) in tabData2" :key="tab[tabIndex]" v-show="currentTab == tab.id">
             
-            <!-- Retrieving question object from correct page, then displaying question with corresponding answer options and help text -->
-            <v-card-text v-for="(question, index) in tab.questions" :key="question[index]" class="text-left font-weight-black mx-5">
-                <!-- {{debugFunction(this.answerTextSets)}} -->
-                    
-                    <label v-show="question.show == true">
+            <!-- <p> {{created()}} </p> -->
 
-                        <label v-if="hasSubQuestion(question)">
-                            {{showSubQuestion(question, tab.questions, index)}}
-                        </label>
+            <!-- Showing correct page content -->
+            <div v-for="(tab, tabIndex) in tabData" :key="tab[tabIndex]" v-show="currentTab == tab.id">
 
-                        <!-- First Row of content contains question text, help button for extra information and help information -->
-                        <v-layout tab class="mx-auto my-5">      
-                            <!-- Question text -->
-                            <v-flex md9 >
-                                <p> {{question.text}} </p>
-                            </v-flex>
-                            
-                            <!-- Help button with icon to show extra information about the question when pressed -->
-                            <v-flex md1>
-                                <v-btn-toggle>
-                                    <v-btn fab small rounded @click="showInfo(question)">
-                                        <v-icon large>  mdi-progress-question </v-icon> 
-                                    </v-btn>
-                                </v-btn-toggle> 
-                            </v-flex>
-                            
-                            <!-- Card that displayes help text about the question -->
-                            <v-flex md3 class="mx-5">
-                                <v-card elevation="5" shaped v-if="question.showInfo">
-                                    <v-card-text class="text--primary font-weight-black">
-                                        <p > {{question.info}} </p>
-                                    </v-card-text>
-                                </v-card>
-                            </v-flex>
-                            
-                        </v-layout>
+                <!-- tab 1 contains question text, help button for extra information and help information -->
+                <!-- Retrieving question object from correct page, then displaying question with corresponding answer options and help text -->
+                <v-card-text v-for="(question, index) in tab.questions" :key="question[index]" class="text-left font-weight-black mx-5">
+
+                    <v-layout tab class="mx-auto my-5">      
+                        <!-- Question text -->
+                        <v-flex md9 >
+                            <!-- <p > {{tab.questions[0].text}} {{debugFunction(tab.questions[0].text)}}</p> -->
+                            <p> {{question.text}} </p>
+                        </v-flex>
                         
-                        
-                        <!-- Second row of content contains answer buttons -->
-                        <v-flex>
-                            <!-- If a button is toggled, the value of that button is saved in an array "toggle" for that page-->
-                            <!-- Answer set 1, show buttons for option: Yes, no -->
-                            <v-btn-toggle v-model="question.showSubQuestionList[index]" v-if="question.answerSet == 1">
-                                <v-btn elevation="2" class="mx-2" v-for="button in answerTextSet_1" :key="button.text" > {{button.text}} </v-btn>
-                            </v-btn-toggle>
-
-                            <!-- {{debugFunction(answerTextSet_1)}} -->
-                            <!-- {{debugFunction(answerTextSets[0])}} -->
-
-                            
-                            <!-- Answer set 2, show buttons for option: No, Probably Not, Probably, Yes -->
-                            <!-- <v-btn-toggle v-model="tab.answerList[index]" v-if="question.answerSet == 2">
-                                <v-btn elevation="2" class="mx-2" v-for="button in answerTextSet_2" :key="button.text" > {{button.text}} </v-btn>
-                            </v-btn-toggle> -->
-
-                            <v-btn-toggle v-model="tab.answerList[index]" v-if="question.answerSet == 2" >
-                                <v-btn elevation="2" class="mx-2" v-for="(button, index) in answerTextSets" :key="button[index]"> {{getAnswerTextSet(question, button)}} </v-btn>
-                            </v-btn-toggle>
-
-                            
-                            <!-- Answer set 3, show buttons for option: None, Very Little, Some, A lot -->
-                            <v-btn-toggle v-model="tab.answerList[index]" v-if="question.answerSet == 3">
-                                <v-btn elevation="2" class="mx-2" v-for="button in answerTextSet_3" :key="button.text"> {{button.text}} </v-btn>
-                            </v-btn-toggle>
+                        <!-- Help button with icon to show extra information about the question when pressed -->
+                        <v-flex md1>
+                            <v-btn-toggle>
+                                <v-btn fab small rounded @click="showInfo(question)">
+                                    <v-icon large>  mdi-progress-question </v-icon> 
+                                </v-btn>
+                            </v-btn-toggle> 
+                        </v-flex>
+                      
+                        <!-- Card that displayes help text about the question -->
+                        <v-flex md3 class="mx-5">
+                            <v-card elevation="5" shaped v-if="question.showInfo">
+                                <v-card-text class="text--primary font-weight-black">
+                                    <p > {{question.info}} </p>
+                                </v-card-text>
+                            </v-card>
                         </v-flex>
                             
-        
-                            
-                    </label>
+                    </v-layout>
+
+                              
+                    <!-- Second tab contains answer buttons -->
+                    <v-flex>
+                        <!-- Answer question have answer set 1, show buttons with option: No, Probably Not, Probably, Yes -->
+                        <!-- If a button is toggled, the value of that button is saved in an array "toggle" for that page-->
+                        <v-btn-toggle v-model="tab.answerList[index]" v-if="question.answerSet == 1">
+                            <v-btn elevation="2" class="mx-2" v-for="button in answerTextSet_1" :key="button.text" > {{button.text}} </v-btn>
+                        </v-btn-toggle>
+
+                        <!-- Answer question have answer set 2, show buttons with option: None, Very Little, Some, A lot -->
+                        <v-btn-toggle v-model="tab.answerList[index]" v-if="question.answerSet == 2">
+                            <v-btn elevation="2" class="mx-2" v-for="button in answerTextSet_2" :key="button.text"> {{button.text}} </v-btn>
+                        </v-btn-toggle>
+                    </v-flex>
+                    
                 </v-card-text>  
+                
 
                 <!-- Prev and Next button, increment or decrement current tab counter -->
                 <v-row class="mx-8 my-10">
@@ -102,38 +82,54 @@
                     </v-btn>
 
                     <!-- kanske inte behöver v-show eftersom hela kortet endast visas med v-show=currenttab -->
-                    <v-btn v-show="currentTab == 3" class="mx-2 my-4" :loading="loading" depressed color="accent" large @click="calcFormResult()"> Result  
+                    <v-btn v-show="currentTab == 4" class="mx-2 my-4" depressed color="accent" large @click="calcFormResult(); resultTab();"> Result  
                         <v-icon right> mdi-form-select </v-icon>
                     </v-btn>
                 </v-row>  
 
                 
+<<<<<<< HEAD
+                
+=======
+>>>>>>> ccb6ae6d5be7959f2e52653501bf3c28756e6902
             </div> 
         </v-card>
 
+        <!-- {{this.info}} -->
     </div>
 
 </template>
 
 <script>
+<<<<<<< HEAD
+    export default{
+        
+=======
 
     export default{
 
+>>>>>>> ccb6ae6d5be7959f2e52653501bf3c28756e6902
         props: {
-            tabData2: Array,
+            tabData: Array,
             answerTextSet_1: Array,
+<<<<<<< HEAD
+            answerTextSet_2: Array
+=======
             answerTextSet_2: Array,
             answerTextSet_3: Array,
             answerTextSets: Array,
+>>>>>>> ccb6ae6d5be7959f2e52653501bf3c28756e6902
         },
 
         data: () => ({
             currentTab: 1,
-            loading: false,
         }),
         
         methods: {  
 
+<<<<<<< HEAD
+            testFunction(){
+=======
             // printQuestionSet(x){
             //     for(var i = 0; i < this.answerTextSets.length; i++){
             //         if(this.answerTextSets[i].group == x){
@@ -157,84 +153,44 @@
 
             // Uses current question to find whats subquestions that belong to it, display or hides those subquestions
             showSubQuestion(currentQuestion, allQuestion, index){
+>>>>>>> ccb6ae6d5be7959f2e52653501bf3c28756e6902
                 
-                // set Show = true to all question with sub-questiongroup
-                var showSubQuestion = currentQuestion.showSubQuestionList[index];
-                var subQuestionGroup = currentQuestion.subQuestionGroup;
-
-                // console.log("answer: " + showSubQuestion);
-                // console.log("showSubQuestion: " + showSubQuestion);
-
-                // Shows and hides subquestion depending on yes or no answer from parent question
-                if(showSubQuestion != null){
-                    for(var i = 0; i < allQuestion.length; i++){
-                        if(allQuestion[i].subQuestionGroup == subQuestionGroup){
-                            if(showSubQuestion == true){
-                                allQuestion[i].show = true;
-                            } 
-                            else{
-                                if(allQuestion[i].hasSubQuestion != true){
-                                    allQuestion[i].show = false;
-                                }
-                            }
-                        }
-                    }
-                }
             },
             
             calcTabResult(tab){
-                var numberOfAnswers = tab.answerList.length; 
-                var numberOfAnswersWithValue = 0;
+                var numberOfAnswers = tab.answerList.length;
                 var tabResult = 0;
                 
                 if(numberOfAnswers > 0){ // add zero as the result of tab of no buttons are pressed
                     
                     for(var i = 0; i < numberOfAnswers; i++){
-
-                        if(tab.questions[i].hasSubQuestion){
-                            tabResult += 0;
-                        }
-                        else{
-                            numberOfAnswersWithValue++;
-                            tabResult += tab.answerList[i] + 1;
-                            console.log("tab: " + tab.id + "     Q" + (i + 1) + ": " + (tab.answerList[i] + 1));
-                        }
+                        tabResult += tab.answerList[i] + 1;
+                        console.log("tab: " + tab.id + "     Q" + (i + 1) + ": " + (tab.answerList[i] + 1));
                     }
-                    var average = tabResult / numberOfAnswersWithValue;
+                    var average = tabResult / numberOfAnswers;
                     tab.result = average;
 
-                    console.log("tab: " + tab.id + "     tabResult: " + tabResult);
-                    console.log("tab: " + tab.id + "     average:     " + average);
+                    // console.log("tab: " + tab.id + "     tabResult: " + tabResult);
+                    // console.log("tab: " + tab.id + "     average:     " + average);
                     console.log("tab: " + tab.id + "     result: " + tab.result);
                     console.log(" ");
                 }
             },
 
             calcFormResult(){
-                
-                var numberOfTabs = this.tabData2.length;
+                var numberOfTabs = this.tabData.length;
                 var result = [];
                 
                 for(var i = 0; i < numberOfTabs; i++){
 
-                    this.calcTabResult(this.tabData2[i]);
-                    result.push(this.tabData2[i].result);
+                    this.calcTabResult(this.tabData[i]);
+                    result.push(this.tabData[i].result);
                     
                     // console.log(this.tabData.answerList);
                     // console.log("length: " + this.tabData[i].answerList.length);
                 }
                 console.log("Form result: ", result);
-                (async () => {
-                    var aiResult = await this.send_data_AI(result);
-                    console.log(aiResult)
-                    window.$cookies.config('30d');
-                    window.$cookies.set('isSustainable', aiResult.data);
-                    this.$router.push('/results')
-                })()
-                
-                
-                
-                //return result;
+                return result;
             },
 
 
@@ -246,6 +202,10 @@
             nextTab(){
                 if(this.currentTab != 5)
                     this.currentTab += 1;
+            },
+
+            resultTab(){
+                this.$router.push('/results')
             },
 
             setCurrentTab(selectedTab){
@@ -262,29 +222,8 @@
 
             debugFunction(debug){
                 console.log(debug);
-            },
+            }
 
-            async send_data_AI(result) {
-                this.loading = true;
-                // eslint-disable-next-line
-                const response = await axios.post("http://34.136.8.129:5000/post", result)
-                    .then(function (response) {
-                        // your action after success
-                        //console.log(response);
-                        return response;
-                    })
-                    .catch(function (error) {
-                        // your action on error success
-                        //console.log(error);
-                        return error;
-                    });
-                //this.loading = false;
-                //this.button_txt = response.data;
-                //console.log(response.data);
-                
-                return response;
-                
-            },
 
         }
     }

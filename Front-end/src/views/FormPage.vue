@@ -77,20 +77,24 @@
       // TRY TO SHOW ANSWERS IN FORMDATA, THEY ARE LOADED, BUT IN A NEW WAY THAN PREVIOUS METHODS
       async loadAnswerSets(){
         const answerSets = await FormAPI.getAnswerSets();
-        this.allAnswerSets = answerSets.data;
-
-        for(var i = 1; i < this.allAnswerSets.length; i++){
+        this.answerSetList = answerSets.data;
 
           // local variables for simplifying conditions s
           var text = this.allAnswerSets[i].set_name;   
           var group = this.allAnswerSets[i].set_group;   
           var value = this.allAnswerSets[i].set_value
 
-          this.answerTextSets.push({
+          // local variables for simplifying conditions 
+          var text = this.answerSetList[i].set_name;     // text
+          var group = this.answerSetList[i].set_group;   // subquestion group
+          var value = this.answerSetList[i].set_value;   // subquestion group
+
+          this.answerSets.push({
             text: text,
-            group: group,
+            group: group, 
             value: value,
           })
+          console.log(answerSets);
         }
 
       }
@@ -122,7 +126,6 @@
         { text: 'Probably'    },
         { text: 'Yes'         },
       ],
-
 
       answerTextSet_3: [
         { text: 'None'       },
