@@ -1,7 +1,7 @@
 <template>
     
         <div class="pa-5">
-            <h1>Great results ! Your business idea is <span style="color: orange">{{aiResult}}</span>.
+            <h1>Great results ! Your business idea is <span style="color: orange">{{}}</span>.
         </h1>
         <v-btn class="ma-10 pa-6 white--text " color="blue-grey" elevation="5" x-large
                     rounded @click="redirect()">
@@ -175,11 +175,11 @@ export default {
             this.$router.push('/form')
         },
         parseAiResults(){
-            globalSustainability = aiResult[0]
+            /* globalSustainability = aiResult[0]
             economicSustainability = aiResult[1]
             for (let i = 0; i < 3; i++) {
                 economicLinks[i] = aiResult[i + 2];
-            }
+            } */
             
                 
         }
