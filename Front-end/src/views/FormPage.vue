@@ -21,23 +21,45 @@
     name: 'FormPage',
 
     methods: {
-    
-      //loads all question from db and puts them in this.allquestion list in data
+      
+      // loads all tabs from db and puts them into tabData object
+      async loadTabs(){
+        const tabs = await FormAPI.getCategories();
+        const allTabs = tabs.data;
+  
+        for(var i = 0; i < allTabs.length; i++){
+  
+          var index = i;
+          var title = allTabs[i].name;  
+  
+          this.tabData.push({
+            id: index,
+            title: title,
+            
+            answers: [],
+            questions: [],
+            result: 0,
+          })
+        }
+      },
+
+      // loads all question from db and puts them into a tab inside of tabData object
       async loadAllQuestion() {
 
         const questions = await FormAPI.getQuestions();
         const allQuestions = questions.data;
 
+        // Get every question for every tab and place the question into tab
         for(var i = 0; i < this.tabData.length; i++){
           for(var j = 0; j < allQuestions.length; j++){
 
-            var text = allQuestions[j].question;                     // text
-            var info = allQuestions[j].help_information;   // subquestion group
-            var category = allQuestions[j].category;                // 2002 / social
-            var answerSet = allQuestions[j].set_question;          // answer set
-            var hasSubQuestion = allQuestions[j].has_sub_questions; // has sub question, true or false
-            var subQuestionGroup = allQuestions[j].show_subquestion_group;   // subquestion group
-            var show = allQuestions[j].active;   // subquestion group
+            var text = allQuestions[j].question;                    
+            var info = allQuestions[j].help_information;           
+            var category = allQuestions[j].category;                
+            var answerSet = allQuestions[j].set_question;          
+            var hasSubQuestion = allQuestions[j].has_sub_questions; 
+            var subQuestionGroup = allQuestions[j].show_subquestion_group;   
+            var show = allQuestions[j].active;   
             
             if(category == [i]){
               this.tabData[i].questions.push({
@@ -94,37 +116,17 @@
           }
           
         }
-      },
-
-      async loadTabs(){
-        const tabs = await FormAPI.getCategories();
-        const allTabs = tabs.data;
-
-        for(var i = 0; i < allTabs.length; i++){
-
-          var index = i;
-          var title = allTabs[i].name;  
-  
-          this.tabData.push({
-            id: index,
-            title: title,
-            
-            answers: [],
-            questions: [],
-            result: 0,
-          })
-
-          // console.log(this.tabData);
-  
-        }
       }
+
 
     },
 
     created(){
-      this.loadTabs();
-      this.loadAnswerSets();
-      this.loadAllQuestion();
+
+      this.loadTabs();          // Load all tabs from DB through api into the tabData object    
+      this.loadAllQuestion();   // Load all questions from DB through api into the tabData object   
+      this.loadAnswerSets();    // Load all answers from DB trough api and assigns data to 3 diffrent set of answers
+
       window.$cookies.remove('isSustainable');//to remove
     },  
     
@@ -133,38 +135,34 @@
       answerButtonSet_1: [],
       answerButtonSet_2: [],
       answerButtonSet_3: [],
-      //test
-      tabData:[
-        // {
-        //   id: 0,
-        //   title: 'Economical',
-        //   answers: [],
-        //   questions: [],
-        //   result: 0,
-        // },
-        // {
-        //   id: 1,
-        //   title: 'Social',
-        //   answers: [],
-        //   questions: [],
-        //   result: 0,
-        // },
-        // {
-        //   id: 2,
-        //   title: 'Enviromental',
-        //   answers: [],
-        //   questions: [],
-        //   result: 0,
-        // },
-        // {
-        //   id: 3,
-        //   title: 'Positive influence',
-        //   answers: [],
-        //   questions: [],
-        //   result: 0,
-        // }
-      ],
+
       
-    }),
-  }
+      tabData:[
+
+        /* This is an example of how the tabData object will be structured when all data from database has been loaded
+        /* FormData.vue file works with this object to display all information correctly
+        {
+          id: 0,                            // Tab id
+          title: 'Economical',              // Tab name
+          answers: [],                      // List of all answers for all the question in the tab
+          questions: [                      // List of all question for the tab
+            {
+              text: Question 1,             // Question in text 
+              info: Definition for question // Extra definition for the question  
+              show: true,                   // Show or hide question in form, subquestions are hidden at start
+              showInfo: false,              // Show definition for question or not
+              answerSet: 3,                 // Set of answers that will be used to answer the question, e.g Yes/NO is set 1
+              hasSubQuestion: true,         // Specifies if the question has subquestions or not
+              subQuestionGroup: 3,          // If there is a subquestion, assign a value to parent and child question for grouping purpose
+              showSubQuestionList: [],      // List of answer for the parent question, if list contains "yes", subquestion will be shown
+            }
+          ],
+          result: 0,
+        },
+        */
+      ],   
+
+    }), // End of data
+  } //End of export
+
 </script>
