@@ -17,14 +17,17 @@ from bs4 import BeautifulSoup as bs
 from flask import Flask, request
 from flask_cors import CORS
 from sklearn.metrics import classification_report
+import json
 
 app = Flask(__name__)
 cors=CORS(app)
 
-def hello_vall():
+aiResultPost = {}
+
+""" def hello_vall():
     sum = 5
     sum_str = str(sum)
-    return sum_str
+    return sum_str """
 
 @app.route('/post', methods=['POST'])
 def result():
@@ -376,9 +379,9 @@ def hello_valll():
 
     fin_list = []
 
-    
+    aiResultPost['global'] = ans_final
 
-    fin_list.append(ans_final)
+    #fin_list.append(ans_final_json)
 
     aa= row[0]
     bb= row[1]
@@ -393,36 +396,37 @@ def hello_valll():
 
     # show links
     if 2 >= aa:
-        ecoJson = {
-            # 0 = not sustainable
-            'eco': 0,
-        }
-        fin_list.append(ecoJson)
+        aiResultPost['eco'] = 0
         #links_ec_org =scrape_google("social sustainability.org")
         links_ec_org =google_search("economic sustainability.org")     # Scraping of Google SERPs isn't a violation of DMCA or CFAA. https://dataforseo.com/blog/is-scraping-google-serps-legal
-        aaa= links_ec_org[0]
-        fin_list.append(aaa)
+        aiResultPost['ecoLinks'] = links_ec_org[0]
+        #aaa= links_ec_org[0]
+        #fin_list.append(aaa)
         #bbb= links_ec_org[1]
         #fin_list.append(bbb)
-        print(aaa)
+        #print(aaa)
         #print(bbb)
 
     if 2 >= aa:
         links_ec_edu =google_search("economic sustainability.edu")     # environment Scraping of Google SERPs isn't a violation of DMCA or CFAA. https://dataforseo.com/blog/is-scraping-google-serps-legal
         aaaa= links_ec_edu[0]
-        fin_list.append(aaaa)
+        #fin_list.append(aaaa)
+        aiResultPost['what1'] = links_ec_edu[0]
         bbbb= links_ec_edu[1]
-        fin_list.append(bbbb)
+        #fin_list.append(bbbb)
+        aiResultPost['what2'] = links_ec_edu[1]
         print(aaaa)
         print(bbbb)
 
     if 2 >= bb:
-        soc="soc is not sus"
-        fin_list.append(soc)
+        #soc="soc is not sus"
+        
+        #fin_list.append(soc)
 
         links_ec_org =google_search("social sustainability.org")     # Scraping of Google SERPs isn't a violation of DMCA or CFAA. https://dataforseo.com/blog/is-scraping-google-serps-legal
         aaa= links_ec_org[0]
-        fin_list.append(aaa)
+        aiResultPost['socLinks'] = links_ec_org[0]
+        #fin_list.append(aaa)
         #bbb= links_ec_org[1]
         #fin_list.append(bbb)
         print(aaa)
@@ -431,19 +435,22 @@ def hello_valll():
     if 2 >= bb:
         links_ec_edu =google_search("social sustainability.edu")     # environment Scraping of Google SERPs isn't a violation of DMCA or CFAA. https://dataforseo.com/blog/is-scraping-google-serps-legal
         aaaa= links_ec_edu[0]
-        fin_list.append(aaaa)
+        #fin_list.append(aaaa)
+        aiResultPost['what3'] = links_ec_edu[0]
         bbbb= links_ec_edu[1]
-        fin_list.append(bbbb)
+        aiResultPost['what4'] = links_ec_edu[1]
+        #fin_list.append(bbbb)
         print(aaaa)
         print(bbbb)
     
     if 2 >= cc:
-        env="envi is not sus"
-        fin_list.append(env)
+        #env="envi is not sus"
+        #fin_list.append(env)
 
         links_env_org =google_search("environment sustainability.org")     # Scraping of Google SERPs isn't a violation of DMCA or CFAA. https://dataforseo.com/blog/is-scraping-google-serps-legal
         aaa= links_env_org[0]
-        fin_list.append(aaa)
+        #fin_list.append(aaa)
+        aiResultPost['envLinks'] = links_env_org[0]
         #bbb= links_env_org[1]
         #fin_list.append(bbb)
         print(aaa)
@@ -452,19 +459,22 @@ def hello_valll():
     if 2 >= cc:
         links_env_edu =google_search("environment sustainability.edu")     # environment Scraping of Google SERPs isn't a violation of DMCA or CFAA. https://dataforseo.com/blog/is-scraping-google-serps-legal
         aaaa= links_env_edu[0]
-        fin_list.append(aaaa)
+        #fin_list.append(aaaa)
+        aiResultPost['what5'] = links_env_edu[0]
         bbbb= links_env_edu[1]
-        fin_list.append(bbbb)
+        aiResultPost['what6'] = links_env_edu[1]
+        #fin_list.append(bbbb)
         print(aaaa)
         print(bbbb)
 
     if 2 >= dd:
-        enf="enf is not sus"
-        fin_list.append(enf)
+        #enf="enf is not sus"
+        #fin_list.append(enf)
 
         links_enf_org =google_search("environment sustainability.org")     # Scraping of Google SERPs isn't a violation of DMCA or CFAA. https://dataforseo.com/blog/is-scraping-google-serps-legal
         aaa= links_enf_org[0]
-        fin_list.append(aaa)
+        aiResultPost['enfLinks'] = links_enf_org[0]
+        #fin_list.append(aaa)
         #bbb= links_enf_org[1]
         #fin_list.append(bbb)
         print(aaa)
@@ -473,12 +483,15 @@ def hello_valll():
     if 2 >= dd:
         links_enf_edu =google_search("environment sustainability.edu")     # environment Scraping of Google SERPs isn't a violation of DMCA or CFAA. https://dataforseo.com/blog/is-scraping-google-serps-legal
         aaaa= links_enf_edu[0]
-        fin_list.append(aaaa)
+        aiResultPost['what7'] = links_enf_edu[0]
+        #fin_list.append(aaaa)
         bbbb= links_enf_edu[1]
-        fin_list.append(bbbb)
+        aiResultPost['what8'] = links_enf_edu[1]
+        #fin_list.append(bbbb)
         print(aaaa)
         print(bbbb)
-    return fin_list
+    #return fin_list
+    return json.dumps(aiResultPost)
 
 
 '''
