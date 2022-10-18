@@ -79,6 +79,9 @@
                     </label>
                 </v-card-text>
 
+
+                <!-- KOLLA PÅ TABS.length FÖR ATT KANSKE SE HUR MÅNGA TABS DET FINNS, OCH TA BOR "PREV" och "NEXT" IFALL VI ÄR PÅ SISTA ELLER FÖRSTA SIDAN -->
+
                 <!-- Prev and Next button, increment or decrement current tab counter -->
                 <v-row class="mx-8 my-10">
                     <v-btn class="mx-2 my-4" depressed color="primary" large @click="prevTab();">
