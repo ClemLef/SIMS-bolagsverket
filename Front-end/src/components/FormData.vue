@@ -5,14 +5,14 @@
         <!-- Card that contains all questions, answers and content of each page -->
         <!-- Create Page buttons dynamically -->
         <v-btn @click="setCurrentTab(tab.id)" large elevation="3" width="20%" class="mt-10 white--text"
-            color="green darken-4" :class="{'mb-1' : currentTab == tab.id}" v-for="tab in tabData2" :key="tab.id">
+            color="green darken-4" :class="{'mb-1' : currentTab == tab.id}" v-for="tab in tabData" :key="tab.id">
             {{tab.title}}
         </v-btn>
 
         <v-card elevation="5" width="85%" class="mx-auto">
 
             <!-- Showing correct page content /-->
-            <div v-for="(tab, tabIndex) in tabData2" :key="tab[tabIndex]" v-show="currentTab == tab.id">
+            <div v-for="(tab, tabIndex) in tabData" :key="tab[tabIndex]" v-show="currentTab == tab.id">
 
                 <!-- Retrieving question object from correct page, then displaying question with corresponding answer options and help text -->
                 <v-card-text v-for="(question, index) in tab.questions" :key="question[index]"
@@ -62,13 +62,13 @@
                             </v-btn-toggle>
 
                             <!-- Answer set 2, show buttons for option: No, Probably Not, Probably, Yes -->
-                            <v-btn-toggle v-model="tab.answerList[index]" v-if="question.answerSet == 2">
+                            <v-btn-toggle v-model="tab.answers[index]" v-if="question.answerSet == 2">
                                 <v-btn elevation="2" class="mx-2" v-for="button in answerButtonSet_2"
                                     :key="button.text"> {{button.text}} </v-btn>
                             </v-btn-toggle>
 
                             <!-- Answer set 3, show buttons for option: None, Very Little, Some, A lot -->
-                            <v-btn-toggle v-model="tab.answerList[index]" v-if="question.answerSet == 3">
+                            <v-btn-toggle v-model="tab.answers[index]" v-if="question.answerSet == 3">
                                 <v-btn elevation="2" class="mx-2" v-for="button in answerButtonSet_3"
                                     :key="button.text"> {{button.text}} </v-btn>
                             </v-btn-toggle>
@@ -111,7 +111,7 @@ import axios from 'axios';
 export default {
 
     props: {
-        tabData2: Array,
+        tabData: Array,
         answerButtonSet_1: Array,
         answerButtonSet_2: Array,
         answerButtonSet_3: Array,
@@ -158,7 +158,7 @@ export default {
         },
 
         calcTabResult(tab) {
-            var numberOfAnswers = tab.answerList.length;
+            var numberOfAnswers = tab.answers.length;
             var numberOfAnswersWithValue = 0;
             var tabResult = 0;
 
@@ -170,8 +170,8 @@ export default {
                     }
                     else {
                         numberOfAnswersWithValue++;
-                        tabResult += tab.answerList[i] + 1;
-                        console.log("tab: " + tab.id + "     Q" + (i + 1) + ": " + (tab.answerList[i] + 1));
+                        tabResult += tab.answers[i] + 1;
+                        console.log("tab: " + tab.id + "     Q" + (i + 1) + ": " + (tab.answers[i] + 1));
                     }
                 }
                 var average = tabResult / numberOfAnswersWithValue;
@@ -185,15 +185,15 @@ export default {
 
         calcFormResult() {
 
-            var numberOfTabs = this.tabData2.length;
+            var numberOfTabs = this.tabData.length;
             var result = [];
 
             for (var i = 0; i < numberOfTabs; i++) {
-                this.calcTabResult(this.tabData2[i]);
-                result.push(this.tabData2[i].result);
+                this.calcTabResult(this.tabData[i]);
+                result.push(this.tabData[i].result);
 
-                // console.log(this.tabData.answerList);
-                // console.log("length: " + this.tabData[i].answerList.length);
+                // console.log(this.tabData.answers);
+                // console.log("length: " + this.tabData[i].answers.length);
             }
             console.log("Form result: ", result);
             (async () => {

@@ -1,6 +1,6 @@
 <template>
   <FormData 
-    :tabData2="tabData2" 
+    :tabData="tabData" 
     :answerButtonSet_1="answerButtonSet_1" 
     :answerButtonSet_2="answerButtonSet_2"
     :answerButtonSet_3="answerButtonSet_3">
@@ -28,7 +28,7 @@
         const questions = await FormAPI.getQuestions();
         this.allQuestions = questions.data;
 
-        for(var i = 0; i < this.tabData2.length; i++){
+        for(var i = 0; i < this.tabData.length; i++){
           for(var j = 0; j < this.allQuestions.length; j++){
 
             var text = this.allQuestions[j].question;                     // text
@@ -40,7 +40,7 @@
             var show = this.allQuestions[j].active;   // subquestion group
             
             if(category == [i]){
-              this.tabData2[i].questions.push({
+              this.tabData[i].questions.push({
                 text: text,
                 info: info, 
                 show: show,
@@ -56,47 +56,61 @@
         }
       },
 
-      // TRY TO SHOW ANSWERS IN FORMDATA, THEY ARE LOADED, BUT IN A NEW WAY THAN PREVIOUS METHODS
+      // loads all sets of answers and categorize them. 
+      // IMPROVE THIS CODE PLZ MATTIAS
       async loadAnswerSets(){
         const answerSets = await FormAPI.getAnswerSets();
         this.allAnswerSets = answerSets.data;
 
-          for(var i = 0; i < this.allAnswerSets.length; i++){
+        for(var i = 0; i < this.allAnswerSets.length; i++){
 
-            // local variables for simplifying conditions s
-            var text = this.allAnswerSets[i].set_name;   
-            var group = this.allAnswerSets[i].set_group;   
-            var value = this.allAnswerSets[i].set_value
-            
-            if(group == 1){
-              this.answerButtonSet_1.push({
-                text: text,
-                group: group, 
-                value: value,
-              })
-            }
-
-            if(group == 2){
-              this.answerButtonSet_2.push({
-                text: text,
-                group: group, 
-                value: value,
-              })
-            }
-
-            if(group == 3){
-              this.answerButtonSet_3.push({
-                text: text,
-                group: group, 
-                value: value,
-              })
-            }
-            
+          // local variables for simplifying conditions s
+          var text = this.allAnswerSets[i].set_name;   
+          var group = this.allAnswerSets[i].set_group;   
+          var value = this.allAnswerSets[i].set_value
+          
+          if(group == 1){
+            this.answerButtonSet_1.push({
+              text: text,
+              group: group, 
+              value: value,
+            })
           }
+
+          if(group == 2){
+            this.answerButtonSet_2.push({
+              text: text,
+              group: group, 
+              value: value,
+            })
+          }
+
+          if(group == 3){
+            this.answerButtonSet_3.push({
+              text: text,
+              group: group, 
+              value: value,
+            })
+          }
+          
+        }
+      },
+
+      async loadTabs(){
+        const tabs = await FormAPI.getCategories();
+        this.allTabs = tabs.data;
+
+        console.log(tabs.data);
+
+        // console.log(this.allTabs.id);
+        // console.log(this.allTabs.name);
+        // console.log(this.allTabs.categorys_code);
       }
+
     },
 
     created(){
+      // this.loadTabs();
       this.loadAnswerSets();
       this.loadAllQuestion();
       window.$cookies.remove('isSustainable');//to remove
@@ -105,37 +119,38 @@
     data: () => ({
       allQuestions: {},
       allAnswerSet: {},
+      allTabs: {},
 
       answerButtonSet_1: [],
       answerButtonSet_2: [],
       answerButtonSet_3: [],
 
-      tabData2:[
+      tabData:[
         {
           id: 0,
           title: 'Economical',
-          answerList: [],
+          answers: [],
           questions: [],
           result: 0,
         },
         {
           id: 1,
           title: 'Social',
-          answerList: [],
+          answers: [],
           questions: [],
           result: 0,
         },
         {
           id: 2,
           title: 'Enviromental',
-          answerList: [],
+          answers: [],
           questions: [],
           result: 0,
         },
         {
           id: 3,
           title: 'Positive influence',
-          answerList: [],
+          answers: [],
           questions: [],
           result: 0,
         }
