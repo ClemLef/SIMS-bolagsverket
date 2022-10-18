@@ -86,7 +86,7 @@
                         Prev
                     </v-btn>
 
-                    <v-btn class="mx-2 my-4" depressed color="success" large @click="nextTab();">
+                    <v-btn v-show="currentTab != 3" class="mx-2 my-4" depressed color="success" large @click="nextTab();">
                         Next
                         <v-icon right> mdi-arrow-right </v-icon>
                     </v-btn>
@@ -198,8 +198,8 @@ export default {
             console.log("Form result: ", result);
             (async () => {
                 var aiResult = await this.send_data_AI(result);
-                console.log(aiResult)
-                window.$cookies.config('30d');
+                console.log(aiResult.data)
+                window.$cookies.config('1d');
                 window.$cookies.set('isSustainable', aiResult.data);
                 this.$router.push('/results')
             })()
@@ -239,18 +239,13 @@ export default {
             // eslint-disable-next-line
             const response = await axios.post("http://34.136.8.129:5000/post", result)
                 .then(function (response) {
-                    // your action after success
                     //console.log(response);
                     return response;
                 })
                 .catch(function (error) {
-                    // your action on error success
                     //console.log(error);
                     return error;
                 });
-            //this.loading = false;
-            //this.button_txt = response.data;
-            //console.log(response.data);
 
             return response;
 
