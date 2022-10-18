@@ -101,6 +101,7 @@ def parse_results(response):
         item = {
             'title': result.find(css_identifier_title, first=True).text,
             'link': result.find(css_identifier_link, first=True).attrs['href'],
+ #----------------------There's a problem here, sometimes the program crashes sayning it can't retrive text attribute------------------
             'text': result.find(css_identifier_text, first=True).text
         }
         output.append(item)
