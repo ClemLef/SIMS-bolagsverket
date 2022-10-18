@@ -3,6 +3,10 @@
         <div class="pa-5">
             <h1>Great results ! Your business idea is <span style="color: orange">{{sustainability}}</span>.
         </h1>
+        <v-btn class="ma-10 pa-6 white--text " color="blue-grey" elevation="5" x-large
+                    rounded @click="redirect()">
+                    Take the test again 
+                </v-btn>
         <h5 class="text-md-h5 my-5">You can see your results for each category below, just click on a section to display
             details.</h5>
             <v-expansion-panels popout>
@@ -165,6 +169,10 @@ export default {
     methods: {
         redirectLink(link) {
             window.open(link);
+        },
+        redirect() {
+            window.$cookies.remove('isSustainable'),
+            this.$router.push('/form')
         },
     }
 }
