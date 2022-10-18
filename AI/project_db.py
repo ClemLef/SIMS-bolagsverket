@@ -14,12 +14,26 @@ import pandas as pd
 from requests_html import HTML
 from requests_html import HTMLSession
 from bs4 import BeautifulSoup as bs
-from flask import Flask
+from flask import Flask, request
+from flask_cors import CORS
 from sklearn.metrics import classification_report
 
 app = Flask(__name__)
+cors=CORS(app)
 
+def hello_vall():
+    sum = 5
+    sum_str = str(sum)
+    return sum_str
 
+@app.route('/post', methods=['POST'])
+def result():
+    print(request.json)
+    return hello_valll()
+
+if __name__ == "__main__":
+    app.run()
+ 
 
 def get_source(url):
 
@@ -545,24 +559,3 @@ if 4 > aa:
 	print(bbbb)
 
 '''
-
-
-
-
-def hello_vall():
-    sum = 5
-    sum_str = str(sum)
-    return sum_str
-
-
-
-
-@app.route('/post', methods=['POST'])
-def result():
-    print(request.json)
-    return hello_valll()
-    #return "<p>Hello, World!</p>"
-
-if __name__ == "__main__":
-    app.run()
- 
