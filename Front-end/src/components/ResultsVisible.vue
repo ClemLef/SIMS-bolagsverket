@@ -1,7 +1,7 @@
 <template>
     
         <div class="pa-5">
-            <h1>Great results ! Your business idea is <span style="color: orange">{{sustainability}}</span>.
+            <h1>Great results ! Your business idea is <span style="color: orange">{{aiResult}}</span>.
         </h1>
         <v-btn class="ma-10 pa-6 white--text " color="blue-grey" elevation="5" x-large
                     rounded @click="redirect()">
@@ -164,7 +164,7 @@ export default {
             { title: 'F-skatt', img_src: 'https://skatteverket.se/images/18.1c68351d170ce554527e35/1584713519347/Logo_vit_bakgrund_FB.png', source: "skatteverket.se", description: "Om du bedriver näringsverksamhet i Sverige kan du efter ansökan hos Skatteverket bli godkänd för F-skatt", link: "https://www.skatteverket.se/foretag/etjansterochblanketter/svarpavanligafragor/fskatt/foretagfskattfaq/vemkanbligodkandforfskattochvadinnebardet.5.18e1b10334ebe8bc8000118949.html" },
             { title: 'Sustainable funds', img_src: 'https://www.fondbolagen.se/globalassets/om-oss/hallbarhet-artikelbild2-ny-webb.jpg?preset=jumbotron', source: "fondbolagen.se", description: "Knowing that the money they invest contributes to sustainable development is becoming increasingly important to savers.", link: "https://www.fondbolagen.se/en/Facts_Indices/sustainable-funds/" },
         ],
-        sustainability: window.$cookies.get('isSustainable'),
+        aiResult: window.$cookies.get('isSustainable'),
     }),
     methods: {
         redirectLink(link) {
@@ -174,6 +174,18 @@ export default {
             window.$cookies.remove('isSustainable'),
             this.$router.push('/form')
         },
+        parseAiResults(){
+            globalSustainability = aiResult[0]
+            economicSustainability = aiResult[1]
+            for (let i = 0; i < 3; i++) {
+                economicLinks[i] = aiResult[i + 2];
+            }
+            
+                
+        }
+    },
+    created() {
+
     }
 }
 
