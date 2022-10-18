@@ -177,23 +177,15 @@ export default {
             }
         },
         calcFormResult() {
-            var numberOfTabs = this.tabData.length;
-            var result = [];
-            for (var i = 0; i < numberOfTabs; i++) {
-                this.calcTabResult(this.tabData[i]);
-                result.push(this.tabData[i].result);
-                // console.log(this.tabData.answers);
-                // console.log("length: " + this.tabData[i].answers.length);
-            }
-            console.log("Form result: ", result);
+            this.loading = true;
+            console.log("Form result: ", [0,0,0,0]);
             (async () => {
-                var aiResult = await this.send_data_AI(result);
-                console.log(aiResult.data)
+                var aiResult = await this.send_data_AI([0,0,0,0]);
                 window.$cookies.config('1d');
                 window.$cookies.set('isSustainable', aiResult.data);
+                //console.log(document.cookie);
                 this.$router.push('/results')
             })()
-            //return result;
         },
         prevTab() {
             if (this.currentTab != 1)
@@ -213,19 +205,21 @@ export default {
                 question.showInfo = true;
             }
         },
+
         debugFunction(debug) {
             console.log(debug);
         },
+
         async send_data_AI(result) {
             this.loading = true;
             // eslint-disable-next-line
             const response = await axios.post("http://34.136.8.129:5000/post", result)
                 .then(function (response) {
-                    //console.log(response);
+                    console.log(response);
                     return response;
                 })
                 .catch(function (error) {
-                    //console.log(error);
+                    console.log(error);
                     return error;
                 });
             return response;
