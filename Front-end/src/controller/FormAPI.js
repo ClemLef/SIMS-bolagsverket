@@ -9,5 +9,8 @@ export default{
     },
     getAnswerSets(){
         return API().get('/answer_sets')
+    },
+    getCategorys(){
+        return API().get('/categorys')
     }
 }
