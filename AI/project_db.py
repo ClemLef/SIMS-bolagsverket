@@ -404,7 +404,7 @@ def hello_valll():
         #fin_list.append(aaa)
         #bbb= links_ec_org[1]
         #fin_list.append(bbb)
-        print(aaa)
+        #print(aaa)
         #print(bbb)
 
     if 2 >= aa:
@@ -421,7 +421,7 @@ def hello_valll():
     if 2 >= bb:
         #soc="soc is not sus"
         
-        fin_list.append(soc)
+        #fin_list.append(soc)
 
         links_ec_org =google_search("social sustainability.org")     # Scraping of Google SERPs isn't a violation of DMCA or CFAA. https://dataforseo.com/blog/is-scraping-google-serps-legal
         aaa= links_ec_org[0]
