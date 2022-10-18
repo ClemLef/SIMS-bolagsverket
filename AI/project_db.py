@@ -339,7 +339,7 @@ db._close()
 
 """
 
-
+##------------ put here the data from the form---------------##
 row = []
 print("Initial blank List: ")
 row = [1,2,2,2]
@@ -376,9 +376,9 @@ def hello_valll():
 
     fin_list = []
 
-    aw="Your company is :"+ ans_final
+    
 
-    fin_list.append(aw)
+    fin_list.append(ans_final)
 
     aa= row[0]
     bb= row[1]
@@ -393,8 +393,11 @@ def hello_valll():
 
     # show links
     if 2 >= aa:
-        eco="eco is not sus"
-        fin_list.append(eco)
+        ecoJson = {
+            # 0 = not sustainable
+            'eco': 0,
+        }
+        fin_list.append(ecoJson)
         #links_ec_org =scrape_google("social sustainability.org")
         links_ec_org =google_search("economic sustainability.org")     # Scraping of Google SERPs isn't a violation of DMCA or CFAA. https://dataforseo.com/blog/is-scraping-google-serps-legal
         aaa= links_ec_org[0]
