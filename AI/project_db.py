@@ -98,7 +98,7 @@ def parse_results(response):
     results = response.html.find(css_identifier_result)
     output = []
     for result in results:
-        aiResultPost['ecoLinks'] = {
+        item = {
             'title': result.find(css_identifier_title, first=True).text,
             'link': result.find(css_identifier_link, first=True).attrs['href'],
             'text': result.find(css_identifier_text, first=True).text
