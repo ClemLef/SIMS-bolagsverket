@@ -556,17 +556,10 @@ def hello_vall():
 
 
 
-'''
-@app.route("/aaa")
-def hello_val():
-    return "<p>Hello, wwwwww World!</p>"
-'''
 
-
-
-@app.route("/sss")
-def hello_world():
-    
+@app.route('/post', methods=['POST'])
+def result():
+    print(request.json)
     return hello_valll()
     #return "<p>Hello, World!</p>"
 
