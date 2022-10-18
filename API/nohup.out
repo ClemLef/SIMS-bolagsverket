@@ -2037,3 +2037,150 @@ api-mailhog-1       | [APIv1] KEEPALIVE /api/v1/events
 api-mailhog-1       | [APIv1] KEEPALIVE /api/v1/events
 api-meilisearch-1   | [2022-10-14T12:00:00Z INFO  actix_web::middleware::logger] 127.0.0.1 "GET /health HTTP/1.1" 200 22 "-" "Wget" 0.000076
 api-meilisearch-1   | [2022-10-14T12:00:00Z INFO  actix_web::middleware::logger] 127.0.0.1 "GET /health HTTP/1.1" 200 22 "-" "Wget" 0.000076
+api-meilisearch-1   | [2022-10-14T12:00:31Z INFO  actix_web::middleware::logger] 127.0.0.1 "GET /health HTTP/1.1" 200 22 "-" "Wget" 0.000072
+api-meilisearch-1   | [2022-10-14T12:00:31Z INFO  actix_web::middleware::logger] 127.0.0.1 "GET /health HTTP/1.1" 200 22 "-" "Wget" 0.000072
+api-mailhog-1       | [APIv1] KEEPALIVE /api/v1/events
+api-mailhog-1       | [APIv1] KEEPALIVE /api/v1/events
+api-meilisearch-1   | [2022-10-14T12:01:01Z INFO  actix_web::middleware::logger] 127.0.0.1 "GET /health HTTP/1.1" 200 22 "-" "Wget" 0.000083
+api-meilisearch-1   | [2022-10-14T12:01:01Z INFO  actix_web::middleware::logger] 127.0.0.1 "GET /health HTTP/1.1" 200 22 "-" "Wget" 0.000083
+api-meilisearch-1   | [2022-10-14T12:01:31Z INFO  actix_web::middleware::logger] 127.0.0.1 "GET /health HTTP/1.1" 200 22 "-" "Wget" 0.000091
+api-meilisearch-1   | [2022-10-14T12:01:31Z INFO  actix_web::middleware::logger] 127.0.0.1 "GET /health HTTP/1.1" 200 22 "-" "Wget" 0.000091
+api-mailhog-1       | [APIv1] KEEPALIVE /api/v1/events
+api-mailhog-1       | [APIv1] KEEPALIVE /api/v1/events
+api-meilisearch-1   | [2022-10-14T12:02:01Z INFO  actix_web::middleware::logger] 127.0.0.1 "GET /health HTTP/1.1" 200 22 "-" "Wget" 0.000092
+api-meilisearch-1   | [2022-10-14T12:02:01Z INFO  actix_web::middleware::logger] 127.0.0.1 "GET /health HTTP/1.1" 200 22 "-" "Wget" 0.000092
+api-meilisearch-1   | [2022-10-14T12:02:31Z INFO  actix_web::middleware::logger] 127.0.0.1 "GET /health HTTP/1.1" 200 22 "-" "Wget" 0.000089
+api-meilisearch-1   | [2022-10-14T12:02:31Z INFO  actix_web::middleware::logger] 127.0.0.1 "GET /health HTTP/1.1" 200 22 "-" "Wget" 0.000089
+api-mailhog-1       | [APIv1] KEEPALIVE /api/v1/events
+api-mailhog-1       | [APIv1] KEEPALIVE /api/v1/events
+api-meilisearch-1   | [2022-10-14T12:03:01Z INFO  actix_web::middleware::logger] 127.0.0.1 "GET /health HTTP/1.1" 200 22 "-" "Wget" 0.000077
+api-meilisearch-1   | [2022-10-14T12:03:01Z INFO  actix_web::middleware::logger] 127.0.0.1 "GET /health HTTP/1.1" 200 22 "-" "Wget" 0.000077
+api-meilisearch-1   | [2022-10-14T12:03:31Z INFO  actix_web::middleware::logger] 127.0.0.1 "GET /health HTTP/1.1" 200 22 "-" "Wget" 0.000056
+api-meilisearch-1   | [2022-10-14T12:03:31Z INFO  actix_web::middleware::logger] 127.0.0.1 "GET /health HTTP/1.1" 200 22 "-" "Wget" 0.000056
+api-mailhog-1       | [APIv1] KEEPALIVE /api/v1/events
+api-mailhog-1       | [APIv1] KEEPALIVE /api/v1/events
+api-meilisearch-1   | [2022-10-14T12:04:01Z INFO  actix_web::middleware::logger] 127.0.0.1 "GET /health HTTP/1.1" 200 22 "-" "Wget" 0.000164
+api-meilisearch-1   | [2022-10-14T12:04:01Z INFO  actix_web::middleware::logger] 127.0.0.1 "GET /health HTTP/1.1" 200 22 "-" "Wget" 0.000164
+api-meilisearch-1   | [2022-10-14T12:04:31Z INFO  actix_web::middleware::logger] 127.0.0.1 "GET /health HTTP/1.1" 200 22 "-" "Wget" 0.000144
+api-meilisearch-1   | [2022-10-14T12:04:31Z INFO  actix_web::middleware::logger] 127.0.0.1 "GET /health HTTP/1.1" 200 22 "-" "Wget" 0.000144
+api-laravel.test-1  |   2022-10-14 12:04:40 ................................................... ~ 0s
+api-laravel.test-1  |   2022-10-14 12:04:40 ................................................... ~ 0s
+api-laravel.test-1  |   2022-10-14 12:04:40 /favicon.ico ...................................... ~ 0s
+api-laravel.test-1  |   2022-10-14 12:04:40 /favicon.ico ...................................... ~ 0s
+api-mailhog-1       | [APIv1] KEEPALIVE /api/v1/events
+api-mailhog-1       | [APIv1] KEEPALIVE /api/v1/events
+api-laravel.test-1  |   2022-10-14 12:04:58 ................................................... ~ 1s
+api-laravel.test-1  |   2022-10-14 12:04:58 ................................................... ~ 1s
+api-meilisearch-1   | [2022-10-14T12:05:01Z INFO  actix_web::middleware::logger] 127.0.0.1 "GET /health HTTP/1.1" 200 22 "-" "Wget" 0.000069
+api-meilisearch-1   | [2022-10-14T12:05:01Z INFO  actix_web::middleware::logger] 127.0.0.1 "GET /health HTTP/1.1" 200 22 "-" "Wget" 0.000069
+api-laravel.test-1  |   2022-10-14 12:05:01 ................................................... ~ 0s
+api-laravel.test-1  |   2022-10-14 12:05:01 ................................................... ~ 0s
+api-laravel.test-1  |   2022-10-14 12:05:02 /favicon.ico ...................................... ~ 0s
+api-laravel.test-1  |   2022-10-14 12:05:02 /favicon.ico ...................................... ~ 0s
+api-meilisearch-1   | [2022-10-14T12:05:32Z INFO  actix_web::middleware::logger] 127.0.0.1 "GET /health HTTP/1.1" 200 22 "-" "Wget" 0.000070
+api-meilisearch-1   | [2022-10-14T12:05:32Z INFO  actix_web::middleware::logger] 127.0.0.1 "GET /health HTTP/1.1" 200 22 "-" "Wget" 0.000070
+api-mailhog-1       | [APIv1] KEEPALIVE /api/v1/events
+api-mailhog-1       | [APIv1] KEEPALIVE /api/v1/events
+api-meilisearch-1   | [2022-10-14T12:06:02Z INFO  actix_web::middleware::logger] 127.0.0.1 "GET /health HTTP/1.1" 200 22 "-" "Wget" 0.000076
+api-meilisearch-1   | [2022-10-14T12:06:02Z INFO  actix_web::middleware::logger] 127.0.0.1 "GET /health HTTP/1.1" 200 22 "-" "Wget" 0.000076
+api-meilisearch-1   | [2022-10-14T12:06:32Z INFO  actix_web::middleware::logger] 127.0.0.1 "GET /health HTTP/1.1" 200 22 "-" "Wget" 0.000085
+api-meilisearch-1   | [2022-10-14T12:06:32Z INFO  actix_web::middleware::logger] 127.0.0.1 "GET /health HTTP/1.1" 200 22 "-" "Wget" 0.000085
+api-mailhog-1       | [APIv1] KEEPALIVE /api/v1/events
+api-mailhog-1       | [APIv1] KEEPALIVE /api/v1/events
+api-laravel.test-1  | 2022-10-14 12:06:54,725 WARN received SIGTERM indicating exit request
+api-laravel.test-1  | 2022-10-14 12:06:54,725 WARN received SIGTERM indicating exit request
+api-laravel.test-1  | 2022-10-14 12:06:54,747 INFO waiting for php to die
+api-laravel.test-1  | 2022-10-14 12:06:54,747 INFO waiting for php to die
+api-laravel.test-1  | 2022-10-14 12:06:54,750 INFO stopped: php (terminated by SIGTERM)
+api-laravel.test-1  | 2022-10-14 12:06:54,750 INFO stopped: php (terminated by SIGTERM)
+api-laravel.test-1 exited with code 0
+api-laravel.test-1 exited with code 0
+api-laravel.test-1 exited with code 0
+api-laravel.test-1 exited with code 0
+api-redis-1         | 1:signal-handler (1665749215) Received SIGTERM scheduling shutdown...
+api-redis-1         | 1:signal-handler (1665749215) Received SIGTERM scheduling shutdown...
+api-redis-1         | 1:M 14 Oct 2022 12:06:55.314 # User requested shutdown...
+api-redis-1         | 1:M 14 Oct 2022 12:06:55.316 * Saving the final RDB snapshot before exiting.
+api-redis-1         | 1:M 14 Oct 2022 12:06:55.314 # User requested shutdown...
+api-redis-1         | 1:M 14 Oct 2022 12:06:55.316 * Saving the final RDB snapshot before exiting.
+api-redis-1         | 1:M 14 Oct 2022 12:06:55.327 * DB saved on disk
+api-redis-1         | 1:M 14 Oct 2022 12:06:55.327 * DB saved on disk
+api-redis-1         | 1:M 14 Oct 2022 12:06:55.330 # Redis is now ready to exit, bye bye...
+api-redis-1         | 1:M 14 Oct 2022 12:06:55.330 # Redis is now ready to exit, bye bye...
+api-mysql-1         | 2022-10-14T12:06:55.370517Z 0 [System] [MY-013172] [Server] Received SHUTDOWN from user <via user signal>. Shutting down mysqld (Version: 8.0.30).
+api-mysql-1         | 2022-10-14T12:06:55.370517Z 0 [System] [MY-013172] [Server] Received SHUTDOWN from user <via user signal>. Shutting down mysqld (Version: 8.0.30).
+api-selenium-1      | Trapped SIGTERM/SIGINT/x so shutting down supervisord...
+api-selenium-1      | Trapped SIGTERM/SIGINT/x so shutting down supervisord...
+api-selenium-1      | 2022-10-14 12:06:55,581 WARN received SIGTERM indicating exit request
+api-selenium-1      | 2022-10-14 12:06:55,581 WARN received SIGTERM indicating exit request
+api-selenium-1      | 2022-10-14 12:06:55,620 INFO waiting for xvfb, vnc, novnc, selenium-standalone to die
+api-selenium-1      | 2022-10-14 12:06:55,620 INFO waiting for xvfb, vnc, novnc, selenium-standalone to die
+api-mailhog-1 exited with code 2
+api-mailhog-1 exited with code 2
+api-redis-1 exited with code 0
+api-redis-1 exited with code 0
+api-meilisearch-1 exited with code 143
+api-redis-1 exited with code 0
+api-mailhog-1 exited with code 0
+api-meilisearch-1 exited with code 143
+api-redis-1 exited with code 0
+api-meilisearch-1 exited with code 0
+api-mailhog-1 exited with code 0
+api-meilisearch-1 exited with code 0
+api-selenium-1      | 2022-10-14 12:06:56,137 INFO stopped: selenium-standalone (terminated by SIGTERM)
+api-selenium-1      | 2022-10-14 12:06:56,137 INFO stopped: selenium-standalone (terminated by SIGTERM)
+api-mysql-1         | 2022-10-14T12:06:56.593059Z 0 [System] [MY-010910] [Server] /usr/sbin/mysqld: Shutdown complete (mysqld 8.0.30)  MySQL Community Server - GPL.
+api-mysql-1         | 2022-10-14T12:06:56.593059Z 0 [System] [MY-010910] [Server] /usr/sbin/mysqld: Shutdown complete (mysqld 8.0.30)  MySQL Community Server - GPL.
+api-selenium-1      | 2022-10-14 12:06:57,148 INFO stopped: novnc (terminated by SIGTERM)
+api-selenium-1      | 2022-10-14 12:06:57,148 INFO stopped: novnc (terminated by SIGTERM)
+api-mysql-1 exited with code 0
+api-mysql-1 exited with code 0
+api-mysql-1 exited with code 0
+api-mysql-1 exited with code 0
+api-selenium-1      | 2022-10-14 12:06:58,150 INFO stopped: vnc (terminated by SIGTERM)
+api-selenium-1      | 2022-10-14 12:06:58,150 INFO stopped: vnc (terminated by SIGTERM)
+api-selenium-1      | 2022-10-14 12:06:59,153 INFO stopped: xvfb (terminated by SIGTERM)
+api-selenium-1      | 2022-10-14 12:06:59,153 INFO stopped: xvfb (terminated by SIGTERM)
+api-selenium-1      | Shutdown complete
+api-selenium-1      | Shutdown complete
+api-selenium-1 exited with code 143
+api-selenium-1 exited with code 143
+Container api-selenium-1  Running
+Container api-mysql-1  Running
+Container api-redis-1  Running
+Container api-mailhog-1  Running
+Container api-meilisearch-1  Running
+Container api-laravel.test-1  Running
+Attaching to api-laravel.test-1, api-mailhog-1, api-meilisearch-1, api-mysql-1, api-redis-1, api-selenium-1
+api-meilisearch-1   | [2022-10-18T12:25:05Z INFO  actix_web::middleware::logger] 127.0.0.1 "GET /health HTTP/1.1" 200 22 "-" "Wget" 0.000072
+api-laravel.test-1  |   2022-10-18 12:25:07 ................................................... ~ 0s
+api-laravel.test-1  |   2022-10-18 12:25:08 /favicon.ico ...................................... ~ 0s
+api-mailhog-1       | [APIv1] KEEPALIVE /api/v1/events
+api-meilisearch-1   | [2022-10-18T12:25:35Z INFO  actix_web::middleware::logger] 127.0.0.1 "GET /health HTTP/1.1" 200 22 "-" "Wget" 0.000069
+api-laravel.test-1  |   2022-10-18 12:25:46 ................................................... ~ 0s
+api-laravel.test-1  |   2022-10-18 12:25:47 /favicon.ico ...................................... ~ 0s
+api-laravel.test-1  |   2022-10-18 12:25:54 ................................................... ~ 0s
+api-laravel.test-1  |   2022-10-18 12:25:54 /favicon.ico ...................................... ~ 1s
+api-meilisearch-1   | [2022-10-18T12:26:05Z INFO  actix_web::middleware::logger] 127.0.0.1 "GET /health HTTP/1.1" 200 22 "-" "Wget" 0.000335
+api-mailhog-1       | [APIv1] KEEPALIVE /api/v1/events
+api-meilisearch-1   | [2022-10-18T12:26:35Z INFO  actix_web::middleware::logger] 127.0.0.1 "GET /health HTTP/1.1" 200 22 "-" "Wget" 0.000079
+api-meilisearch-1   | [2022-10-18T12:27:05Z INFO  actix_web::middleware::logger] 127.0.0.1 "GET /health HTTP/1.1" 200 22 "-" "Wget" 0.000098
+Gracefully stopping... (press Ctrl+C again to force)
+Container api-laravel.test-1  Stopping
+Container api-laravel.test-1  Stopped
+Container api-selenium-1  Stopping
+Container api-mysql-1  Stopping
+Container api-redis-1  Stopping
+Container api-meilisearch-1  Stopping
+Container api-mailhog-1  Stopping
+Container api-meilisearch-1  Stopped
+Container api-mailhog-1  Stopped
+Container api-redis-1  Stopped
+Container api-mysql-1  Killing
+Container api-selenium-1  Killing
+time="2022-10-18T12:27:10Z" level=error msg="got 3 SIGTERM/SIGINTs, forcing shutdown"
+Container api-mysql-1  Stopped
+Container api-mysql-1  Error while Killing
+Container api-selenium-1  Error while Killing
+Container api-selenium-1  Stopped
+canceled
