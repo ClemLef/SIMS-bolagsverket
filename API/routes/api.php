@@ -4,7 +4,7 @@ use App\Models\AnswerSets;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Models\Questions;
-use App\Models\Categorys;
+use App\Models\Categories;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,8 +38,8 @@ Route::get('answer_sets', function() {
 });
 
 
-Route::get('categorys', function() {
+Route::get('categories', function() {
     // If the Content-Type and Accept headers are set to 'application/json', 
     // this will return a JSON structure. This will be cleaned up later.
-    return Categorys::all();
+    return Categories::all();
 });

@@ -97,12 +97,14 @@
       },
 
       async loadTabs(){
-        const tabs = await FormAPI.getCategorys();
+        const tabs = await FormAPI.getCategories();
         this.allTabs = tabs.data;
 
-        console.log(this.allTabs.id);
-        console.log(this.allTabs.name);
-        console.log(this.allTabs.categorys_code);
+        console.log(tabs.data);
+
+        // console.log(this.allTabs.id);
+        // console.log(this.allTabs.name);
+        // console.log(this.allTabs.categorys_code);
       }
 
     },
