@@ -26,18 +26,18 @@
       async loadAllQuestion() {
 
         const questions = await FormAPI.getQuestions();
-        this.allQuestions = questions.data;
+        const allQuestions = questions.data;
 
         for(var i = 0; i < this.tabData.length; i++){
-          for(var j = 0; j < this.allQuestions.length; j++){
+          for(var j = 0; j < allQuestions.length; j++){
 
-            var text = this.allQuestions[j].question;                     // text
-            var info = this.allQuestions[j].help_information;   // subquestion group
-            var category = this.allQuestions[j].category;                // 2002 / social
-            var answerSet = this.allQuestions[j].set_question;          // answer set
-            var hasSubQuestion = this.allQuestions[j].has_sub_questions; // has sub question, true or false
-            var subQuestionGroup = this.allQuestions[j].show_subquestion_group;   // subquestion group
-            var show = this.allQuestions[j].active;   // subquestion group
+            var text = allQuestions[j].question;                     // text
+            var info = allQuestions[j].help_information;   // subquestion group
+            var category = allQuestions[j].category;                // 2002 / social
+            var answerSet = allQuestions[j].set_question;          // answer set
+            var hasSubQuestion = allQuestions[j].has_sub_questions; // has sub question, true or false
+            var subQuestionGroup = allQuestions[j].show_subquestion_group;   // subquestion group
+            var show = allQuestions[j].active;   // subquestion group
             
             if(category == [i]){
               this.tabData[i].questions.push({
@@ -60,14 +60,14 @@
       // IMPROVE THIS CODE PLZ MATTIAS
       async loadAnswerSets(){
         const answerSets = await FormAPI.getAnswerSets();
-        this.allAnswerSets = answerSets.data;
+        const allAnswerSets = answerSets.data;
 
-        for(var i = 0; i < this.allAnswerSets.length; i++){
+        for(var i = 0; i < allAnswerSets.length; i++){
 
           // local variables for simplifying conditions s
-          var text = this.allAnswerSets[i].set_name;   
-          var group = this.allAnswerSets[i].set_group;   
-          var value = this.allAnswerSets[i].set_value
+          var text = allAnswerSets[i].set_name;   
+          var group = allAnswerSets[i].set_group;   
+          var value = allAnswerSets[i].set_value
           
           if(group == 1){
             this.answerButtonSet_1.push({
@@ -98,62 +98,69 @@
 
       async loadTabs(){
         const tabs = await FormAPI.getCategories();
-        this.allTabs = tabs.data;
+        const allTabs = tabs.data;
 
-        console.log(tabs.data);
+        for(var i = 0; i < allTabs.length; i++){
 
-        // console.log(this.allTabs.id);
-        // console.log(this.allTabs.name);
-        // console.log(this.allTabs.categorys_code);
+          var index = i;
+          var title = allTabs[i].name;  
+  
+          this.tabData.push({
+            id: index,
+            title: title,
+            
+            answers: [],
+            questions: [],
+            result: 0,
+          })
+  
+        }
       }
 
     },
 
     created(){
-      // this.loadTabs();
+      this.loadTabs();
       this.loadAnswerSets();
       this.loadAllQuestion();
       window.$cookies.remove('isSustainable');//to remove
     },  
     
     data: () => ({
-      allQuestions: {},
-      allAnswerSet: {},
-      allTabs: {},
 
       answerButtonSet_1: [],
       answerButtonSet_2: [],
       answerButtonSet_3: [],
 
       tabData:[
-        {
-          id: 0,
-          title: 'Economical',
-          answers: [],
-          questions: [],
-          result: 0,
-        },
-        {
-          id: 1,
-          title: 'Social',
-          answers: [],
-          questions: [],
-          result: 0,
-        },
-        {
-          id: 2,
-          title: 'Enviromental',
-          answers: [],
-          questions: [],
-          result: 0,
-        },
-        {
-          id: 3,
-          title: 'Positive influence',
-          answers: [],
-          questions: [],
-          result: 0,
-        }
+        // {
+        //   id: 0,
+        //   title: 'Economical',
+        //   answers: [],
+        //   questions: [],
+        //   result: 0,
+        // },
+        // {
+        //   id: 1,
+        //   title: 'Social',
+        //   answers: [],
+        //   questions: [],
+        //   result: 0,
+        // },
+        // {
+        //   id: 2,
+        //   title: 'Enviromental',
+        //   answers: [],
+        //   questions: [],
+        //   result: 0,
+        // },
+        // {
+        //   id: 3,
+        //   title: 'Positive influence',
+        //   answers: [],
+        //   questions: [],
+        //   result: 0,
+        // }
       ],
       
     }),
