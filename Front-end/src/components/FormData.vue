@@ -5,14 +5,14 @@
         <!-- Card that contains all questions, answers and content of each page -->
         <!-- Create Page buttons dynamically -->
         <v-btn @click="setCurrentTab(tab.id)" large elevation="3" width="20%" class="mt-10 white--text"
-            color="green darken-4" :class="{'mb-1' : currentTab == tab.id}" v-for="tab in tabData2" :key="tab.id">
+            color="green darken-4" :class="{'mb-1' : currentTab == tab.id}" v-for="tab in tabData" :key="tab.id">
             {{tab.title}}
         </v-btn>
 
         <v-card elevation="5" width="85%" class="mx-auto">
 
             <!-- Showing correct page content /-->
-            <div v-for="(tab, tabIndex) in tabData2" :key="tab[tabIndex]" v-show="currentTab == tab.id">
+            <div v-for="(tab, tabIndex) in tabData" :key="tab[tabIndex]" v-show="currentTab == tab.id">
 
                 <!-- Retrieving question object from correct page, then displaying question with corresponding answer options and help text -->
                 <v-card-text v-for="(question, index) in tab.questions" :key="question[index]"
@@ -62,13 +62,13 @@
                             </v-btn-toggle>
 
                             <!-- Answer set 2, show buttons for option: No, Probably Not, Probably, Yes -->
-                            <v-btn-toggle v-model="tab.answerList[index]" v-if="question.answerSet == 2">
+                            <v-btn-toggle v-model="tab.answers[index]" v-if="question.answerSet == 2">
                                 <v-btn elevation="2" class="mx-2" v-for="button in answerButtonSet_2"
                                     :key="button.text"> {{button.text}} </v-btn>
                             </v-btn-toggle>
 
                             <!-- Answer set 3, show buttons for option: None, Very Little, Some, A lot -->
-                            <v-btn-toggle v-model="tab.answerList[index]" v-if="question.answerSet == 3">
+                            <v-btn-toggle v-model="tab.answers[index]" v-if="question.answerSet == 3">
                                 <v-btn elevation="2" class="mx-2" v-for="button in answerButtonSet_3"
                                     :key="button.text"> {{button.text}} </v-btn>
                             </v-btn-toggle>
@@ -107,11 +107,9 @@
 
 <script>
 import axios from 'axios';
-
 export default {
-
     props: {
-        tabData2: Array,
+        tabData: Array,
         answerButtonSet_1: Array,
         answerButtonSet_2: Array,
         answerButtonSet_3: Array,
@@ -122,19 +120,15 @@ export default {
         currentTab: 1,
         loading: false,
     }),
-
     methods: {
-
         hasSubQuestion(currentQuestion) {
             if (currentQuestion.hasSubQuestion == true)
                 return true;
             else
                 return false;
         },
-
         // Uses current question to find whats subquestions that belong to it, display or hides those subquestions
         showSubQuestion(currentQuestion, allQuestion, index) {
-
             // set Show = true to all question with sub-questiongroup
             var showSubQuestion = currentQuestion.showSubQuestionList[index];
             var subQuestionGroup = currentQuestion.subQuestionGroup;
@@ -156,22 +150,19 @@ export default {
                 }
             }
         },
-
         calcTabResult(tab) {
-            var numberOfAnswers = tab.answerList.length;
+            var numberOfAnswers = tab.answers.length;
             var numberOfAnswersWithValue = 0;
             var tabResult = 0;
-
             if (numberOfAnswers > 0) { // add zero as the result of tab of no buttons are pressed
-
                 for (var i = 0; i < numberOfAnswers; i++) {
                     if (tab.questions[i].hasSubQuestion) {
                         tabResult += 0;
                     }
                     else {
                         numberOfAnswersWithValue++;
-                        tabResult += tab.answerList[i] + 1;
-                        console.log("tab: " + tab.id + "     Q" + (i + 1) + ": " + (tab.answerList[i] + 1));
+                        tabResult += tab.answers[i] + 1;
+                        console.log("tab: " + tab.id + "     Q" + (i + 1) + ": " + (tab.answers[i] + 1));
                     }
                 }
                 var average = tabResult / numberOfAnswersWithValue;
@@ -182,18 +173,14 @@ export default {
                 console.log(" ");
             }
         },
-
         calcFormResult() {
-
-            var numberOfTabs = this.tabData2.length;
+            var numberOfTabs = this.tabData.length;
             var result = [];
-
             for (var i = 0; i < numberOfTabs; i++) {
-                this.calcTabResult(this.tabData2[i]);
-                result.push(this.tabData2[i].result);
-
-                // console.log(this.tabData.answerList);
-                // console.log("length: " + this.tabData[i].answerList.length);
+                this.calcTabResult(this.tabData[i]);
+                result.push(this.tabData[i].result);
+                // console.log(this.tabData.answers);
+                // console.log("length: " + this.tabData[i].answers.length);
             }
             console.log("Form result: ", result);
             (async () => {
@@ -203,25 +190,19 @@ export default {
                 window.$cookies.set('isSustainable', aiResult.data);
                 this.$router.push('/results')
             })()
-
-
-
             //return result;
         },
         prevTab() {
             if (this.currentTab != 1)
                 this.currentTab -= 1;
         },
-
         nextTab() {
             if (this.currentTab != 5)
                 this.currentTab += 1;
         },
-
         setCurrentTab(selectedTab) {
             this.currentTab = selectedTab;
         },
-
         showInfo(question) {
             if (question.showInfo == true) {
                 question.showInfo = false;
@@ -229,26 +210,22 @@ export default {
                 question.showInfo = true;
             }
         },
-
         debugFunction(debug) {
             console.log(debug);
         },
-
         async send_data_AI(result) {
             this.loading = true;
             // eslint-disable-next-line
             const response = await axios.post("http://34.136.8.129:5000/post", result)
                 .then(function (response) {
-                    console.log(response);
+                    //console.log(response);
                     return response;
                 })
                 .catch(function (error) {
-                    console.log(error);
+                    //console.log(error);
                     return error;
                 });
-
             return response;
-
         },
     }
 }

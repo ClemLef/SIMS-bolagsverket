@@ -113,6 +113,8 @@
             questions: [],
             result: 0,
           })
+
+          // console.log(this.tabData);
   
         }
       }
@@ -131,7 +133,7 @@
       answerButtonSet_1: [],
       answerButtonSet_2: [],
       answerButtonSet_3: [],
-
+      //test
       tabData:[
         // {
         //   id: 0,
