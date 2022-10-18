@@ -1,6 +1,6 @@
 <template>
-    <v-img dark src="../assets/home_background_vertical_blur.jpg" height="100vh">
-        <v-row align="center" justify="center">
+    <v-img dark src="../assets/home_background_vertical_blur.jpg" height="100vh" class="pa-10">
+        <v-row :align="center" justify="center" class="mt-10 pa-10">
             <v-col class="text-center" cols="12">
                 <h1 class="text-h1 font-weight-thin my-10"> Welcome </h1>
                 <h4 class="subheading mb-4"> Welcome to the Sustainability Barometer </h4>
@@ -20,12 +20,6 @@
 <script>
 
 export default {
-    name: 'HomePage',
-    data: () => ({
-        drawer: false,
-        group: null,
-        result: [2, 3, 4, 1],
-    }),
 
     methods: {
         redirect() {
