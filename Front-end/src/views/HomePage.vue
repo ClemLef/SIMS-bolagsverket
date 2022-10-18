@@ -10,7 +10,12 @@
                         :style="{ 'background-color': hover ? '#81C784' : 'green' }" @click="redirect">Take the test !
                         <v-icon right>mdi-chevron-right</v-icon>
                     </v-btn>
+                    
                 </v-hover>
+                <v-btn class="mx-2 my-4" :loading="loading" depressed color="accent" large
+                        @click="calcFormResult()"> Result
+                        <v-icon right> mdi-form-select </v-icon>
+                    </v-btn>
             </v-col>
         </v-row>
     </v-img>
@@ -18,13 +23,50 @@
 
 
 <script>
-
+import axios from 'axios';
 export default {
-
+    
+    data: () => ({
+        loading: false,
+    }),
     methods: {
         redirect() {
             this.$router.push('/form')
         },
-    }
+        calcFormResult() {
+            this.loading = true;
+            console.log("Form result: ", [0,0,0,0]);
+            (async () => {
+                var aiResult = await this.send_data_AI([0,0,0,0]);
+                console.log(aiResult.data)
+                console.log(aiResult.data.global)
+                console.log(typeof aiResult.data)
+                window.$cookies.config('1d');
+                window.$cookies.set('isSustainable', aiResult.data);
+                this.$router.push('/results')
+            })()
+
+
+
+            //return result;
+        },
+        async send_data_AI(result) {
+            this.loading = true;
+            // eslint-disable-next-line
+            const response = await axios.post("http://34.136.8.129:5000/post", result)
+                .then(function (response) {
+                    console.log(response);
+                    return response;
+                })
+                .catch(function (error) {
+                    console.log(error);
+                    return error;
+                });
+
+            return response;
+
+        },
+    }, 
+    
 }
 </script>

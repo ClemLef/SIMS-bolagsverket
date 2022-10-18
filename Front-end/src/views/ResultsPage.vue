@@ -63,6 +63,7 @@ export default {
     },
     computed: {
         formTaken(){
+            
             // if a result cookie is present
             if(this.sustainability != null){
                 return "ResultsVisible";
