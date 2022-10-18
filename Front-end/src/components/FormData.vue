@@ -239,7 +239,7 @@ export default {
             // eslint-disable-next-line
             const response = await axios.post("http://34.136.8.129:5000/post", result)
                 .then(function (response) {
-                    //console.log(response);
+                    console.log(response);
                     return response;
                 })
                 .catch(function (error) {
