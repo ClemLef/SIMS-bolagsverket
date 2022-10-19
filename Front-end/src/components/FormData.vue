@@ -74,6 +74,8 @@
                             </v-btn-toggle>
                         </v-flex>
 
+                        <!-- {{debugFunction(tab.answers)}} -->
+
 
 
                     </label>
@@ -176,7 +178,16 @@ export default {
                 console.log(" ");
             }
         },
-        calcFormResult() {
+        calcFormResult() { 
+
+            var numberOfTabs = this.tabData.length;
+            var result = [];
+            for (var i = 0; i < numberOfTabs; i++) {
+                this.calcTabResult(this.tabData[i]);
+                result.push(this.tabData[i].result);
+            }
+            console.log(result);
+
             this.loading = true;
             console.log("Form result: ", [0,0,0,0]);
             (async () => {
