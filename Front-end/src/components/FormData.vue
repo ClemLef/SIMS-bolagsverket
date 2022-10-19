@@ -81,21 +81,20 @@
 
 
                 <!-- KOLLA PÅ TABS.length FÖR ATT KANSKE SE HUR MÅNGA TABS DET FINNS, OCH TA BOR "PREV" och "NEXT" IFALL VI ÄR PÅ SISTA ELLER FÖRSTA SIDAN -->
-
+                <!-- {{debugFunction(tabData.length - 1)}} -->
                 <!-- Prev and Next button, increment or decrement current tab counter -->
                 <v-row class="mx-8 my-10">
-                    <v-btn class="mx-2 my-4" depressed color="primary" large @click="prevTab();">
+                    <v-btn v-show="currentTab != 0" class="mx-2 my-4" depressed color="primary" large @click="prevTab();">
                         <v-icon left> mdi-arrow-left </v-icon>
                         Prev
                     </v-btn>
 
-                    <v-btn v-show="currentTab != 3" class="mx-2 my-4" depressed color="success" large @click="nextTab();">
+                    <v-btn v-show="currentTab != tabData.length - 1" class="mx-2 my-4" depressed color="success" large @click="nextTab();">
                         Next
                         <v-icon right> mdi-arrow-right </v-icon>
                     </v-btn>
 
-                    <!-- kanske inte behöver v-show eftersom hela kortet endast visas med v-show=currenttab -->
-                    <v-btn v-show="currentTab == 3" class="mx-2 my-4" :loading="loading" depressed color="accent" large
+                    <v-btn v-show="currentTab == tabData.length - 1" class="mx-2 my-4" :loading="loading" depressed color="accent" large
                         @click="calcFormResult()"> Result
                         <v-icon right> mdi-form-select </v-icon>
                     </v-btn>
@@ -110,17 +109,18 @@
 
 <script>
 import axios from 'axios';
+
+
 export default {
+
     props: {
         tabData: Array,
         answerButtonSet_1: Array,
         answerButtonSet_2: Array,
         answerButtonSet_3: Array,
-        answerSets: Array,
-        questionsList: Object,
     },
     data: () => ({
-        currentTab: 1,
+        currentTab: 0,
         loading: false,
     }),
     methods: {
@@ -188,11 +188,11 @@ export default {
             })()
         },
         prevTab() {
-            if (this.currentTab != 1)
+            if (this.currentTab != 0)
                 this.currentTab -= 1;
         },
         nextTab() {
-            if (this.currentTab != 5)
+            if (this.currentTab != 3)
                 this.currentTab += 1;
         },
         setCurrentTab(selectedTab) {
