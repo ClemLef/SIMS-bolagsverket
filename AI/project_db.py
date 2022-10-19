@@ -45,15 +45,15 @@ if __name__ == "__main__":
 def get_source(url):
     try:
         session = HTMLSession()
+        print(session)
         response = session.get(url)
+        print(response)
         return response
     except requests.exceptions.RequestException as e:
         print(e)
 def get_results(query): 
     query = urllib.parse.quote_plus(query)
-    print(query)
     response = get_source("https://www.google.com/search?q=" + query)
-    print(response)
     return response
 
 def parse_results(response):
