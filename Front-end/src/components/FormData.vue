@@ -74,25 +74,29 @@
                             </v-btn-toggle>
                         </v-flex>
 
+                        <!-- {{debugFunction(tab.answers)}} -->
+
 
 
                     </label>
                 </v-card-text>
 
+
+                <!-- KOLLA PÅ TABS.length FÖR ATT KANSKE SE HUR MÅNGA TABS DET FINNS, OCH TA BOR "PREV" och "NEXT" IFALL VI ÄR PÅ SISTA ELLER FÖRSTA SIDAN -->
+                <!-- {{debugFunction(tabData.length - 1)}} -->
                 <!-- Prev and Next button, increment or decrement current tab counter -->
                 <v-row class="mx-8 my-10">
-                    <v-btn class="mx-2 my-4" depressed color="primary" large @click="prevTab();">
+                    <v-btn v-show="currentTab != 0" class="mx-2 my-4" depressed color="primary" large @click="prevTab();">
                         <v-icon left> mdi-arrow-left </v-icon>
                         Prev
                     </v-btn>
 
-                    <v-btn v-show="currentTab != 3" class="mx-2 my-4" depressed color="success" large @click="nextTab();">
+                    <v-btn v-show="currentTab != tabData.length - 1" class="mx-2 my-4" depressed color="success" large @click="nextTab();">
                         Next
                         <v-icon right> mdi-arrow-right </v-icon>
                     </v-btn>
 
-                    <!-- kanske inte behöver v-show eftersom hela kortet endast visas med v-show=currenttab -->
-                    <v-btn v-show="currentTab == 3" class="mx-2 my-4" :loading="loading" depressed color="accent" large
+                    <v-btn v-show="currentTab == tabData.length - 1" class="mx-2 my-4" :loading="loading" depressed color="accent" large
                         @click="calcFormResult()"> Result
                         <v-icon right> mdi-form-select </v-icon>
                     </v-btn>
@@ -108,6 +112,7 @@
 <script>
 import axios from 'axios';
 
+
 export default {
 
     props: {
@@ -115,26 +120,20 @@ export default {
         answerButtonSet_1: Array,
         answerButtonSet_2: Array,
         answerButtonSet_3: Array,
-        answerSets: Array,
-        questionsList: Object,
     },
     data: () => ({
-        currentTab: 1,
+        currentTab: 0,
         loading: false,
     }),
-
     methods: {
-
         hasSubQuestion(currentQuestion) {
             if (currentQuestion.hasSubQuestion == true)
                 return true;
             else
                 return false;
         },
-
         // Uses current question to find whats subquestions that belong to it, display or hides those subquestions
         showSubQuestion(currentQuestion, allQuestion, index) {
-
             // set Show = true to all question with sub-questiongroup
             var showSubQuestion = currentQuestion.showSubQuestionList[index];
             var subQuestionGroup = currentQuestion.subQuestionGroup;
@@ -156,14 +155,11 @@ export default {
                 }
             }
         },
-
         calcTabResult(tab) {
             var numberOfAnswers = tab.answers.length;
             var numberOfAnswersWithValue = 0;
             var tabResult = 0;
-
             if (numberOfAnswers > 0) { // add zero as the result of tab of no buttons are pressed
-
                 for (var i = 0; i < numberOfAnswers; i++) {
                     if (tab.questions[i].hasSubQuestion) {
                         tabResult += 0;
@@ -182,46 +178,37 @@ export default {
                 console.log(" ");
             }
         },
-
-        calcFormResult() {
+        calcFormResult() { 
 
             var numberOfTabs = this.tabData.length;
             var result = [];
-
             for (var i = 0; i < numberOfTabs; i++) {
                 this.calcTabResult(this.tabData[i]);
                 result.push(this.tabData[i].result);
-
-                // console.log(this.tabData.answers);
-                // console.log("length: " + this.tabData[i].answers.length);
             }
-            console.log("Form result: ", result);
+            console.log(result);
+
+            this.loading = true;
+            console.log("Form result: ", [0,0,0,0]);
             (async () => {
-                var aiResult = await this.send_data_AI(result);
-                console.log(aiResult.data)
+                var aiResult = await this.send_data_AI([0,0,0,0]);
                 window.$cookies.config('1d');
                 window.$cookies.set('isSustainable', aiResult.data);
+                //console.log(document.cookie);
                 this.$router.push('/results')
             })()
-
-
-
-            //return result;
         },
         prevTab() {
-            if (this.currentTab != 1)
+            if (this.currentTab != 0)
                 this.currentTab -= 1;
         },
-
         nextTab() {
-            if (this.currentTab != 5)
+            if (this.currentTab != 3)
                 this.currentTab += 1;
         },
-
         setCurrentTab(selectedTab) {
             this.currentTab = selectedTab;
         },
-
         showInfo(question) {
             if (question.showInfo == true) {
                 question.showInfo = false;
@@ -239,16 +226,14 @@ export default {
             // eslint-disable-next-line
             const response = await axios.post("http://34.136.8.129:5000/post", result)
                 .then(function (response) {
-                    //console.log(response);
+                    console.log(response);
                     return response;
                 })
                 .catch(function (error) {
-                    //console.log(error);
+                    console.log(error);
                     return error;
                 });
-
             return response;
-
         },
     }
 }

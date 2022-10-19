@@ -18,13 +18,15 @@
 
 
 <script>
-
 export default {
-
+    data: () => ({
+        loading: false,
+    }),
     methods: {
         redirect() {
             this.$router.push('/form')
         },
-    }
+    }, 
+    
 }
 </script>
