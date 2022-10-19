@@ -48,3 +48,7 @@ Route::get('categories', function() {
 Route::post('articles', function(Request $request) {
     return Article::create($request->all);
 });
+
+Route::get('articles', function() {
+    return Article::all();
+});
