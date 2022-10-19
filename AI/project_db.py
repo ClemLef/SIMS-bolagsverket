@@ -75,6 +75,7 @@ def google_search(query):
     try:
         response = get_results(query)
         print(response)
+        print(parse_results(response))
         return parse_results(response)
     except IndexError:
         return "error getting the link"
