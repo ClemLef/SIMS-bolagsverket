@@ -43,3 +43,7 @@ Route::get('categories', function() {
     // this will return a JSON structure. This will be cleaned up later.
     return Categories::all();
 });
+
+Route::post('articles', function(Request $request) {
+    return Article::create($request->all);
+});
