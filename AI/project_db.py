@@ -45,9 +45,7 @@ if __name__ == "__main__":
 def get_source(url):
     try:
         session = HTMLSession()
-        print(session)
         response = session.get(url)
-        print(response)
         return response
     except requests.exceptions.RequestException as e:
         print(e)
@@ -323,11 +321,11 @@ def hello_valll():
     if 2 >= eco_ans:
         aiResultPost['eco'] = 0
 
-    links_ec_org =google_search("economic sustainability.org")    
+    """ links_ec_org =google_search("economic sustainability.org")    
     aiResultPost['eco_link_1'] = links_ec_org[0]
     links_ec_edu =google_search("economic sustainability.edu")     
     aiResultPost['eco_link_2'] = links_ec_edu[0]
-    aiResultPost['eco_link_3'] = links_ec_edu[1]
+    aiResultPost['eco_link_3'] = links_ec_edu[1] """
 
     if 2 < soc_ans:
         aiResultPost['soc'] = 1
@@ -335,12 +333,12 @@ def hello_valll():
     if 2 >= soc_ans:
         aiResultPost['soc'] = 0
     
-    links_ec_org =google_search("social sustainability.org")     
+    """ links_ec_org =google_search("social sustainability.org")     
     aaa= links_ec_org[0]
     aiResultPost['soc_link_1'] = links_ec_org[0]
     links_ec_edu =google_search("social sustainability.edu")    
     aiResultPost['soc_link_2'] = links_ec_edu[0]
-    aiResultPost['soc_link_3'] = links_ec_edu[1]
+    aiResultPost['soc_link_3'] = links_ec_edu[1] """
         
     if 2 < env_ans:
         aiResultPost['env'] = 1
@@ -348,11 +346,11 @@ def hello_valll():
     if 2 >= env_ans:
         aiResultPost['env'] = 0
 
-    links_env_org =google_search("environment sustainability.org")     
+    """ links_env_org =google_search("environment sustainability.org")     
     aiResultPost['env_link_1'] = links_env_org[0]
     links_env_edu =google_search("environment sustainability.edu")     
     aiResultPost['env_link_2'] = links_env_edu[0]
-    aiResultPost['env_link_3'] = links_env_edu[1]
+    aiResultPost['env_link_3'] = links_env_edu[1] """
     
     if 2 < inf_ans:
         aiResultPost['inf'] = 1
@@ -360,11 +358,11 @@ def hello_valll():
     if 2 >= inf_ans:
         aiResultPost['inf'] = 0
     
-    links_enf_org =google_search("environment sustainability.org")     
+    """ links_enf_org =google_search("environment sustainability.org")     
     aiResultPost['inf_link_1'] = links_enf_org[0]
     links_enf_edu =google_search("environment sustainability.edu")     
     aiResultPost['inf_link_2'] = links_enf_edu[0]
-    aiResultPost['inf_link_3'] = links_enf_edu[1]
+    aiResultPost['inf_link_3'] = links_enf_edu[1] """
        
     return json.dumps(aiResultPost)
 
