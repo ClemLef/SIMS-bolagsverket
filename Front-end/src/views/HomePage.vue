@@ -18,6 +18,7 @@
 
 
 <script>
+document.title = 'Sustainability Barometer'
 export default {
     data: () => ({
         loading: false,
