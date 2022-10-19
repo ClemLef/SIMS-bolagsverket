@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Models\Questions;
 use App\Models\Categories;
+use App\Models\Article;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,4 +43,13 @@ Route::get('categories', function() {
     // If the Content-Type and Accept headers are set to 'application/json', 
     // this will return a JSON structure. This will be cleaned up later.
     return Categories::all();
+});
+
+Route::post('articles', function(Request $request) {
+    return Article::create($request->all());
+    
+});
+
+Route::get('articles', function() {
+    return Article::all();
 });
