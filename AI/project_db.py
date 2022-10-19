@@ -72,10 +72,9 @@ def parse_results(response):
         output.append(item)
     return output
 def google_search(query):
-	try:
+    try:
         response = get_results(query)
-		return parse_results(response)
-        
+        return parse_results(response)
     except e:
         return "error getting the link"
 
