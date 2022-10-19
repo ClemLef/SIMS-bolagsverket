@@ -80,7 +80,7 @@
 
                         
                         <!-- Second row of content contains answer buttons -->
-                        <v-flex class="mt-5">
+                        <v-flex class="mt-5 mr-10">
                             <!-- If a button is toggled, the value of that button is saved in an array "answers" for that tab-->
                             <!-- Answer set 1, show buttons for option: Yes, no -->
                             <v-btn-toggle v-model="question.showSubQuestionList[index]" v-if="question.answerSet == 1">
