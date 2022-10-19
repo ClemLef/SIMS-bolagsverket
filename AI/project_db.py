@@ -1,5 +1,7 @@
 
 #from django.shortcuts import redirect
+from ast import If
+from symbol import if_stmt
 from flask import Flask, redirect, url_for, render_template
 from csv import reader
 from math import sqrt
@@ -29,6 +31,7 @@ aiResultPost = {}
     sum_str = str(sum)
     return sum_str """
 
+#Communication
 @app.route('/post', methods=['POST'])
 def result():
     print(request.json)
@@ -38,45 +41,7 @@ if __name__ == "__main__":
     app.run()
  
 
-def get_source(url):
-
-    try:
-        session = HTMLSession()
-        response = session.get(url)
-        return response
-
-    except requests.exceptions.RequestException as e:
-        print(e)
-
-def scrape_google(query):  
-
-    query = urllib.parse.quote_plus(query)  # str("environment sustainability") 
-    response = get_source("https://www.google.com/search?q=" + query)      #"https://www.google.co.uk/search?q="
-
-
-    links = list(response.html.absolute_links)
-	
-    google_domains = ('https://www.google.', 
-                      'https://google.', 
-                      'https://webcache.googleusercontent.', 
-                      'http://webcache.googleusercontent.', 
-                      'https://policies.google.',
-                      'https://support.google.',
-					  'https://translate.google.',
-                      'https://maps.google.',
-					  'https://www.com',
-					  'https://scholar.google.')
-
-    for url in links[:]:
-        if url.startswith(google_domains):
-            links.remove(url)
-	
-				
-    return links	
-
-
-###############
-##############################################
+#Get links
 def get_source(url):
     try:
         session = HTMLSession()
@@ -109,11 +74,10 @@ def parse_results(response):
 def google_search(query):
     response = get_results(query)
     return parse_results(response)
-#################################################
-#############################################
+ 
 
 
-# Load a CSV file         
+# Load a CSV file that has the dataset        
 def load_csv(filename):
 	dataset = list()
 	with open(filename, 'r') as file:
@@ -128,10 +92,7 @@ def load_csv(filename):
 def str_column_to_float(dataset, column):
 	for row in dataset:
 		row[column] = float(row[column].strip())
-		##########print(row)
- 
-
-
+		#print(row)
 
 global thislist_val
 thislist_val = []
@@ -152,11 +113,9 @@ def str_column_to_int(dataset, column):
 		value_value = value
 		global value_i
 		value_i = i
-
 		thislist_val.append(value)
 		thislist_i.append(i)
 		
-
 	for row in dataset:
 		row[column] = lookup[row[column]]
 		#print(lookup)
@@ -164,9 +123,8 @@ def str_column_to_int(dataset, column):
  
 
 
-################################
-
-# Split a dataset into k folds
+#Evaluate the models algorithm 
+#Split a dataset into k folds
 def cross_validation_split(dataset, n_folds):
 	dataset_split = list()
 	dataset_copy = list(dataset)
@@ -179,7 +137,6 @@ def cross_validation_split(dataset, n_folds):
 		dataset_split.append(fold)
 	return dataset_split
  
-
 # Calculate accuracy percentage
 def accuracy_metric(actual, predicted):
 	correct = 0
@@ -188,8 +145,6 @@ def accuracy_metric(actual, predicted):
 			correct += 1
 	return correct / float(len(actual)) * 100.0
  
-
-
 # Evaluate an algorithm using a cross validation split
 def evaluate_algorithm(dataset, algorithm, n_folds, *args):
 	folds = cross_validation_split(dataset, n_folds)
@@ -211,13 +166,9 @@ def evaluate_algorithm(dataset, algorithm, n_folds, *args):
 		actual = [row[-1] for row in fold]
 		accuracy = accuracy_metric(actual, predicted)
 		#print(accuracy)
-		#print(len(train_set))    ############################
-		#print(len(test_set))     ############################
 		scores.append(accuracy)
 	return scores
-
-################################
-
+#
 
 # Split the dataset by class values, returns a dictionary
 def separate_by_class(dataset):
@@ -252,7 +203,7 @@ def summarize_by_class(dataset):
 	summaries = dict()
 	for class_value, rows in separated.items():
 		summaries[class_value] = summarize_dataset(rows)
-		#print(summaries)                      ######################################
+		#print(summaries)                    
 	return summaries
  
 # Calculate the Gaussian probability distribution function for x
@@ -280,15 +231,13 @@ def predict(summaries, row):
 			best_prob = probability
 			best_label = class_value
 			#print('best_label:best_prob', best_label,best_prob)
-                    
+          
 	return best_label
-
-
 
 # Naive Bayes Algorithm
 def naive_bayes(train, test):
 	summarize = summarize_by_class(train)
-	#####################3##########################print(summarize)
+	#print(summarize)
 	predictions = list()
 	for row in test:
 		output = predict(summarize, row)
@@ -296,8 +245,7 @@ def naive_bayes(train, test):
 		#print(predictions)
 	return(predictions)
 
-
-# Make a prediction with Naive Bayes on ???????? Dataset
+# Make a prediction with Naive Bayes on the dataset
 seed(1)
 filename = 'testdata.csv'
 dataset = load_csv(filename)
@@ -305,56 +253,23 @@ for i in range(len(dataset[0])-1):
 	str_column_to_float(dataset, i)
 # convert class column to integers
 str_column_to_int(dataset, len(dataset[0])-1)
-#print(dataset)
-#print(dataset[0])
-
 model = summarize_by_class(dataset)
-#print(model , "mmmmmmmmmmm")
 # evaluate algorithm
 n_folds = 5
 scores = evaluate_algorithm(dataset, naive_bayes, n_folds)
 print('Scores: %s' % scores)
 print('Mean Accuracy: %.3f%%' % (sum(scores)/float(len(scores))))
 
-
-
-
-"""
-#to communicate with database
-
-# Get connection
-db = _connect()
- # Get cursor
-cursor = db._cursor()
- # Select query to fetch information
-query = "SELECT  social,economical,envirment,influence FROM result_question WHERE urc=457826;"
-cursor.execute(query)
-#cursor.execute("INSERT INTO ai (%s)", prediction)
-records = cursor.fetchall()
- # save to array list
-
-for record in records:
-    row= list(record)
-    print(row)
-    #row.append(record)
-
-#print(row_list)
-db._close()
-
-"""
-
 ##------------ put here the data from the form---------------##
 row = []
 print("Initial blank List: ")
 row = [1,2,2,2]
 print(row)
- 
-# Addition of Elements
-#print("\nList after Addition of Three elements: ")
-
+#run the model
 def hello_valll():
+	#call predict Function 
     sum = predict(model, row)
-
+	#Get the final answer from the model by looking to the predict answer  
     global ans_final
     if thislist_val[0] == "notsustainabil" and thislist_i[0]== 1 and sum== 1:
         ans_final="NOT sustainable"
@@ -374,205 +289,73 @@ def hello_valll():
         ans_final="NOT sustainable"
     else: 
         ans_final="Sustainable"
-
-    #print("ans_final:",ans_final )
-
+	#print("The final answer:",ans_final )
 
     fin_list = []
-
     aiResultPost['global'] = ans_final
-
     #fin_list.append(ans_final_json)
 
-    aa= row[0]
-    bb= row[1]
-    cc= row[2]
-    dd= row[3]
-    print(aa)
-    print(bb)
-    print(cc)
-    print(dd)
+    eco_ans= row[0]
+    soc_ans= row[1]
+    env_ans= row[2]
+    inf_ans= row[3]
+    print(eco_ans)
+    print(soc_ans)
+    print(env_ans)
+    print(inf_ans)
     #'''
 
-
     # show links
-    if 2 >= aa:
+
+	
+    if 2 < eco_ans:
+        aiResultPost['eco'] = 1
+
+    if 2 >= eco_ans:
         aiResultPost['eco'] = 0
-        #links_ec_org =scrape_google("social sustainability.org")
-        links_ec_org =google_search("economic sustainability.org")     # Scraping of Google SERPs isn't a violation of DMCA or CFAA. https://dataforseo.com/blog/is-scraping-google-serps-legal
-        #aiResultPost['ecoLinks'] = links_ec_org[0]
-        #aaa= links_ec_org[0]
-        #fin_list.append(aaa)
-        #bbb= links_ec_org[1]
-        #fin_list.append(bbb)
-        #print(aaa)
-        #print(bbb)
 
-    if 2 >= aa:
-        links_ec_edu =google_search("economic sustainability.edu")     # environment Scraping of Google SERPs isn't a violation of DMCA or CFAA. https://dataforseo.com/blog/is-scraping-google-serps-legal
-        aaaa= links_ec_edu[0]
-        #fin_list.append(aaaa)
-        aiResultPost['what1'] = links_ec_edu[0]
-        bbbb= links_ec_edu[1]
-        #fin_list.append(bbbb)
-        aiResultPost['what2'] = links_ec_edu[1]
-        print(aaaa)
-        print(bbbb)
+    links_ec_org =google_search("economic sustainability.org")    
+    aiResultPost['eco_link_1'] = links_ec_org[0]
+    links_ec_edu =google_search("economic sustainability.edu")     
+    aiResultPost['eco_link_2'] = links_ec_edu[0]
+    aiResultPost['eco_link_3'] = links_ec_edu[1]
 
-    if 2 >= bb:
-        #soc="soc is not sus"
-        
-        #fin_list.append(soc)
+    if 2 < soc_ans:
+        aiResultPost['soc'] = 1
 
-        links_ec_org =google_search("social sustainability.org")     # Scraping of Google SERPs isn't a violation of DMCA or CFAA. https://dataforseo.com/blog/is-scraping-google-serps-legal
-        aaa= links_ec_org[0]
-        #aiResultPost['socLinks'] = links_ec_org[0]
-        #fin_list.append(aaa)
-        #bbb= links_ec_org[1]
-        #fin_list.append(bbb)
-        print(aaa)
-       #print(bbb)
-
-    if 2 >= bb:
-        links_ec_edu =google_search("social sustainability.edu")     # environment Scraping of Google SERPs isn't a violation of DMCA or CFAA. https://dataforseo.com/blog/is-scraping-google-serps-legal
-        aaaa= links_ec_edu[0]
-        #fin_list.append(aaaa)
-        aiResultPost['what3'] = links_ec_edu[0]
-        bbbb= links_ec_edu[1]
-        aiResultPost['what4'] = links_ec_edu[1]
-        #fin_list.append(bbbb)
-        print(aaaa)
-        print(bbbb)
+    if 2 >= soc_ans:
+        aiResultPost['soc'] = 0
     
-    if 2 >= cc:
-        #env="envi is not sus"
-        #fin_list.append(env)
+    links_ec_org =google_search("social sustainability.org")     
+    aaa= links_ec_org[0]
+    aiResultPost['soc_link_1'] = links_ec_org[0]
+    links_ec_edu =google_search("social sustainability.edu")    
+    aiResultPost['soc_link_2'] = links_ec_edu[0]
+    aiResultPost['soc_link_3'] = links_ec_edu[1]
+        
+    if 2 < env_ans:
+        aiResultPost['env'] = 1
 
-        links_env_org =google_search("environment sustainability.org")     # Scraping of Google SERPs isn't a violation of DMCA or CFAA. https://dataforseo.com/blog/is-scraping-google-serps-legal
-        aaa= links_env_org[0]
-        #fin_list.append(aaa)
-        #aiResultPost['envLinks'] = links_env_org[0]
-        #bbb= links_env_org[1]
-        #fin_list.append(bbb)
-        print(aaa)
-        #print(bbb)
+    if 2 >= env_ans:
+        aiResultPost['env'] = 0
 
-    if 2 >= cc:
-        links_env_edu =google_search("environment sustainability.edu")     # environment Scraping of Google SERPs isn't a violation of DMCA or CFAA. https://dataforseo.com/blog/is-scraping-google-serps-legal
-        aaaa= links_env_edu[0]
-        #fin_list.append(aaaa)
-        aiResultPost['what5'] = links_env_edu[0]
-        bbbb= links_env_edu[1]
-        aiResultPost['what6'] = links_env_edu[1]
-        #fin_list.append(bbbb)
-        print(aaaa)
-        print(bbbb)
+    links_env_org =google_search("environment sustainability.org")     
+    aiResultPost['env_link_1'] = links_env_org[0]
+    links_env_edu =google_search("environment sustainability.edu")     
+    aiResultPost['env_link_2'] = links_env_edu[0]
+    aiResultPost['env_link_3'] = links_env_edu[1]
+    
+    if 2 < inf_ans:
+        aiResultPost['inf'] = 1
 
-    if 2 >= dd:
-        #enf="enf is not sus"
-        #fin_list.append(enf)
-
-        links_enf_org =google_search("environment sustainability.org")     # Scraping of Google SERPs isn't a violation of DMCA or CFAA. https://dataforseo.com/blog/is-scraping-google-serps-legal
-        aaa= links_enf_org[0]
-        #aiResultPost['enfLinks'] = links_enf_org[0]
-        #fin_list.append(aaa)
-        #bbb= links_enf_org[1]
-        #fin_list.append(bbb)
-        print(aaa)
-        #print(bbb)
-
-    if 2 >= dd:
-        links_enf_edu =google_search("environment sustainability.edu")     # environment Scraping of Google SERPs isn't a violation of DMCA or CFAA. https://dataforseo.com/blog/is-scraping-google-serps-legal
-        aaaa= links_enf_edu[0]
-        aiResultPost['what7'] = links_enf_edu[0]
-        #fin_list.append(aaaa)
-        bbbb= links_enf_edu[1]
-        aiResultPost['what8'] = links_enf_edu[1]
-        #fin_list.append(bbbb)
-        print(aaaa)
-        print(bbbb)
-    #return fin_list
+    if 2 >= inf_ans:
+        aiResultPost['inf'] = 0
+    
+    links_enf_org =google_search("environment sustainability.org")     
+    aiResultPost['inf_link_1'] = links_enf_org[0]
+    links_enf_edu =google_search("environment sustainability.edu")     
+    aiResultPost['inf_link_2'] = links_enf_edu[0]
+    aiResultPost['inf_link_3'] = links_enf_edu[1]
+       
     return json.dumps(aiResultPost)
 
-
-'''
-    if 2 >= aa:
-        eco="eco is not sus"
-        fin_list.append(eco)
-    if 2 >= bb:
-        soc="soc is not sus"
-        fin_list.append(soc)
-    if 2 >= cc:
-        env="env is not sus"
-        fin_list.append(env)
-    if 2 >= dd:
-        infl="infl is not sus"
-        fin_list.append(infl)
-'''
-
-#print('Data=%s, Predicted: %s' % (row, label))
-
-#print(label , "labelllllllllll")
-
-#print(value_value , "value_value  laste")
-#print(value_i , "value_i  laste")
-
-#print(value_value, "value_value value_value value_value")
-#value_i
-'''
-global ans_final
-if thislist_val[0] == "notsustainabil" and thislist_i[0]== 1 and label== 1:
-  ans_final="notsustainabil"
-elif thislist_val[0] == "notsustainabil" and thislist_i[0]== 0 and label== 0:
-  ans_final="notsustainabil"
-elif thislist_val[0] == "notsustainabil" and thislist_i[0]== 0 and label== 1:
-  ans_final="notsustainabil"
-elif thislist_val[0] == "notsustainabil" and thislist_i[0]== 1 and label== 0:
-  ans_final="notsustainabil"
-elif thislist_val[1] == "notsustainabil" and thislist_i[1]== 1 and label== 1:
-  ans_final="notsustainabil"
-elif thislist_val[1] == "notsustainabil" and thislist_i[1]== 0 and label== 0:
-  ans_final="notsustainabil"
-elif thislist_val[1] == "notsustainabil" and thislist_i[1]== 1 and label== 0:
-  ans_final="notsustainabil"
-elif thislist_val[1] == "notsustainabil" and thislist_i[1]== 0 and label== 1:
-  ans_final="notsustainabil"
-else: 
-	ans_final="sustainabil"
-
- 
-print("ans_final:",ans_final )
-
-'''
-
-#print(thislist_val)
-#print(thislist_i)
-
-'''
-# show the nummber
-aa= row[0]
-bb= row[1]
-cc= row[2]
-dd= row[3]
-print(aa)
-print(bb)
-print(cc)
-print(dd)
-
-
-# show links
-if 4 > aa:
-	links =scrape_google("environment sustainability.org")     # Scraping of Google SERPs isn't a violation of DMCA or CFAA. https://dataforseo.com/blog/is-scraping-google-serps-legal
-	aaa= links[0]
-	bbb= links[1]
-	print(aaa)
-	print(bbb)
-
-if 4 > aa:
-	linkss =scrape_google("environment sustainability.edu")     # Scraping of Google SERPs isn't a violation of DMCA or CFAA. https://dataforseo.com/blog/is-scraping-google-serps-legal
-	aaaa= linkss[0]
-	bbbb= linkss[1]
-	print(aaaa)
-	print(bbbb)
-
-'''
