@@ -73,6 +73,8 @@
 <script>
 import ResultsVisibleSustainable from '@/components/ResultsVisibleSustainable.vue';
 import ResultsVisibleNotSustainable from '@/components/ResultsVisibleNotSustainable.vue'
+import ResultsAPI from '../controller/ResultsAPI.js'
+
 export default {
     components: {
         // eslint-disable-next-line
@@ -83,6 +85,14 @@ export default {
 
 
     methods: {
+
+        // loads all tabs from db and puts them into tabData object
+        async loadArticles() {
+            const request = await ResultsAPI.getArticles();
+            var articles = request.data;
+            console.log(articles[0].title)
+        },
+
         redirectLink(link) {
             window.open(link);
         },
@@ -136,7 +146,10 @@ export default {
         getCookie() {
             return window.$cookies.get('isSustainable');
         },
-    }
+    },
+    created() {
+        this.loadArticles();    
+    },
 }
 
 
