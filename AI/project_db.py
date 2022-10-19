@@ -51,7 +51,9 @@ def get_source(url):
         print(e)
 def get_results(query): 
     query = urllib.parse.quote_plus(query)
+    print(query)
     response = get_source("https://www.google.com/search?q=" + query)
+    print(response)
     return response
 
 def parse_results(response):
