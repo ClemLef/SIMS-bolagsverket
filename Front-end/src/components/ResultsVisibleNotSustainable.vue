@@ -4,18 +4,14 @@
         sustainability.
         Don't worry, we've gathered some useful links for you to read and explore.
         <v-item-group class="mt-8">
-
             <v-container>
                 <v-row>
                     <v-col v-for="(article, index) in articles" :key="article[index]" cols="12" md="4">
                         <v-item>
-
                             <v-card elevation="5" class="mx-auto d-flex flex-column" height="100%" max-width="400">
                                 <v-img :src="require('../assets/card_background_transparent.png')">
                                     <v-card-title class="justify-center"> {{ article.title }} </v-card-title>
-
                                     <v-divider></v-divider>
-
                                     <v-card-text class="text--primary">
                                         <div>{{ article.description }}</div>
                                     </v-card-text>
@@ -27,12 +23,10 @@
                                     </v-card-actions>
                                 </v-img>
                             </v-card>
-
                         </v-item>
                     </v-col>
                 </v-row>
             </v-container>
-
         </v-item-group>
     </v-expansion-panel-content>
 </template>
