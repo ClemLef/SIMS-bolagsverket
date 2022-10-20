@@ -229,9 +229,8 @@ export default {
             console.log(result); // Log final results
 
             this.loading = true;
-            console.log("Form result: ", [0,0,0,0]);
             (async () => {
-                var aiResult = await this.send_data_AI([0,0,0,0]);
+                var aiResult = await this.send_data_AI(result);
                 window.$cookies.config('1d');
                 window.$cookies.set('isSustainable', aiResult.data);
                 //console.log(document.cookie);

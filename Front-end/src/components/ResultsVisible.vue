@@ -22,7 +22,7 @@
                         </v-icon>
                     </template>
                 </v-expansion-panel-header>
-                <component :is="displaySustainable(getCookie.eco)"></component>
+                <component :articles='articlesEco' :is="displaySustainable(getCookie.eco)"></component>
             </v-expansion-panel>
 
             <v-expansion-panel>
@@ -35,7 +35,7 @@
                         </v-icon>
                     </template>
                 </v-expansion-panel-header>
-                <component :is="displaySustainable(getCookie.soc)"></component>
+                <component :articles='articlesSoc' :is="displaySustainable(getCookie.soc)"></component>
             </v-expansion-panel>
 
             <v-expansion-panel>
@@ -48,7 +48,7 @@
                         </v-icon>
                     </template>
                 </v-expansion-panel-header>
-                <component :is="displaySustainable(getCookie.env)"></component>
+                <component :articles='articlesEnv' :is="displaySustainable(getCookie.env)"></component>
             </v-expansion-panel>
 
 
@@ -62,7 +62,7 @@
                         </v-icon>
                     </template>
                 </v-expansion-panel-header>
-                <component :is="displaySustainable(getCookie.inf)"></component>
+                <component :articles='articlesInf' :is="displaySustainable(getCookie.inf)" ></component>
             </v-expansion-panel>
         </v-expansion-panels>
     </div>
@@ -76,6 +76,7 @@ import ResultsVisibleNotSustainable from '@/components/ResultsVisibleNotSustaina
 import ResultsAPI from '../controller/ResultsAPI.js'
 
 export default {
+
     components: {
         // eslint-disable-next-line
         ResultsVisibleSustainable,
@@ -83,14 +84,37 @@ export default {
         ResultsVisibleNotSustainable,
     },
 
+    data: () => ({
+        articles: {},
+        articlesEco: [],
+        articlesSoc: [],
+        articlesEnv: [],
+        articlesInf: [],
+    }),
 
     methods: {
 
-        // loads all tabs from db and puts them into tabData object
         async loadArticles() {
             const request = await ResultsAPI.getArticles();
-            var articles = request.data;
-            console.log(articles[0].title)
+            this.articles = request.data;
+            for (let i = 0; i < 9; i++) { // /!\ change the hard coded 9 
+                switch (this.articles[i].category) {
+                    case 0:
+                        this.articlesEco.push(this.articles[i]);
+                        break;
+                    case 1:
+                        this.articlesSoc.push(this.articles[i]);
+                        break;
+                    case 2:
+                        this.articlesEnv.push(this.articles[i]);
+                        break;
+                    case 3:
+                        this.articlesInf.push(this.articles[i]);
+                        break;
+                    default:
+                        break;
+                }
+            }
         },
 
         redirectLink(link) {
@@ -148,7 +172,8 @@ export default {
         },
     },
     created() {
-        this.loadArticles();    
+        this.loadArticles();
+        
     },
 }
 
