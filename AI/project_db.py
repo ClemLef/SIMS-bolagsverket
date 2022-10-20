@@ -35,7 +35,7 @@ aiResultPost = {}
 @app.route('/post', methods=['POST'])
 def result():
     print(request.json)
-    return hello_valll()
+    return hello_valll(request.json)
 
 if __name__ == "__main__":
     app.run()
@@ -267,13 +267,12 @@ scores = evaluate_algorithm(dataset, naive_bayes, n_folds)
 print('Scores: %s' % scores)
 print('Mean Accuracy: %.3f%%' % (sum(scores)/float(len(scores))))
 
-##---------------------------------------------- put here the data from the form---------------------------------------------------##
-row = request.json
-print("Initial blank List: ")
-#row = [1,2,2,2]
-print(row)
 #run the model
-def hello_valll():
+def hello_valll(form_results):
+    row = form_results
+    print("Initial blank List: ")
+    #row = [1,2,2,2]
+    print(row)
 	#call predict Function 
     sum = predict(model, row)
 	#Get the final answer from the model by looking to the predict answer  
