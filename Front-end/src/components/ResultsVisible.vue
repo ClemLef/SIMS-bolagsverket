@@ -149,9 +149,9 @@ export default {
         },
 
         titleSustainable() {
-            if (this.getCookie.global == "Sustainable") {
+            if (this.getCookie.global == 1) {
                 return true;
-            } else if (this.getCookie.global == "NOT Sustainable") {
+            } else if (this.getCookie.global == 0) {
                 return false;
             }
         },

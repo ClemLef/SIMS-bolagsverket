@@ -291,11 +291,11 @@ def hello_valll(form_results):
     elif thislist_val[1] == "notsustainabil" and thislist_i[1]== 1 and sum== 0:
         ans_final="NOT sustainable"
     elif thislist_val[1] == "notsustainabil" and thislist_i[1]== 0 and sum== 1:
-        ans_final="NOT sustainable"
+        ans_final=0 # 0 = not sustainable
     else: 
-        ans_final="Sustainable"
+        ans_final=1 # 1 = sustainable
 	#print("The final answer:",ans_final )
-
+    ans_final = 1
     aiResultPost['global'] = ans_final
 
     eco_ans= row[0]
