@@ -267,10 +267,10 @@ scores = evaluate_algorithm(dataset, naive_bayes, n_folds)
 print('Scores: %s' % scores)
 print('Mean Accuracy: %.3f%%' % (sum(scores)/float(len(scores))))
 
-##------------ put here the data from the form---------------##
-row = []
+##---------------------------------------------- put here the data from the form---------------------------------------------------##
+row = request.json
 print("Initial blank List: ")
-row = [1,2,2,2]
+#row = [1,2,2,2]
 print(row)
 #run the model
 def hello_valll():
