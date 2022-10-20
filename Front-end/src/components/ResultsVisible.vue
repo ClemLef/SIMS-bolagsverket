@@ -158,7 +158,6 @@ export default {
 
         displaySustainable(category) {
             if (category == 1) {
-                console.log("bite");
                 return "ResultsVisibleSustainable";
             } else if (category == 0) {
                 return "ResultsVisibleNotSustainable";

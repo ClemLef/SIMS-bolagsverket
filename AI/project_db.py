@@ -271,7 +271,6 @@ print('Mean Accuracy: %.3f%%' % (sum(scores)/float(len(scores))))
 def hello_valll(form_results):
     row = form_results
     print("Initial blank List: ")
-    #row = [1,2,2,2]
     print(row)
 	#call predict Function 
     sum = predict(model, row)
@@ -297,9 +296,7 @@ def hello_valll(form_results):
         ans_final="Sustainable"
 	#print("The final answer:",ans_final )
 
-    fin_list = []
     aiResultPost['global'] = ans_final
-    #fin_list.append(ans_final_json)
 
     eco_ans= row[0]
     soc_ans= row[1]
@@ -309,7 +306,6 @@ def hello_valll(form_results):
     print(soc_ans)
     print(env_ans)
     print(inf_ans)
-    #'''
 
     # show links
 
