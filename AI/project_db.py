@@ -295,7 +295,7 @@ def hello_valll(form_results):
     else: 
         ans_final=1 # 1 = sustainable
 	#print("The final answer:",ans_final )
-    ans_final = 1
+    
     aiResultPost['global'] = ans_final
 
     eco_ans= row[0]
