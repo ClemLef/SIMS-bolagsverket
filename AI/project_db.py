@@ -1,6 +1,7 @@
 
 #from django.shortcuts import redirect
 from ast import If
+from concurrent.futures.process import _sendback_result
 from symbol import if_stmt
 from flask import Flask, redirect, url_for, render_template
 from csv import reader
@@ -35,11 +36,17 @@ aiResultPost = {}
 @app.route('/post', methods=['POST'])
 def result():
     print(request.json)
-    return hello_valll(request.json)
+    resultAi = hello_valll(request.json)
+    send_results_db(resultAi)
+    return resultAi
 
 if __name__ == "__main__":
     app.run()
  
+def send_results_db(resultAi):
+	response = requests.post('http://34.135.11.174/api/ai_result', data = {
+		'global': resultAi['global']})
+	print(response)
 
 #Get links
 def get_source(url):

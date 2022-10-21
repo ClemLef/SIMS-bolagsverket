@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Models\Questions;
 use App\Models\Categories;
 use App\Models\Article;
+use App\Models\AiResults;
 
 /*
 |--------------------------------------------------------------------------
@@ -52,4 +53,14 @@ Route::post('articles', function(Request $request) {
 
 Route::get('articles', function() {
     return Article::all();
+});
+
+Route::post('ai_results', function(Request $request) {
+    return AiResults::create($request->all());
+    
+});
+
+Route::get('ai_results', function(Request $request) {
+    return AiResults::all();
+    
 });
