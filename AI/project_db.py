@@ -294,7 +294,7 @@ print('Scores: %s' % scores)
 print('Mean Accuracy: %.3f%%' % (sum(scores)/float(len(scores))))
 
 #run the model
-def hello_valll(form_results, unique_code):
+def hello_valll(form_results):
     row = form_results
     print("Initial blank List: ")
     print(row)
