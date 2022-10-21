@@ -44,7 +44,7 @@ if __name__ == "__main__":
     app.run()
  
 def send_results_db(resultAi):
-	print("res " + resultAi["global"])
+	print(resultAi["global"])
 	data = {"global": resultAi["global"]}
 	response = requests.post('http://34.135.11.174/api/ai_results', data)
 	print(response)
