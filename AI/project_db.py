@@ -44,8 +44,7 @@ if __name__ == "__main__":
     app.run()
  
 def send_results_db(resultAi):
-	print(type(resultAi))
-	print("res" + resultAi["global"])
+	print("res " + resultAi["global"])
 	data = {"global": resultAi["global"]}
 	response = requests.post('http://34.135.11.174/api/ai_results', data)
 	print(response)
@@ -286,19 +285,19 @@ def hello_valll(form_results):
 	#Get the final answer from the model by looking to the predict answer  
     global ans_final
     if thislist_val[0] == "notsustainabil" and thislist_i[0]== 1 and sum== 1:
-        ans_final="NOT sustainable"
+        ans_final=0
     elif thislist_val[0] == "notsustainabil" and thislist_i[0]== 0 and sum== 0:
-        ans_final="NOT sustainable"
+        ans_final=0
     elif thislist_val[0] == "notsustainabil" and thislist_i[0]== 0 and sum== 1:
-        ans_final="NOT sustainable"
+        ans_final=0
     elif thislist_val[0] == "notsustainabil" and thislist_i[0]== 1 and sum== 0:
-        ans_final="NOT sustainable"
+        ans_final=0
     elif thislist_val[1] == "notsustainabil" and thislist_i[1]== 1 and sum== 1:
-     ans_final="NOT sustainable"
+     ans_final=0
     elif thislist_val[1] == "notsustainabil" and thislist_i[1]== 0 and sum== 0:
-        ans_final="NOT sustainable"
+        ans_final=0
     elif thislist_val[1] == "notsustainabil" and thislist_i[1]== 1 and sum== 0:
-        ans_final="NOT sustainable"
+        ans_final=0
     elif thislist_val[1] == "notsustainabil" and thislist_i[1]== 0 and sum== 1:
         ans_final=0 # 0 = not sustainable
     else: 
