@@ -1,9 +1,7 @@
 <template>
   <FormData 
     :tabData="tabData" 
-    :answerButtonSet_1="answerButtonSet_1" 
-    :answerButtonSet_2="answerButtonSet_2"
-    :answerButtonSet_3="answerButtonSet_3">
+    :answerSets="answerSets">
   </FormData>
 </template>
 
@@ -53,13 +51,13 @@
         for(var i = 0; i < this.tabData.length; i++){
           for(var j = 0; j < allQuestions.length; j++){
 
-            var text = allQuestions[j].question;                    
+            var text = allQuestions[j].set_question;                    
             var info = allQuestions[j].help_information;           
             var category = allQuestions[j].category;                
-            var answerSet = allQuestions[j].set_question;          
-            var hasSubQuestion = allQuestions[j].has_sub_questions; 
-            var subQuestionGroup = allQuestions[j].show_subquestion_group;   
-            var show = allQuestions[j].active;   
+            var answerSet = allQuestions[j].answer_set;          
+            var hasSubQuestion = allQuestions[j].has_sub_question; 
+            var subQuestionGroup = allQuestions[j].sub_question_group;   
+            var show = allQuestions[j].active;  
             
             if(category == [i]){
               this.tabData[i].questions.push({
@@ -90,34 +88,15 @@
           var text = allAnswerSets[i].set_name;   
           var group = allAnswerSets[i].set_group;   
           var value = allAnswerSets[i].set_value
-          
-          if(group == 1){
-            this.answerButtonSet_1.push({
-              text: text,
-              group: group, 
-              value: value,
-            })
-          }
 
-          if(group == 2){
-            this.answerButtonSet_2.push({
-              text: text,
-              group: group, 
-              value: value,
-            })
-          }
-
-          if(group == 3){
-            this.answerButtonSet_3.push({
-              text: text,
-              group: group, 
-              value: value,
-            })
-          }
-          
+          this.answerSets.push({
+            text: text,
+            group: group, 
+            value: value,
+          })         
         }
-      }
 
+      }
 
     },
 
@@ -132,10 +111,7 @@
     
     data: () => ({
 
-      answerButtonSet_1: [],
-      answerButtonSet_2: [],
-      answerButtonSet_3: [],
-
+      answerSets: [],
       
       tabData:[
 
