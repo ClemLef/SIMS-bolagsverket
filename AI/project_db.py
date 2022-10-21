@@ -36,7 +36,6 @@ aiResultPost = {}
 @app.route('/post', methods=['POST'])
 def result():
     print(request.json)
-    resultAi = {}
     resultAi = hello_valll(request.json)
     send_results_db(resultAi)
     return resultAi
@@ -45,8 +44,9 @@ if __name__ == "__main__":
     app.run()
  
 def send_results_db(resultAi):
-	print("res" + resultAi["global"])
-	response = requests.post('http://34.135.11.174/api/ai_results', data = {"global": resultAi["global"]})
+	print("res" + resultAi.get("global"))
+	data = {"global": resultAi.get("global")}
+	response = requests.post('http://34.135.11.174/api/ai_results', )
 	print(response)
 
 #Get links
