@@ -1,6 +1,7 @@
 
 #from django.shortcuts import redirect
 from ast import If
+from concurrent.futures.process import _sendback_result
 from symbol import if_stmt
 from flask import Flask, redirect, url_for, render_template
 from csv import reader
@@ -9,6 +10,8 @@ from math import exp
 from math import pi
 from random import seed
 from random import randrange
+import random
+import time
 #from _connection import _connect
 import requests
 import urllib
@@ -35,11 +38,34 @@ aiResultPost = {}
 @app.route('/post', methods=['POST'])
 def result():
     print(request.json)
-    return hello_valll(request.json)
+    resultAi = hello_valll(request.json)
+    send_results_db(resultAi)
+    return json.dumps(resultAi)
 
 if __name__ == "__main__":
     app.run()
  
+def send_results_db(resultAi):
+	data = {'global': resultAi['global'], 'result_code': resultAi['code'], 'social_flag': resultAi['soc'], 'economical_flag': resultAi['eco'], 'environment_flag': resultAi['env'], "influence_flag": resultAi['inf']}
+	for i in range(10):
+		try:
+			time.sleep(0.3) 
+			response = requests.post('http://34.135.11.174/api/ai_results', data)
+			break
+		except Exception:
+			continue
+	print(response)
+
+def generate_unique_code():
+	response = requests.get('http://34.135.11.174/api/ai_results')
+	list_code = []
+	for i in range(len(response.json())):
+		list_code.append(response.json()[i]['result_code'])
+	code = random.randint(100000000, 1000000000)
+	while code in list_code:
+		code = random.randint(100000000, 1000000000)
+	return code
+
 
 #Get links
 def get_source(url):
@@ -277,19 +303,19 @@ def hello_valll(form_results):
 	#Get the final answer from the model by looking to the predict answer  
     global ans_final
     if thislist_val[0] == "notsustainabil" and thislist_i[0]== 1 and sum== 1:
-        ans_final="NOT sustainable"
+        ans_final=0
     elif thislist_val[0] == "notsustainabil" and thislist_i[0]== 0 and sum== 0:
-        ans_final="NOT sustainable"
+        ans_final=0
     elif thislist_val[0] == "notsustainabil" and thislist_i[0]== 0 and sum== 1:
-        ans_final="NOT sustainable"
+        ans_final=0
     elif thislist_val[0] == "notsustainabil" and thislist_i[0]== 1 and sum== 0:
-        ans_final="NOT sustainable"
+        ans_final=0
     elif thislist_val[1] == "notsustainabil" and thislist_i[1]== 1 and sum== 1:
-     ans_final="NOT sustainable"
+     ans_final=0
     elif thislist_val[1] == "notsustainabil" and thislist_i[1]== 0 and sum== 0:
-        ans_final="NOT sustainable"
+        ans_final=0
     elif thislist_val[1] == "notsustainabil" and thislist_i[1]== 1 and sum== 0:
-        ans_final="NOT sustainable"
+        ans_final=0
     elif thislist_val[1] == "notsustainabil" and thislist_i[1]== 0 and sum== 1:
         ans_final=0 # 0 = not sustainable
     else: 
@@ -359,5 +385,8 @@ def hello_valll(form_results):
     aiResultPost['inf_link_2'] = links_enf_edu[0]
     aiResultPost['inf_link_3'] = links_enf_edu[1] """
        
-    return json.dumps(aiResultPost)
+    unique_code = generate_unique_code()
+    aiResultPost['code'] = unique_code
+
+    return aiResultPost
 

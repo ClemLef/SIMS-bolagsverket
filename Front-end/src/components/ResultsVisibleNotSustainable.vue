@@ -8,20 +8,19 @@
                 <v-row>
                     <v-col v-for="(article, index) in articles" :key="article[index]" cols="12" md="4">
                         <v-item>
-                            <v-card elevation="5" class="mx-auto d-flex flex-column" height="100%" max-width="400">
-                                <v-img :src="require('../assets/card_background_transparent.png')">
-                                    <v-card-title class="justify-center"> {{ article.title }} </v-card-title>
-                                    <v-divider></v-divider>
-                                    <v-card-text class="text--primary">
-                                        <div>{{ article.description }}</div>
-                                    </v-card-text>
-                                    <v-spacer></v-spacer>
-                                    <v-card-actions style="position: absolute, bottom: 0">
-                                        <v-btn color="green" text @click="redirect_link(article.url)">
-                                            Read more
-                                        </v-btn>
-                                    </v-card-actions>
-                                </v-img>
+                            <v-card :img="require('../assets/card_background_transparent.png')" elevation="5"
+                                class="mx-auto d-flex flex-column" height="100%" max-width="400">
+                                <v-card-title class="justify-center"> {{ article.title }} </v-card-title>
+                                <v-divider></v-divider>
+                                <v-card-text class="text--primary">
+                                    <div>{{ article.description }}</div>
+                                </v-card-text>
+                                <v-spacer></v-spacer>
+                                <v-card-actions>
+                                    <v-btn color="green" text @click="redirect_link(article.url)">
+                                        Read more
+                                    </v-btn>
+                                </v-card-actions>
                             </v-card>
                         </v-item>
                     </v-col>

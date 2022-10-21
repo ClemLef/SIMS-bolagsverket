@@ -236,7 +236,7 @@ export default {
             (async () => {
                 var output = await this.send_data_AI(result);
                 console.log("error", this.output)
-                if (output.code == "ERR_NETWORK") {
+                if (output.code == "ERR_NETWORK" || output.code == "ERR_BAD_RESPONSE") {
                     this.errorSendingDataAI = true
                     this.loading = false;
                 } else {
