@@ -10,6 +10,8 @@ from math import exp
 from math import pi
 from random import seed
 from random import randrange
+import random
+import time
 #from _connection import _connect
 import requests
 import urllib
@@ -44,10 +46,26 @@ if __name__ == "__main__":
     app.run()
  
 def send_results_db(resultAi):
-	print(resultAi['global'])
-	data = {'global': resultAi['global'], 'result_code': 123456789, 'social_flag': resultAi['soc'], 'economical_flag': resultAi['eco'], 'environment_flag': resultAi['env'], "influence_flag": resultAi['inf']}
-	response = requests.post('http://34.135.11.174/api/ai_results', data)
+	data = {'global': resultAi['global'], 'result_code': resultAi['code'], 'social_flag': resultAi['soc'], 'economical_flag': resultAi['eco'], 'environment_flag': resultAi['env'], "influence_flag": resultAi['inf']}
+	for i in range(10):
+		try:
+			time.sleep(0.3) 
+			response = requests.post('http://34.135.11.174/api/ai_results', data)
+			break
+		except Exception:
+			continue
 	print(response)
+
+def generate_unique_code():
+	response = requests.get('http://34.135.11.174/api/ai_results')
+	list_code = []
+	for i in range(len(response)):
+		list_code[i] = response['result_code']
+	code = random.randint(100000000, 1000000000)
+	while code in list[code]:
+		code = random.randint(100000000, 1000000000)
+	return code
+
 
 #Get links
 def get_source(url):
@@ -276,7 +294,7 @@ print('Scores: %s' % scores)
 print('Mean Accuracy: %.3f%%' % (sum(scores)/float(len(scores))))
 
 #run the model
-def hello_valll(form_results):
+def hello_valll(form_results, unique_code):
     row = form_results
     print("Initial blank List: ")
     print(row)
@@ -367,5 +385,8 @@ def hello_valll(form_results):
     aiResultPost['inf_link_2'] = links_enf_edu[0]
     aiResultPost['inf_link_3'] = links_enf_edu[1] """
        
+    unique_code = generate_unique_code()
+    aiResultPost['code'] = unique_code
+
     return aiResultPost
 
