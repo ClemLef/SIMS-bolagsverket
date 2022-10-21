@@ -59,8 +59,6 @@ def send_results_db(resultAi):
 def generate_unique_code():
 	response = requests.get('http://34.135.11.174/api/ai_results')
 	list_code = []
-	print(type(response))
-	print(response.json()[0]['result_code'])
 	for i in range(len(response.json())):
 		list_code.append(response.json()[i]['result_code'])
 	code = random.randint(100000000, 1000000000)

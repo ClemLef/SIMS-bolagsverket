@@ -6,9 +6,17 @@
         <h1 v-if="!this.titleSustainable()">You are almost there ! Your business idea is <span style="color: orange">not
                 sustainable</span>.<br />You can look at the articles below to try and improve the sustainability of
             your business idea :</h1>
-        <v-btn class="ma-10 pa-6 white--text " color="blue-grey" elevation="5" x-large rounded @click="redirect()">
-            Take the test again
-        </v-btn>
+        <v-row class="ma-10">
+            <v-col>
+                <v-btn class="pa-6 white--text " color="blue-grey" elevation="5" x-large rounded @click="redirect()">
+                    Take the test again
+                </v-btn>
+            </v-col>
+            <v-col>
+                <v-text-field :value="getCookie.code" append-icon="mdi-content-copy" outlined label="Result Code" @click:append="copyCode()">
+                </v-text-field>
+            </v-col>
+        </v-row>
         <h5 class="text-md-h5 my-5">You can see your results for each category below, just click on a section to display
             details.</h5>
         <v-expansion-panels popout>
@@ -62,7 +70,7 @@
                         </v-icon>
                     </template>
                 </v-expansion-panel-header>
-                <component :articles='articlesInf' :is="displaySustainable(getCookie.inf)" ></component>
+                <component :articles='articlesInf' :is="displaySustainable(getCookie.inf)"></component>
             </v-expansion-panel>
         </v-expansion-panels>
     </div>
@@ -93,6 +101,10 @@ export default {
     }),
 
     methods: {
+
+        copyCode() {
+            navigator.clipboard.writeText(this.getCookie.code);
+        },
 
         async loadArticles() {
             const request = await ResultsAPI.getArticles();
@@ -172,7 +184,7 @@ export default {
     },
     created() {
         this.loadArticles();
-        
+
     },
 }
 
