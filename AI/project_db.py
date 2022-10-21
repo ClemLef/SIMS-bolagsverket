@@ -37,9 +37,8 @@ aiResultPost = {}
 def result():
     print(request.json)
     resultAi = hello_valll(request.json)
-
-    send_results_db(json.dumps(resultAi))
-    return resultAi
+    send_results_db(resultAi)
+    return json.dumps(resultAi)
 
 if __name__ == "__main__":
     app.run()
