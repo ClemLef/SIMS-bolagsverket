@@ -45,7 +45,7 @@ if __name__ == "__main__":
  
 def send_results_db(resultAi):
 	print(resultAi['global'])
-	data = {'global': resultAi['global']}
+	data = {'global': resultAi['global'], 'result_code': 123456789, 'social_flag': resultAi['soc'], 'economical_flag': resultAi['eco'], 'environment_flag': resultAi['env'], "influence_flag": resultAi['inf']}
 	response = requests.post('http://34.135.11.174/api/ai_results', data)
 	print(response)
 
