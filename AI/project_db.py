@@ -64,7 +64,7 @@ def generate_unique_code():
 	for i in range(len(response.json())):
 		print(i)
 		print(list_code[i])
-		list_code[i] = response.json()[i]['result_code']
+		list_code.append(response.json()[i]['result_code'])
 		print(list_code[i])
 	code = random.randint(100000000, 1000000000)
 	while code in list[code]:
