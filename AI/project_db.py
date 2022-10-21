@@ -60,9 +60,9 @@ def generate_unique_code():
 	response = requests.get('http://34.135.11.174/api/ai_results')
 	list_code = []
 	print(type(response))
-	print(type(response.json()[0]))
+	print(response.json()[0]['result_code'])
 	for i in range(len(response.json())):
-		list_code[i] = response.json()['result_code']
+		list_code[i] = response.json()[0]['result_code']
 	code = random.randint(100000000, 1000000000)
 	while code in list[code]:
 		code = random.randint(100000000, 1000000000)
