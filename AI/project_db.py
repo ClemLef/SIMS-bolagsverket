@@ -36,9 +36,9 @@ aiResultPost = {}
 @app.route('/post', methods=['POST'])
 def result():
     print(request.json)
-    resultAi = json.parse(hello_valll(request.json))
+    resultAi = hello_valll(request.json)
     print(type(resultAi))
-    send_results_db(resultAi)
+    send_results_db(json.dumps(resultAi))
     return resultAi
 
 if __name__ == "__main__":
@@ -368,5 +368,5 @@ def hello_valll(form_results):
     aiResultPost['inf_link_2'] = links_enf_edu[0]
     aiResultPost['inf_link_3'] = links_enf_edu[1] """
        
-    return json.dumps(aiResultPost)
+    return aiResultPost
 
