@@ -36,6 +36,7 @@ aiResultPost = {}
 @app.route('/post', methods=['POST'])
 def result():
     print(request.json)
+    resultAi = {}
     resultAi = hello_valll(request.json)
     send_results_db(resultAi)
     return resultAi
