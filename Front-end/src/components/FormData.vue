@@ -2,11 +2,6 @@
 
     <div class="my-10">
 
-        <!-- <v-btn @click="setCurrentTab(tab.id)" dark large elevation="3" width="20%" class="mt-10 text-h6 font-weight-medium"
-            color="green darken-4" :class="{'mb-1' : currentTab == tab.id}" v-for="tab in tabData" :key="tab.id">
-            {{tab.title}}
-        </v-btn> -->
-
         <!-- Card that contains all questions, answers and content of each page -->
         <v-card elevation="5" width="85%" class="mx-auto">
 
@@ -18,8 +13,6 @@
                     {{tab.title}}
                 </v-tab>
             </v-tabs>
-
-
 
             <!-- Loop through all questions in all tabs, for displaying all questions on the correct tab -->
             <label v-for="(tab, tabIndex) in tabData" :key="tab[tabIndex]" v-show="currentTab == tab.id">
@@ -67,63 +60,62 @@
 
                         </v-layout>
 
-
+                        
                         <!-- Second row of content contains answer buttons -->
                         <v-flex class="mt-5 mr-10">
-                            <!-- If a button is toggled, the value of that button is saved in an array "answers" for that tab-->
-                            <!-- Answer set 1, show buttons for option: Yes, no -->
-                            <v-btn-toggle v-model="question.showSubQuestionList[index]" v-if="question.answerSet == 1">
-                                <v-btn elevation="2" class="mx-2" v-for="button in answerButtonSet_1"
-                                    :key="button.text"> {{button.text}} </v-btn>
-                            </v-btn-toggle>
+                            
+                            
+                            <label v-if="question.answerSet == 1 ">
+                                <v-btn-toggle v-model="question.showSubQuestionList[index]">
+                                    <label v-for="answer in getAnswerSet(question)" :key="answer.text">                
+                                        <v-btn :value="answer.value" elevation="2" class="mx-2"> 
+                                            {{answer.text}} 
+                                        </v-btn>        
+                                    </label>
+                                </v-btn-toggle>
+                            </label>
 
-                            <!-- Answer set 2, show buttons for option: No, Probably Not, Probably, Yes -->
-                            <v-btn-toggle v-model="tab.answers[index]" v-if="question.answerSet == 2">
-                                <v-btn elevation="2" class="mx-2" v-for="button in answerButtonSet_2"
-                                    :key="button.text"> {{button.text}} </v-btn>
-                            </v-btn-toggle>
-
-                            <!-- Answer set 3, show buttons for option: None, Very Little, Some, A lot -->
-                            <v-btn-toggle v-model="tab.answers[index]" v-if="question.answerSet == 3">
-                                <v-btn elevation="2" class="mx-2" v-for="button in answerButtonSet_3"
-                                    :key="button.text"> {{button.text}}
-                                </v-btn>
-                            </v-btn-toggle>
-
-
+                            <label v-else>
+                                <v-btn-toggle v-model="tab.answers[index]">
+                                    <label v-for="answer in getAnswerSet(question)" :key="answer.text">
+                                        
+                                        <v-btn :value="answer.value" elevation="2" class="mx-2"> 
+                                            {{answer.text}} 
+                                        </v-btn>        
+                                    </label>
+                                </v-btn-toggle>
+                            </label>
+                                
                             <v-divider class="mt-10"></v-divider>
                         </v-flex>
-
-
+                        
+                        
                     </v-card-text>
                 </label>
             </label>
 
-
-            <!-- KOLLA PÅ TABS.length FÖR ATT KANSKE SE HUR MÅNGA TABS DET FINNS, OCH TA BOR "PREV" och "NEXT" IFALL VI ÄR PÅ SISTA ELLER FÖRSTA SIDAN -->
-            <!-- {{debugFunction(tabData.length - 1)}} -->
             <!-- Prev and Next button, increment or decrement current tab counter -->
             <v-row class="mx-8 my-10">
                 <v-btn v-show="currentTab != 0" class="mx-2 my-4" depressed color="primary" large @click="prevTab();">
                     <v-icon left> mdi-arrow-left </v-icon>
                     Prev
                 </v-btn>
-
-                <v-btn v-show="currentTab != tabData.length - 1" class="mx-2 my-4" depressed color="success" large
-                    @click="nextTab();">
+                
+                <v-btn v-show="currentTab != tabData.length - 1" class="mx-2 my-4" depressed color="success" large @click="nextTab();">
                     Next
                     <v-icon right> mdi-arrow-right </v-icon>
                 </v-btn>
-
+                
                 <v-btn v-show="currentTab == tabData.length - 1" class="mx-2 my-4" :loading="loading" depressed
                     color="accent" large @click="calcFormResult()"> Result
                     <v-icon right> mdi-form-select </v-icon>
                 </v-btn>
                 <AlertMessage v-show="errorSendingDataAI" />
             </v-row>
-
+            
+            
         </v-card>
-
+        
     </div>
 
 </template>
@@ -136,9 +128,7 @@ import AlertMessage from './AlertMessage.vue';
 export default {
     props: {
         tabData: Array,
-        answerButtonSet_1: Array,
-        answerButtonSet_2: Array,
-        answerButtonSet_3: Array,
+        answerSets: Array,
     },
 
     components: {
@@ -151,6 +141,21 @@ export default {
         errorSendingDataAI: false,
     }),
     methods: {
+        getAnswerSet(question){
+            var answerSet = [];
+
+            for(var i = 0; i < this.answerSets.length; i++){
+                if(this.answerSets[i].group == question.answerSet){
+
+                    answerSet.push({
+                        text: this.answerSets[i].text,
+                        value: this.answerSets[i].value                     
+                    })
+                }
+            }
+            return answerSet;
+        },
+
         hasQuestionInfo(question) {
             if (question.info == null) {
                 return false;
@@ -169,6 +174,14 @@ export default {
         showSubQuestion(currentQuestion, allQuestion, index) {
             var showSubQuestion = currentQuestion.showSubQuestionList[index];
             var subQuestionGroup = currentQuestion.subQuestionGroup;
+
+            // console.log(currentQuestion.showSubQuestionList);
+            // console.log(currentQuestion.subQuestionGroup);
+            // // console.log(currentQuestion);
+            // console.log("i: " + index)
+            // console.log("aq: " + allQuestion[0])
+
+
             // Shows and hides subquestion depending on yes or no answer from parent question
             if (showSubQuestion != null) {
                 for (var i = 0; i < allQuestion.length; i++) {
@@ -197,17 +210,17 @@ export default {
                     else {
                         if (tab.answers[i] != null) { // Makes sure not to add 'NaN' to result if question is not answered
                             numberOfAnswersWithValue++;
-                            tabResult += tab.answers[i] + 1;
+                            tabResult += tab.answers[i];
                         }
-                        console.log("tab: " + tab.id + "     Q" + (i + 1) + ": " + (tab.answers[i] + 1));
+                        console.log("tab: " + (tab.id + 1) + "     Q" + (i) + ": " + (tab.answers[i]));
                     }
                 }
                 var average = tabResult / numberOfAnswersWithValue;
                 tab.result = average;
-                console.log("tab: " + tab.id + "     tabResult: " + tabResult);
-                console.log("tab: " + tab.id + "     average:     " + average);
-                console.log("tab: " + tab.id + "     result: " + tab.result);
+                console.log("tab: " + (tab.id + 1) + "     tabResult: " + tabResult);
+                console.log("tab: " + (tab.id + 1) + "     average:     " + average);
                 console.log(" ");
+                console.log("tab: " + (tab.id + 1) + "     result: " + tab.result);
             }
         },
         calcFormResult() {
