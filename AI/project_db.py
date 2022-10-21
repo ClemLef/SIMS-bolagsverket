@@ -37,7 +37,7 @@ aiResultPost = {}
 def result():
     print(request.json)
     resultAi = hello_valll(request.json)
-    print(type(resultAi))
+
     send_results_db(json.dumps(resultAi))
     return resultAi
 
@@ -45,8 +45,9 @@ if __name__ == "__main__":
     app.run()
  
 def send_results_db(resultAi):
+	print(type(resultAi))
 	print("res" + resultAi["global"])
-	data = {"global": resultAi.get["global"]}
+	data = {"global": resultAi["global"]}
 	response = requests.post('http://34.135.11.174/api/ai_results', data)
 	print(response)
 
