@@ -1,7 +1,8 @@
 <template>
   <FormData 
     :tabData="tabData" 
-    :answerSets="answerSets">
+    :answerSets="answerSets"
+    :formLoading="formLoading">
   </FormData>
 </template>
 
@@ -17,7 +18,6 @@
     },
     
     name: 'FormPage',
-
     methods: {
       
       // loads all tabs from db and puts them into tabData object
@@ -44,7 +44,12 @@
       // loads all question from db and puts them into a tab inside of tabData object
       async loadAllQuestion() {
 
-        const questions = await FormAPI.getQuestions();
+        this.formLoading = true;
+
+        const questions = await FormAPI.getQuestions()
+        .catch(error => { console.log("Could not load questions from Database: " + error) })
+        .finally(() => {this.formLoading = false});
+
         const allQuestions = questions.data;
 
         // Get every question for every tab and place the question into tab
@@ -110,7 +115,7 @@
     
     data: () => ({
 
-
+      formLoading: false,
       answerSets: [],
       
       tabData:[

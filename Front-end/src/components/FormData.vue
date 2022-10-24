@@ -1,8 +1,15 @@
 <template>
 
-        <!-- Card that contains all questions, answers and content of each page -->
-        <v-card elevation="5" width="85%" class="mx-auto my-10">
+    <!-- Card that contains all questions, answers and content of each page -->
+    <v-card elevation="5" width="85%" class="mx-auto my-10">
 
+        <div dark v-if="formLoading" class="my-10 black--text text-h4">
+            <h1> Loading Form </h1>
+            <v-progress-circular indeterminate large :size="100" class="my-15">
+            </v-progress-circular>
+        </div>
+
+        <div v-else>
             <!-- Tabs -->
             <v-tabs dark background-color="green darken-4" centered fixed-tabs v-model="currentTab">
                 <v-tabs-slider color="white"></v-tabs-slider>
@@ -12,10 +19,10 @@
                     {{tab.title}}
                 </v-tab>
             </v-tabs>
-
-            <!-- All content inside v-card -->
+    
+            <!-- All content below tabs inside of v-card -->
             <div class="text-left mx-5"> 
-               
+                
                 <!-- Help information uniq for each tab -->
                 <v-container v-for="(info, index) in tabHelpInfo" :key="info[index]" v-show="info.tabID == currentTab">                
                     <h2 class="my-5 text-center "> 
@@ -48,7 +55,7 @@
                             <v-layout tab class="mx-auto mt-7">
                                 
                                 <!-- Question text -->
-                                <v-flex md8>
+                                <v-flex md8 class="text-subtitle-1 font-weight-medium">
                                     <p> {{question.text}} </p>
                                 </v-flex>
                                 
@@ -129,8 +136,9 @@
                     </v-btn>
                     <AlertMessage v-show="errorSendingDataAI" />
                 </v-row>
-        
-        </div>
+
+             </div> <!-- End of all content below tabs inside of v-card -->
+        </div> <!-- End of v-card including tabs -->
 
     </v-card>
     
@@ -156,6 +164,7 @@ export default {
     props: {
         tabData: Array,
         answerSets: Array,
+        formLoading: Boolean,
     },
 
     components: {
@@ -164,6 +173,7 @@ export default {
 
     data: () => ({
         currentTab: 0,
+        loadingForm: false,
         loading: false,
         errorSendingDataAI: false,
     }),

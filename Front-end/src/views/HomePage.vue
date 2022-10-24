@@ -4,7 +4,7 @@
         <!-- <v-card color="rgb(255, 255, 255, 0.70)" width="70%">
             <v-card-text class="text-center font-weight-bold">  -->
 
-                <v-row :align="center" justify="center" class="mt-10 pa-10">
+                <v-row align="center" justify="center" class="mt-10 pa-10">
                     <v-col cols="12">
                         <h1 class="text-h1 font-weight-medium my-10"> Welcome </h1>
                         <h4 class="text-h5 mb-4 text-left" width> Welcome to the sustainability barometer! This website will let you assess the sustainability of your business idea. The service is based on artificial intelligence AI and will help you determine on which areas you can improve and tips on what to do in order to develop your business in a more sustainable way. </h4>
