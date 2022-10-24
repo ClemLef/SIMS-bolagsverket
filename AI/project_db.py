@@ -337,10 +337,10 @@ def hello_valll(form_results):
 
 	
     if 2 < eco_ans:
-        aiResultPost['eco'] = 1
+        aiResultPost['economical_flag'] = 1
 
     if 2 >= eco_ans:
-        aiResultPost['eco'] = 0
+        aiResultPost['economical_flag'] = 0
 
     """ links_ec_org =google_search("economic sustainability.org")    
     aiResultPost['eco_link_1'] = links_ec_org[0]
@@ -349,10 +349,10 @@ def hello_valll(form_results):
     aiResultPost['eco_link_3'] = links_ec_edu[1] """
 
     if 2 < soc_ans:
-        aiResultPost['soc'] = 1
+        aiResultPost['social_flag'] = 1
 
     if 2 >= soc_ans:
-        aiResultPost['soc'] = 0
+        aiResultPost['social_flag'] = 0
     
     """ links_ec_org =google_search("social sustainability.org")     
     aaa= links_ec_org[0]
@@ -362,10 +362,10 @@ def hello_valll(form_results):
     aiResultPost['soc_link_3'] = links_ec_edu[1] """
         
     if 2 < env_ans:
-        aiResultPost['env'] = 1
+        aiResultPost['environment_flag'] = 1
 
     if 2 >= env_ans:
-        aiResultPost['env'] = 0
+        aiResultPost['environment_flag'] = 0
 
     """ links_env_org =google_search("environment sustainability.org")     
     aiResultPost['env_link_1'] = links_env_org[0]
@@ -374,10 +374,10 @@ def hello_valll(form_results):
     aiResultPost['env_link_3'] = links_env_edu[1] """
     
     if 2 < inf_ans:
-        aiResultPost['inf'] = 1
+        aiResultPost['influence_flag'] = 1
 
     if 2 >= inf_ans:
-        aiResultPost['inf'] = 0
+        aiResultPost['influence_flag'] = 0
     
     """ links_enf_org =google_search("environment sustainability.org")     
     aiResultPost['inf_link_1'] = links_enf_org[0]
@@ -386,7 +386,7 @@ def hello_valll(form_results):
     aiResultPost['inf_link_3'] = links_enf_edu[1] """
        
     unique_code = generate_unique_code()
-    aiResultPost['code'] = unique_code
+    aiResultPost['result_code'] = unique_code
 
     return aiResultPost
 
