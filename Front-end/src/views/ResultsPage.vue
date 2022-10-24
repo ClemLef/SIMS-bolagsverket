@@ -19,12 +19,8 @@
                 </template>
                 <span>Share this result</span>
             </v-tooltip>
-
-
-
         </v-tabs>
-
-        <component :is="formTaken"></component>
+        <component :is="formTaken()"></component>
     </v-card>
 </template>
 
@@ -35,7 +31,7 @@
 
 import ResultsNotVisible from '@/components/ResultsNotVisible.vue';
 import ResultsVisible from '../components/ResultsVisible.vue'
-
+import ResultsAPI from '../controller/ResultsAPI.js'
 
 export default {
 
@@ -59,29 +55,128 @@ export default {
         redirectLink(link) {
             window.open(link);
         },
+
         createUrl() {
-            let baseUrl = window.location.href
-            let params = '?' + window.$cookies.get('isSustainable').code
+            let baseUrl = window.location.href.split('?')[0]
+            let params = '?code=' + this.getCookie.result_code
             console.log(baseUrl + params)
             return baseUrl + params;
         },
+
         shareResult() {
             let shareUrl = this.createUrl()
             navigator.clipboard.writeText(shareUrl);
-        }
+        },
 
+        async loadResult(result_code) {
+            let result = await ResultsAPI.getResult(result_code);
+            if (result.data != "") {
+                window.$cookies.config("1d")
+                window.$cookies.set("isSustainable", result.data)
+                //this.$router.go()
+            } else {
+                //handle the error
+            }
+        },
 
-    },
-    computed: {
         formTaken() {
             // if a result cookie is present
-            //console.log(document.cookie);
-            if (window.$cookies.get('isSustainable') != null) {
+            const result_code = this.$route.query.code
+            console.log(result_code)
+            
+
+            /* if (result_code != null && window.$cookies.get('isSustainable').result_code != result_code){
+                window.$cookies.remove('isSustainable')
+                window.$cookies.config("1d");
+                window.$cookies.set("isSustainable", this.loadResult(result_code))
+            } */
+
+            if (window.$cookies.get('isSustainable') == null && result_code == undefined) {
+                return "ResultsNotVisible";
+            } else {
+                //console.log(window.$cookies.get('isSustainable').result_code)
+                return "ResultsVisible";
+            }
+            /*if (result_code != undefined) {
+                window.$cookies.remove("isSustainable");
+                var caca
+                (async () => { caca = await this.loadResult(result_code) })()
+                console.log(caca)
+                console.log("2", window.$cookies.get('isSustainable'))
+                return "ResultsVisible";
+            } else if (window.$cookies.get('isSustainable') != null) {
                 return "ResultsVisible";
             } else {
                 return "ResultsNotVisible";
-            }
-        },
+            } */
+            /*if (window.$cookies.get('isSustainable') != null && result_code == undefined) {
+                console.log("1")
+                return "ResultsVisible";
+            } else if (window.$cookies.get('isSustainable') != null && result_code != undefined) {
+                console.log("2")
+                let result
+                result = this.loadResult(result_code)
+                window.$cookies.config("1d");
+                window.$cookies.set("isSustainable", result)
+
+                return "ResultsVisible";
+            } else if (window.$cookies.get('isSustainable') == null && result_code != undefined) {
+                console.log("3")
+                let result
+                (async () => {
+                    result = await this.loadResult(result_code)
+                })()
+                window.$cookies.config("1d");
+                window.$cookies.set("isSustainable", result)
+                return "ResultsVisible";
+            } else {
+                console.log("4")
+                return "ResultsNotVisible";
+            }*/
+        }
+    },
+
+    watch: {
+        $route: {
+            handler: function () {
+                if(this.$route.query.code != undefined) {
+                    console.log("bite")
+                    window.$cookies.remove('isSustainable')
+                    this.formTaken()
+                }
+                
+            },
+            deep: true
+        }
+    }, 
+
+    computed: {
+
+        /*if (window.$cookies.get('isSustainable') != null && result_code == undefined) {
+             return "ResultsVisible";
+         } else if (window.$cookies.get('isSustainable') != null && result_code != undefined) {
+             window.$cookies.remove("isSustainable");
+             let result
+             (async () => {
+                 result = await this.loadResult(result_code)
+             })
+             window.$cookies.config("1d");
+             window.$cookies.set("isSustainable", result)
+             
+             return "ResultsVisible";
+         } else if (window.$cookies.get('isSustainable') == null && result_code != undefined) {
+             window.$cookies.remove("isSustainable");
+             let result
+             (async () => {
+                 result = await this.loadResult(result_code)
+             })
+             console.log(result)
+             window.$cookies.config("1d");
+             window.$cookies.set("isSustainable", result)
+             return "ResultsVisible";
+         } else {
+             return "ResultsNotVisible";
+         }*/
         isDisabled() {
             // if a result cookie is present
             if (window.$cookies.get('isSustainable') != null) {
@@ -95,9 +190,11 @@ export default {
         getCookie() {
             return window.$cookies.get('isSustainable');
         },
-
-
     },
+
+
+
+
 }
 </script>
 

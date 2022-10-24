@@ -161,6 +161,7 @@ export default {
         },
 
         titleSustainable() {
+            console.log("cook", this.getCookie)
             if (this.getCookie.global == 1) {
                 return true;
             } else if (this.getCookie.global == 0) {
@@ -174,17 +175,34 @@ export default {
             } else if (category == 0) {
                 return "ResultsVisibleNotSustainable";
             }
-        }
+        }, 
+        
+        async loadResult() {
+            const result_code = this.$route.query.code
+            let result = await ResultsAPI.getResult(result_code);
+            if (result.data != "") {
+                window.$cookies.config("1d")
+                window.$cookies.set("isSustainable", result.data)
+                console.log("yes", window.$cookies.get('isSustainable').result_code)
+            } else {
+                //handle the error
+            }
+        },
+
+        
 
     },
+
     computed: {
         getCookie() {
             return window.$cookies.get('isSustainable');
         },
+        
+        
     },
     created() {
         this.loadArticles();
-
+        this.loadResult()
     },
 }
 
