@@ -60,6 +60,6 @@ Route::post('ai_results', function(Request $request) {
     
 });
 
-Route::get('ai_results/{id}', function($id) {
-    return AiResults::find($id);
+Route::get('ai_results/{result_code}', function($result_code) {
+    return AiResults::find($result_code);
 });
