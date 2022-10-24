@@ -48,7 +48,6 @@ Route::get('categories', function() {
 
 Route::post('articles', function(Request $request) {
     return Article::create($request->all());
-    
 });
 
 Route::get('articles', function() {
@@ -57,7 +56,10 @@ Route::get('articles', function() {
 
 Route::post('ai_results', function(Request $request) {
     return AiResults::create($request->all());
-    
+});
+
+Route::get('ai_results', function() {
+    return AiResults::all();
 });
 
 Route::get('ai_results/{result_code}', function($result_code) {
