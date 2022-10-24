@@ -4,7 +4,7 @@ import HomePage from '../views/HomePage.vue'
 import FormPage from '../views/FormPage.vue'
 
 import ResultsPage from '../views/ResultsPage.vue'
-import HelpPage from '../views/HelpPage.vue'
+import InfoPage from '../views/InfoPage.vue'
 
 Vue.use(VueRouter)
 
@@ -25,9 +25,9 @@ const routes = [
     component: ResultsPage
   },
   {
-    path: '/help',
-    name: 'help',
-    component: HelpPage
+    path: '/info',
+    name: 'info',
+    component: InfoPage
   },
 ]
 

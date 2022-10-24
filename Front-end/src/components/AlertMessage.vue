@@ -17,7 +17,7 @@
 export default {
     methods: {
         redirect() {
-            this.$router.push("/help");
+            this.$router.push("/info");
         }
     }
 }

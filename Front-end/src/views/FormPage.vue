@@ -19,6 +19,10 @@
     name: 'FormPage',
 
     methods: {
+
+      // getHelpInfo(){
+      //   this.helpInfo = InfoPage.getHelpInfo();
+      // },
       
       // loads all tabs from db and puts them into tabData object
       async loadTabs(){
@@ -110,6 +114,7 @@
     },  
     
     data: () => ({
+
 
       answerSets: [],
       

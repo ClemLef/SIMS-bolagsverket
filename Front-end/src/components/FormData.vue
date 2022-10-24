@@ -65,7 +65,7 @@
                         <v-flex class="mt-5 mr-10">
                             
                             
-                            <label v-if="question.answerSet == 1 ">
+                            <label v-if="hasSubQuestion(question)">
                                 <v-btn-toggle v-model="question.showSubQuestionList[index]">
                                     <label v-for="answer in getAnswerSet(question)" :key="answer.text">                
                                         <v-btn :value="answer.value" elevation="2" class="mx-2"> 
@@ -112,8 +112,7 @@
                 </v-btn>
                 <AlertMessage v-show="errorSendingDataAI" />
             </v-row>
-            
-            
+
         </v-card>
         
     </div>
