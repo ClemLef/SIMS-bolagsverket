@@ -55,13 +55,13 @@
                                 <label v-if="hasQuestionInfo(question)">
                                     <!-- Help button with icon to show extra information about the question when hovered -->
                                     <v-flex md1>
-                                        <v-tooltip right max-width="25%" color="grey darken-3">
+                                        <v-tooltip right max-width="25%" color="grey lighten-3">
                                             <template v-slot:activator="{ on, attrs }">
                                                 <v-btn small icon class="ml-auto my-auto mr-3" v-bind="attrs" v-on="on">
                                                     <v-icon large> mdi-help-circle-outline </v-icon>
                                                 </v-btn>
                                             </template>
-                                            <span class="font-weight-bold"> {{question.info}} </span>
+                                            <span class="black--text"> {{question.info}} </span>
                                         </v-tooltip>
                                     </v-flex>
                                     
@@ -184,7 +184,7 @@ export default {
         },
 
         hasQuestionInfo(question) {
-            if (question.info == null) {
+            if (question.info.length == 0) {
                 return false;
             }
             else {

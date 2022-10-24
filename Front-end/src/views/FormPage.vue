@@ -77,7 +77,6 @@
       },
 
       // loads all sets of answers and categorize them. 
-      // IMPROVE THIS CODE PLZ MATTIAS
       async loadAnswerSets(){
         const answerSets = await FormAPI.getAnswerSets();
         const allAnswerSets = answerSets.data;
