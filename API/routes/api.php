@@ -58,6 +58,7 @@ Route::post('ai_results', function(Request $request) {
     return AiResults::create($request->all());
 });
 
+//not the most secure but needed for the ai program to generated a unique random code
 Route::get('ai_results', function() {
     return AiResults::all();
 });

@@ -92,11 +92,10 @@ export default {
                 return true;
             }
         },
-        computed: {
-            getCookie() {
-                return window.$cookies.get('isSustainable');
-            },
+        getCookie() {
+            return window.$cookies.get('isSustainable');
         },
+
 
     },
 }

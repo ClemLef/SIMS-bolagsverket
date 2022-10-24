@@ -13,7 +13,7 @@
                 </v-btn>
             </v-col>
             <v-col>
-                <v-text-field :value="getCookie.code" append-icon="mdi-content-copy" outlined label="Result Code" @click:append="copyCode()">
+                <v-text-field :value="getCookie.result_code" append-icon="mdi-content-copy" outlined label="Result Code" @click:append="copyCode()" readonly>
                 </v-text-field>
             </v-col>
         </v-row>
@@ -21,56 +21,56 @@
             details.</h5>
         <v-expansion-panels popout>
             <v-expansion-panel>
-                <v-expansion-panel-header disable-icon-rotate :class="this.whichColor(this.getCookie.eco)"
+                <v-expansion-panel-header disable-icon-rotate :class="this.whichColor(this.getCookie.economical_flag)"
                     class="lighten-4 body-2 text-left font-weight-medium">
                     Economical
                     <template v-slot:actions>
-                        <v-icon :color="whichIconColor(getCookie.eco)">
-                            {{ whichIcon(getCookie.eco) }}
+                        <v-icon :color="whichIconColor(getCookie.economical_flag)">
+                            {{ whichIcon(getCookie.economical_flag) }}
                         </v-icon>
                     </template>
                 </v-expansion-panel-header>
-                <component :articles='articlesEco' :is="displaySustainable(getCookie.eco)"></component>
+                <component :articles='articlesEco' :is="displaySustainable(getCookie.economical_flag)"></component>
             </v-expansion-panel>
 
             <v-expansion-panel>
-                <v-expansion-panel-header disable-icon-rotate :class="this.whichColor(this.getCookie.soc)"
+                <v-expansion-panel-header disable-icon-rotate :class="this.whichColor(this.getCookie.social_flag)"
                     class="body-2 text-left font-weight-medium">
                     Social
                     <template v-slot:actions>
-                        <v-icon :color="whichIconColor(getCookie.soc)">
-                            {{ whichIcon(getCookie.soc) }}
+                        <v-icon :color="whichIconColor(getCookie.social_flag)">
+                            {{ whichIcon(getCookie.social_flag) }}
                         </v-icon>
                     </template>
                 </v-expansion-panel-header>
-                <component :articles='articlesSoc' :is="displaySustainable(getCookie.soc)"></component>
+                <component :articles='articlesSoc' :is="displaySustainable(getCookie.social_flag)"></component>
             </v-expansion-panel>
 
             <v-expansion-panel>
-                <v-expansion-panel-header disable-icon-rotate :class="this.whichColor(this.getCookie.env)"
+                <v-expansion-panel-header disable-icon-rotate :class="this.whichColor(this.getCookie.environment_flag)"
                     class="body-2 text-left font-weight-medium">
                     Environmental
                     <template v-slot:actions>
-                        <v-icon :color="whichIconColor(getCookie.env)">
-                            {{ whichIcon(getCookie.env) }}
+                        <v-icon :color="whichIconColor(getCookie.environment_flag)">
+                            {{ whichIcon(getCookie.environment_flag) }}
                         </v-icon>
                     </template>
                 </v-expansion-panel-header>
-                <component :articles='articlesEnv' :is="displaySustainable(getCookie.env)"></component>
+                <component :articles='articlesEnv' :is="displaySustainable(getCookie.environment_flag)"></component>
             </v-expansion-panel>
 
 
             <v-expansion-panel>
-                <v-expansion-panel-header disable-icon-rotate :class="this.whichColor(this.getCookie.inf)"
+                <v-expansion-panel-header disable-icon-rotate :class="this.whichColor(this.getCookie.influence_flag)"
                     class="body-2 text-left font-weight-medium">
                     Influence
                     <template v-slot:actions>
-                        <v-icon :color="whichIconColor(getCookie.inf)">
-                            {{ whichIcon(getCookie.inf) }}
+                        <v-icon :color="whichIconColor(getCookie.influence_flag)">
+                            {{ whichIcon(getCookie.influence_flag) }}
                         </v-icon>
                     </template>
                 </v-expansion-panel-header>
-                <component :articles='articlesInf' :is="displaySustainable(getCookie.inf)"></component>
+                <component :articles='articlesInf' :is="displaySustainable(getCookie.influence_flag)"></component>
             </v-expansion-panel>
         </v-expansion-panels>
     </div>
@@ -103,7 +103,7 @@ export default {
     methods: {
 
         copyCode() {
-            navigator.clipboard.writeText(this.getCookie.code);
+            navigator.clipboard.writeText(this.getCookie.result_code);
         },
 
         async loadArticles() {
