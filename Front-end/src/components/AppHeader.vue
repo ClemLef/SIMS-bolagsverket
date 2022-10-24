@@ -32,7 +32,7 @@ export default {
                 { title: 'Home', icon: 'mdi-home-circle-outline', path: '/' },
                 { title: 'Sustainability Test', icon: 'mdi-leaf-circle-outline', path: '/form' },
                 { title: 'Results', icon: 'mdi-gauge', path: '/results' },
-                { title: 'Help', icon: 'mdi-help-circle-outline', path: '/help' },
+                { title: 'Help', icon: 'mdi-help-circle-outline', path: '/info' },
             ],
         }
     },
