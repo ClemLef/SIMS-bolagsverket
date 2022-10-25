@@ -42,14 +42,10 @@ export default {
         },
         async loadResult() {
             let result_code = this.getTextInput
-            console.log(result_code)
             if (result_code != "") {
                 let result = await ResultsAPI.getResult(result_code);
-                console.log(result)
                 if (result.data != "") {
-                    window.$cookies.config("1d");
-                    window.$cookies.set("isSustainable", result.data);
-                    this.$router.go();
+                    this.$router.push({ path: 'results', query: { code: result_code } })
                 } else {
                     this.error = true
                 }

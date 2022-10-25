@@ -48,7 +48,6 @@ export default {
             window.open(link);
         },
         redirect() {
-            window.$cookies.remove('isSustainable');
             this.$router.push('/form');
         },
 

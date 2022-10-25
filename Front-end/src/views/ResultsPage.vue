@@ -31,7 +31,6 @@
 
 import ResultsNotVisible from '@/components/ResultsNotVisible.vue';
 import ResultsVisible from '../components/ResultsVisible.vue'
-import ResultsAPI from '../controller/ResultsAPI.js'
 
 export default {
 
@@ -49,7 +48,6 @@ export default {
             { title: 'F-skatt', img_src: 'https://skatteverket.se/images/18.1c68351d170ce554527e35/1584713519347/Logo_vit_bakgrund_FB.png', source: "skatteverket.se", description: "Om du bedriver näringsverksamhet i Sverige kan du efter ansökan hos Skatteverket bli godkänd för F-skatt", link: "https://www.skatteverket.se/foretag/etjansterochblanketter/svarpavanligafragor/fskatt/foretagfskattfaq/vemkanbligodkandforfskattochvadinnebardet.5.18e1b10334ebe8bc8000118949.html" },
             { title: 'Sustainable funds', img_src: 'https://www.fondbolagen.se/globalassets/om-oss/hallbarhet-artikelbild2-ny-webb.jpg?preset=jumbotron', source: "fondbolagen.se", description: "Knowing that the money they invest contributes to sustainable development is becoming increasingly important to savers.", link: "https://www.fondbolagen.se/en/Facts_Indices/sustainable-funds/" }, */
         ],
-
     }),
     methods: {
         redirectLink(link) {
@@ -58,7 +56,7 @@ export default {
 
         createUrl() {
             let baseUrl = window.location.href.split('?')[0]
-            let params = '?code=' + this.getCookie.result_code
+            let params = '?code=' + this.result_code
             console.log(baseUrl + params)
             return baseUrl + params;
         },
@@ -68,118 +66,32 @@ export default {
             navigator.clipboard.writeText(shareUrl);
         },
 
-        async loadResult(result_code) {
-            let result = await ResultsAPI.getResult(result_code);
-            if (result.data != "") {
-                window.$cookies.config("1d")
-                window.$cookies.set("isSustainable", result.data)
-                //this.$router.go()
+        formTaken() {
+            // if a result cookie is present
+            if (this.$route.query.code == null) {
+                return "ResultsNotVisible";
             } else {
-                //handle the error
+                return "ResultsVisible";
             }
         },
 
-        formTaken() {
-            // if a result cookie is present
-            const result_code = this.$route.query.code
-            console.log(result_code)
-            
 
-            /* if (result_code != null && window.$cookies.get('isSustainable').result_code != result_code){
-                window.$cookies.remove('isSustainable')
-                window.$cookies.config("1d");
-                window.$cookies.set("isSustainable", this.loadResult(result_code))
-            } */
-
-            if (window.$cookies.get('isSustainable') == null && result_code == undefined) {
-                return "ResultsNotVisible";
-            } else {
-                //console.log(window.$cookies.get('isSustainable').result_code)
-                return "ResultsVisible";
-            }
-            /*if (result_code != undefined) {
-                window.$cookies.remove("isSustainable");
-                var caca
-                (async () => { caca = await this.loadResult(result_code) })()
-                console.log(caca)
-                console.log("2", window.$cookies.get('isSustainable'))
-                return "ResultsVisible";
-            } else if (window.$cookies.get('isSustainable') != null) {
-                return "ResultsVisible";
-            } else {
-                return "ResultsNotVisible";
-            } */
-            /*if (window.$cookies.get('isSustainable') != null && result_code == undefined) {
-                console.log("1")
-                return "ResultsVisible";
-            } else if (window.$cookies.get('isSustainable') != null && result_code != undefined) {
-                console.log("2")
-                let result
-                result = this.loadResult(result_code)
-                window.$cookies.config("1d");
-                window.$cookies.set("isSustainable", result)
-
-                return "ResultsVisible";
-            } else if (window.$cookies.get('isSustainable') == null && result_code != undefined) {
-                console.log("3")
-                let result
-                (async () => {
-                    result = await this.loadResult(result_code)
-                })()
-                window.$cookies.config("1d");
-                window.$cookies.set("isSustainable", result)
-                return "ResultsVisible";
-            } else {
-                console.log("4")
-                return "ResultsNotVisible";
-            }*/
-        }
     },
 
     watch: {
         $route: {
             handler: function () {
-                if(this.$route.query.code != undefined) {
-                    console.log("bite")
-                    window.$cookies.remove('isSustainable')
-                    this.formTaken()
-                }
-                
+                this.formTaken()
             },
             deep: true
         }
-    }, 
+    },
+
 
     computed: {
-
-        /*if (window.$cookies.get('isSustainable') != null && result_code == undefined) {
-             return "ResultsVisible";
-         } else if (window.$cookies.get('isSustainable') != null && result_code != undefined) {
-             window.$cookies.remove("isSustainable");
-             let result
-             (async () => {
-                 result = await this.loadResult(result_code)
-             })
-             window.$cookies.config("1d");
-             window.$cookies.set("isSustainable", result)
-             
-             return "ResultsVisible";
-         } else if (window.$cookies.get('isSustainable') == null && result_code != undefined) {
-             window.$cookies.remove("isSustainable");
-             let result
-             (async () => {
-                 result = await this.loadResult(result_code)
-             })
-             console.log(result)
-             window.$cookies.config("1d");
-             window.$cookies.set("isSustainable", result)
-             return "ResultsVisible";
-         } else {
-             return "ResultsNotVisible";
-         }*/
         isDisabled() {
             // if a result cookie is present
-            if (window.$cookies.get('isSustainable') != null) {
+            if (this.result_code != null) {
                 // enable the buttons and return the results view
                 return false;
             } else {
@@ -187,14 +99,11 @@ export default {
                 return true;
             }
         },
-        getCookie() {
-            return window.$cookies.get('isSustainable');
-        },
     },
 
-
-
-
+    created() {
+        this.result_code = this.$route.query.code;
+    }
 }
 </script>
 
