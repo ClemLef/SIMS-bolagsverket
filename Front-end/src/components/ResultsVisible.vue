@@ -1,14 +1,14 @@
 <template>
 
-    <div class="pa-5" v-if="this.dataLoaded">
-        <h1 v-if="this.titleSustainable()">Great results ! Your business idea is <span style="color: orange">
+    <div class="pa-5">
+        <h1 v-if="this.titleSustainable()">Great results ! Your business idea is <span style="color: orangered">
                 sustainable</span>.</h1>
-        <h1 v-if="!this.titleSustainable()">You are almost there ! Your business idea is <span style="color: orange">not
+        <h1 v-if="!this.titleSustainable()">You are almost there ! Your business idea is <span style="color: orangered">not
                 sustainable</span>.<br />You can look at the articles below to try and improve the sustainability of
             your business idea :</h1>
         <v-row class="ma-10">
             <v-col>
-                <v-btn class="pa-6 white--text " color="blue-grey" elevation="5" x-large rounded @click="redirect()">
+                <v-btn class="pa-6 font-weight-bold  black--text " color="blue-grey lighten-5" elevation="5" x-large @click="redirect()">
                     Take the test again
                 </v-btn>
             </v-col>
@@ -18,8 +18,8 @@
                 </v-text-field>
             </v-col>
         </v-row>
-        <h5 class="text-md-h5 my-5">You can see your results for each category below, just click on a section to display
-            details.</h5>
+        <h2 class="text-md-h5 my-5">You can see your results for each category below, just click on a section to display
+            details.</h2>
         <v-expansion-panels popout>
             <v-expansion-panel>
                 <v-expansion-panel-header disable-icon-rotate :class="this.whichColor(this.result.data.economical_flag)"
