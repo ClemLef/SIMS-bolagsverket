@@ -40,13 +40,13 @@
                 <v-divider> </v-divider>
                 
                 <!-- Loop through all questions in all tabs, for displaying all questions on the correct tab -->
-                <label v-for="(tab, tabIndex) in tabData" :key="tab[tabIndex]" v-show="currentTab == tab.id">
-                    <label v-for="(question, index) in tab.questions" :key="question[index]">
+                <div v-for="(tab, tabIndex) in tabData" :key="tab[tabIndex]" v-show="currentTab == tab.id">
+                    <div v-for="(question, index) in tab.questions" :key="question[index]">
                         
                         <!-- If current question has an subquestion, handle if sub-question should be shown or hidden -->
-                        <label v-if="hasSubQuestion(question)">
+                        <template v-if="hasSubQuestion(question)">
                             {{showSubQuestion(question, tab.questions, index)}}
-                        </label>
+                        </template>
                         
                         <!-- If question is shown display text, help button and answers buttons -->
                         <v-card-text v-show="question.show == true">
@@ -59,7 +59,7 @@
                                     <p> {{question.text}} </p>
                                 </v-flex>
                                 
-                                <label v-if="hasQuestionInfo(question)">
+                                <template v-if="hasQuestionInfo(question)">
                                     <!-- Help button with icon to show extra information about the question when hovered -->
                                     <v-flex md1>
                                         <v-tooltip right max-width="25%" color="grey lighten-3">
@@ -72,7 +72,7 @@
                                         </v-tooltip>
                                     </v-flex>
                                     
-                                </label>
+                                </template>
                                 
                                 <!-- Card that displayes help text about the question -->
                                 <v-flex md3 class="mx-2">
@@ -89,34 +89,43 @@
                             <!-- Second row of content contains answer buttons -->
                             <v-flex class="mt-5">  
                                 
-                                <label v-if="hasSubQuestion(question)">
+                                <!-- <template v-if="hasSubQuestion(question)">
                                     <v-btn-toggle v-model="question.showSubQuestionList[index]" >
-                                        <label v-for="answer in getAnswerSet(question)" :key="answer.text">                
+                                        <div v-for="answer in getAnswerSet(question)" :key="answer.text">   
                                             <v-btn :value="answer.value" elevation="2" class="mx-2"> 
                                                 {{answer.text}} 
                                             </v-btn>        
-                                        </label>
+                                        </div>
                                     </v-btn-toggle>
-                                </label>
+                                </template> -->
+
+                                <template v-if="hasSubQuestion(question)">
+                                    <v-btn-toggle v-model="question.showSubQuestionList[index]">
+                                        <div v-for="answer in getAnswerSet(question)" :key="answer.text">
+                                            <v-btn :value="answer.value" text elevation="2" class="mx-2"> 
+                                                {{answer.text}} 
+                                            </v-btn >                  
+                                        </div>
+                                    </v-btn-toggle>
+                                </template>
                                 
-                                <label v-else>
+                                <template v-else>
                                     <v-btn-toggle v-model="tab.answers[index]">
-                                        <label v-for="answer in getAnswerSet(question)" :key="answer.text">
-                                            
-                                            <v-btn :value="answer.value" elevation="2" class="mx-2"> 
+                                        <div v-for="answer in getAnswerSet(question)" :key="answer.text">
+                                            <v-btn :value="answer.value" text elevation="2" class="mx-2"> 
                                                 {{answer.text}} 
-                                            </v-btn>        
-                                        </label>
+                                            </v-btn >                  
+                                        </div>
                                     </v-btn-toggle>
-                                </label>
+                                </template>
                                 
                                 <v-divider class="mt-10"></v-divider>
                             </v-flex>
                             
                             
                         </v-card-text>
-                    </label>
-                </label>
+                    </div>
+                </div>
                 
                 <!-- Prev and Next button, increment or decrement current tab counter -->
                 <v-row class="mx-8 my-10">

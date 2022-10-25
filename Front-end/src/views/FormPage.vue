@@ -43,14 +43,17 @@
 
       // loads all question from db and puts them into a tab inside of tabData object
       async loadAllQuestion() {
-
+        
         this.formLoading = true;
-
+        
         const questions = await FormAPI.getQuestions()
         .catch(error => { console.log("Could not load questions from Database: " + error) })
         .finally(() => {this.formLoading = false});
-
+        
         const allQuestions = questions.data;
+        
+        var questionCounter = 1;  // User Test purpose
+        var questionsToShow = 3;  // User Test purpose
 
         // Get every question for every tab and place the question into tab
         for(var i = 0; i < this.tabData.length; i++){
@@ -62,22 +65,29 @@
             var answerSet = allQuestions[j].answer_set;          
             var hasSubQuestion = allQuestions[j].has_sub_question; 
             var subQuestionGroup = allQuestions[j].sub_question_group;   
-            var show = allQuestions[j].active;  
+            var show = allQuestions[j].active; 
             
             if(category == [i]){
-              this.tabData[i].questions.push({
-                text: text,
-                info: info, 
-                show: show,
-                showInfo: false,
-                answerSet: answerSet,
-                hasSubQuestion: hasSubQuestion,
-                subQuestionGroup: subQuestionGroup,
-                showSubQuestionList: [],
-              })
+
+              if(this.tabData[i].questions.length < questionsToShow){ // User Test purpose, if tab contains more questions then limit, don't show more questions on this tab
+                this.tabData[i].questions.push({
+                  text: text,
+                  info: info, 
+                  show: show,
+                  showInfo: false,
+                  answerSet: answerSet,
+                  hasSubQuestion: hasSubQuestion,
+                  subQuestionGroup: subQuestionGroup,
+                  showSubQuestionList: [],
+                })
+
+                questionCounter++;            // User Test purpose
+                console.log(questionCounter); // Don't remove this line
+              }
             }
             
           }
+          questionCounter = 0; // User Test purpose, reset questions counter for every new tab
         }
       },
 
