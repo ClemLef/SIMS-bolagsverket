@@ -10,14 +10,14 @@
                         <v-item>
                             <v-card :img="require('../assets/card_background_transparent.png')" elevation="5"
                                 class="mx-auto d-flex flex-column" height="100%" max-width="400">
-                                <v-card-title class="justify-center"> {{ article.title }} </v-card-title>
+                                <v-card-title class="justify-center justify-center font-weight-medium"> {{ article.title }} </v-card-title>
                                 <v-divider></v-divider>
-                                <v-card-text class="text--primary">
+                                <v-card-text class="text--primary text-body-1">
                                     <div>{{ article.description }}</div>
                                 </v-card-text>
                                 <v-spacer></v-spacer>
                                 <v-card-actions>
-                                    <v-btn color="green" text @click="redirect_link(article.url)">
+                                    <v-btn class="font-weight-bold text-decoration-underline" color="blue" text @click="redirect_link(article.url)">
                                         Read more
                                     </v-btn>
                                 </v-card-actions>
