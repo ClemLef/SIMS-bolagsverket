@@ -3,10 +3,10 @@
     <v-card width="90%" class="mx-auto my-10 text-left">
 
         <v-container class="text-center">
-            <h1>
+            <h1 class="my-5">
                 {{infoPageHeader.header}}
             </h1>
-            <h3 class="my-10">
+            <h3 class="my-10 mx-5">
                 {{infoPageHeader.text}}
             </h3>
             <v-divider class="my-5"> </v-divider>
@@ -19,7 +19,7 @@
         <v-container v-for="(info, index) in tabHelpInfo" :key="info[index]" class="px-15 py-5">  
             <h2> {{info.headline}} </h2>
             <p class="my-3"> {{info.text}} </p>
-            <p class="font-weight-bold"> {{info.source}} </p>  
+            <!-- <p class="font-weight-bold"> {{info.source}} </p>   -->
         </v-container>
 
         

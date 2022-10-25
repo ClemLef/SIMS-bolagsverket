@@ -33,9 +33,9 @@
                     </p>                
                 </v-container>
             
-                <p class="font-weight-bold"> 
+                <!-- <p class="font-weight-bold"> 
                     {{helpInfoSource}} 
-                </p>  
+                </p>   -->
             
                 <v-divider> </v-divider>
                 
