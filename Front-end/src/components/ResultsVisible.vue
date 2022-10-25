@@ -1,6 +1,6 @@
 <template>
 
-    <div class="pa-5">
+    <div v-if="dataLoaded" class="pa-5">
         <h1 v-if="this.titleSustainable()">Great results ! Your business idea is <span style="color: orangered">
                 sustainable</span>.</h1>
         <h1 v-if="!this.titleSustainable()">You are almost there ! Your business idea is <span style="color: orangered">not
