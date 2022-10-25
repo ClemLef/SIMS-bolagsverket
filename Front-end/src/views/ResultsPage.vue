@@ -6,7 +6,7 @@
             <v-tabs background-color="green darken-4" center-active dark right>
                 <v-tooltip top color="green darken-4">
                     <template v-slot:activator="{ on, attrs }">
-                        <v-btn icon class="ml-auto my-auto mr-3" :disabled='isDisabled' v-bind="attrs" v-on="on">
+                        <v-btn icon class="ml-auto my-auto mr-3" :disabled='isDisabled()' v-bind="attrs" v-on="on">
                             <v-icon>mdi-download</v-icon>
                         </v-btn>
                     </template>
@@ -15,7 +15,7 @@
                 
                 <v-tooltip top color="green darken-4">
                     <template v-slot:activator="{ on, attrs }">
-                        <v-btn icon class="my-auto mr-5" :disabled='isDisabled' @click="shareResult()" v-bind="attrs"
+                        <v-btn icon class="my-auto mr-5" :disabled='isDisabled()' @click="shareResult()" v-bind="attrs"
                         v-on="on">
                             <v-icon>mdi-share-variant</v-icon>
                         </v-btn>
@@ -79,6 +79,17 @@ export default {
             }
         },
 
+        isDisabled() {
+            // if a result cookie is present
+            if (this.$route.query.code != null) {
+                // enable the buttons and return the results view
+                return false;
+            } else {
+                // disable the buttons and return the error page
+                return true;
+            }
+        },
+
 
     },
 
@@ -93,16 +104,7 @@ export default {
 
 
     computed: {
-        isDisabled() {
-            // if a result cookie is present
-            if (this.result_code != null) {
-                // enable the buttons and return the results view
-                return false;
-            } else {
-                // disable the buttons and return the error page
-                return true;
-            }
-        },
+        
     },
 
     created() {
