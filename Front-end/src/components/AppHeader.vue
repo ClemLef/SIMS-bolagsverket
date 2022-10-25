@@ -1,9 +1,10 @@
 <template>
     <div>
-        <v-app-bar color="green lighten-2">
-            <v-app-bar-nav-icon class="green--text text--darken-4" @click="drawer = true"></v-app-bar-nav-icon>
+        <v-app-bar color="green darken-4">
+            <v-app-bar-nav-icon class="white--text" @click="drawer = true"></v-app-bar-nav-icon>
             <v-spacer></v-spacer>
-            <v-app-bar-title class="font-weight-bold green--text text--darken-4">Sustainability Barometer
+            <v-app-bar-title class="font-weight-bold white--text">
+                Sustainability Barometer
             </v-app-bar-title>
         </v-app-bar>
 
