@@ -18,7 +18,7 @@
 
         <v-row class="ma-10">
             <v-col>
-                <v-btn class="pa-6 mt-12 font-weight-bold  black--text " color="blue-grey lighten-5" elevation="5" x-large @click="redirect()">
+                <v-btn class="pa-6 mt-12 font-weight-bold  white--text " color="green darken-3" elevation="5" x-large @click="redirect()">
                     <v-icon left> mdi-form-select </v-icon>
                     Take the test!
                 </v-btn>

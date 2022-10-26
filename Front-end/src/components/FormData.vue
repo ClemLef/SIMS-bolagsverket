@@ -119,18 +119,18 @@
                     
                     <!-- Prev and Next button, increment or decrement current tab counter -->
                     <v-row class="mx-8 my-10">
-                        <v-btn v-show="currentTab != 0" class="mx-2 my-4" depressed color="primary" large @click="prevTab();">
+                        <v-btn v-show="currentTab != 0" class="mx-2 my-4" depressed color="success" large @click="prevTab();">
                             <v-icon left> mdi-arrow-left </v-icon>
                             Prev
                         </v-btn>
                         
-                        <v-btn v-show="currentTab != tabData.length - 1" class="mx-2 my-4" depressed color="success" large @click="nextTab();">
+                        <v-btn v-show="currentTab != tabData.length - 1" class="mx-2 my-4" depressed color="primary" large @click="nextTab();">
                             Next
                             <v-icon right> mdi-arrow-right </v-icon>
                         </v-btn>
                         
                         <v-btn v-show="currentTab == tabData.length - 1" class="mx-2 my-4" :loading="loading" depressed
-                        color="accent" large @click="calcFormResult()"> Result
+                        color="primary" large @click="calcFormResult()"> Result
                         <v-icon right> mdi-form-select </v-icon>
                         </v-btn>
                         <AlertMessage v-show="errorSendingDataAI" />
