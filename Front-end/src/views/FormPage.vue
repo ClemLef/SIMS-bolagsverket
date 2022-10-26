@@ -52,8 +52,8 @@
         
         const allQuestions = questions.data;
         
-        var questionCounter = 1;  // User Test purpose
-        var questionsToShow = 2;  // User Test purpose
+        // var questionCounter = 1;  // User Test purpose
+        // var questionsToShow = 2;  // User Test purpose
 
         // Get every question for every tab and place the question into tab
         for(var i = 0; i < this.tabData.length; i++){
@@ -69,7 +69,7 @@
             
             if(category == [i]){
 
-              if(this.tabData[i].questions.length < questionsToShow){ // User Test purpose, if tab contains more questions then limit, don't show more questions on this tab
+              if(this.tabData[i].questions.length < this.questionsToShow){ // User Test purpose, if tab contains more questions then limit, don't show more questions on this tab
                 this.tabData[i].questions.push({
                   text: text,
                   info: info, 
@@ -81,13 +81,12 @@
                   showSubQuestionList: [],
                 })
 
-                questionCounter++;            // User Test purpose
-                console.log(questionCounter); // Don't remove this line
+                this.questionCounter++;            // User Test purpose
               }
             }
             
           }
-          questionCounter = 0; // User Test purpose, reset questions counter for every new tab
+          this.questionCounter = 0; // User Test purpose, reset questions counter for every new tab
         }
       },
 
@@ -127,6 +126,8 @@
 
       formLoading: false,
       answerSets: [],
+      questionCounter: 1,  // User Test purpose
+      questionsToShow: 2,  // User Test purpose
       
       tabData:[
 
