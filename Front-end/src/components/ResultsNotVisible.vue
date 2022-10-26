@@ -1,20 +1,30 @@
 <template>
-    <div class="pa-10">
+    <div class="pt-10">
         <v-flex my-10>
             <v-img class="mx-auto" max-height="200" max-width="200" :src="require('../assets/missing-form.png')">
             </v-img>
         </v-flex>
-        <h1 class="my-5">Looks like you haven't taken the test</h1>
-        <h3><span style="color: orange">You can do it now </span>or enter your code to <span
-                style="color: orange">access your result: </span></h3>
+        <h1 class="my-3">Looks like you haven't taken the test</h1>
+
+        <h2 class="text-h5">
+            <span class="orange--text text--darken-2">
+                You can do it now 
+            </span> 
+            or enter your code to 
+            <span class="orange--text text--darken-2">
+                access your result: 
+            </span>
+        </h2>
 
         <v-row class="ma-10">
             <v-col>
-                <v-btn class="pa-6 white--text " color="blue-grey" elevation="5" x-large rounded @click="redirect()">
-                    Take the test !
+                <v-btn class="pa-6 mt-12 font-weight-bold  black--text " color="blue-grey lighten-5" elevation="5" x-large @click="redirect()">
+                    <v-icon left> mdi-form-select </v-icon>
+                    Take the test!
                 </v-btn>
             </v-col>
             <v-col>
+                <p class="text-h6 text-left"> Enter your code below to access your previous results! </p>
                 <v-text-field :error="this.setError" v-model="resultsCode" append-icon="mdi-chevron-right" outlined
                     label="Result Code" @keydown.enter="loadResult()" @click:append="loadResult()">
                 </v-text-field>

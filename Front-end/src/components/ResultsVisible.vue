@@ -6,13 +6,16 @@
         <h1 v-if="!this.titleSustainable()">You are almost there ! Your business idea is <span style="color: orangered">not
                 sustainable</span>.<br />You can look at the articles below to try and improve the sustainability of
             your business idea :</h1>
-        <v-row class="ma-10">
-            <v-col>
-                <v-btn class="pa-6 font-weight-bold  black--text " color="blue-grey lighten-5" elevation="5" x-large @click="redirect()">
-                    Take the test again
+        
+        <v-row class="ma-10">     
+            <v-col>        
+                <v-btn class="pa-6 mt-12 font-weight-bold  black--text " color="blue-grey lighten-5" elevation="5" x-large @click="redirect()">
+                    <v-icon left> mdi-form-select </v-icon>
+                    Take the test again!
                 </v-btn>
             </v-col>
             <v-col>
+                <p class="text-h6 text-left"> Save this code below to access your result at a later time! </p>
                 <v-text-field :value="result.data.result_code" append-icon="mdi-content-copy" outlined
                     label="Result Code" @click:append="copyCode()" readonly>
                 </v-text-field>
