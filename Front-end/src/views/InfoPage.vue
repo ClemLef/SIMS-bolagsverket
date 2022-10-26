@@ -76,9 +76,11 @@
         methods: {
             redirectForm() {
                 this.$router.push('/form')
+                this.$vuetify.goTo(0)
             },
             redirectHome() {
                 this.$router.push('/')
+                this.$vuetify.goTo(0)
             },
 
         },

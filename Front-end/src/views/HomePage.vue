@@ -46,9 +46,11 @@ export default {
     methods: {
         redirectForm() {
             this.$router.push('/form')
+            this.$vuetify.goTo(0)
         },
         redirectInfoPage() {
             this.$router.push('/info')
+            this.$vuetify.goTo(0)
         },
     }, 
     

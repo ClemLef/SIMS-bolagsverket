@@ -278,20 +278,26 @@ export default {
                     this.errorSendingDataAI = false;
                     this.$router.push({ path: 'results', query: { code: output.data.result_code } })
                 }
+                this.$vuetify.goTo(0)
             })()
 
 
         },
         prevTab() {
-            if (this.currentTab != 0)
+            if (this.currentTab != 0){
                 this.currentTab -= 1;
+                this.$vuetify.goTo(0)
+            }
         },
         nextTab() {
-            if (this.currentTab != 3)
+            if (this.currentTab != 3){
                 this.currentTab += 1;
+                this.$vuetify.goTo(0)
+            }
         },
         setCurrentTab(selectedTab) {
             this.currentTab = selectedTab;
+            this.$vuetify.goTo(0)
         },
         showInfo(question) {
             if (question.showInfo == true) {
