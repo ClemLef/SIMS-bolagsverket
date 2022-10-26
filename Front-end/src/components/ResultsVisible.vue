@@ -76,7 +76,7 @@
                 </v-btn>
             </v-col>
             <v-col>
-                <p class="text-h6 text-left"> Save this code below to access your result at a later time! </p>
+                <p class="text-h6 text-left"> Copy and write down this code below to access your result at a later time! </p>
                 <v-text-field :value="result.data.result_code" append-icon="mdi-content-copy" outlined
                     label="Result Code" @click:append="copyCode()" readonly>
                 </v-text-field>

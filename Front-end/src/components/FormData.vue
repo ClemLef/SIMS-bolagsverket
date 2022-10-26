@@ -70,6 +70,7 @@
                                         <v-flex md1>
                                             <v-tooltip right max-width="25%" color="blue-grey lighten-5">
                                                 <template v-slot:activator="{ on, attrs }">
+                                                    <p class="font-weight-bold"> info </p>
                                                     <v-btn small icon class="ml-auto my-auto mr-3" v-bind="attrs" v-on="on">
                                                         <v-icon color="black" large> mdi-help-circle-outline </v-icon>
                                                     </v-btn>
