@@ -1,28 +1,14 @@
 <template>
 
-    <div v-if="dataLoaded" class="pa-5">
+    <div v-if="dataLoaded" class="pa-10">
         <h1 v-if="this.titleSustainable()">Great results ! Your business idea is <span style="color: orangered">
                 sustainable</span>.</h1>
-        <h1 v-if="!this.titleSustainable()">You are almost there ! Your business idea is <span style="color: orangered">not
+        <h1 v-if="!this.titleSustainable()" class="mb-15">You are almost there ! Your business idea is <span style="color: orangered">not
                 sustainable</span>.<br />You can look at the articles below to try and improve the sustainability of
             your business idea :</h1>
-        
-        <v-row class="ma-10">     
-            <v-col>        
-                <v-btn class="pa-6 mt-12 font-weight-bold  white--text " color="green darken-3" elevation="5" x-large @click="redirect()">
-                    <v-icon left> mdi-chevron-left </v-icon>
-                    <v-icon left> mdi-form-select </v-icon>
-                    Take the test again!
-                </v-btn>
-            </v-col>
-            <v-col>
-                <p class="text-h6 text-left"> Save this code below to access your result at a later time! </p>
-                <v-text-field :value="result.data.result_code" append-icon="mdi-content-copy" outlined
-                    label="Result Code" @click:append="copyCode()" readonly>
-                </v-text-field>
-            </v-col>
-        </v-row>
-        <h2 class="text-md-h5 my-5">You can see your results for each category below, just click on a section to display
+    
+
+        <h2 class="text-md-h5 mt-15">You can see your results for each category below, just click on a section to display
             details.</h2>
         <v-expansion-panels popout>
             <v-expansion-panel>
@@ -79,6 +65,23 @@
                 <component :articles='articlesInf' :is="displaySustainable(result.data.influence_flag)"></component>
             </v-expansion-panel>
         </v-expansion-panels>
+
+
+        <v-row class="ma-15">     
+            <v-col>        
+                <v-btn class="pa-6 mt-12 font-weight-bold  white--text " color="green darken-3" elevation="5" x-large @click="redirect()">
+                    <v-icon left> mdi-chevron-left </v-icon>
+                    <v-icon left> mdi-form-select </v-icon>
+                    Take the test again!
+                </v-btn>
+            </v-col>
+            <v-col>
+                <p class="text-h6 text-left"> Save this code below to access your result at a later time! </p>
+                <v-text-field :value="result.data.result_code" append-icon="mdi-content-copy" outlined
+                    label="Result Code" @click:append="copyCode()" readonly>
+                </v-text-field>
+            </v-col>
+        </v-row>
     </div>
 
 
