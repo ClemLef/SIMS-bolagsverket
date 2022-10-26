@@ -53,7 +53,7 @@
         const allQuestions = questions.data;
         
         var questionCounter = 1;  // User Test purpose
-        var questionsToShow = 3;  // User Test purpose
+        var questionsToShow = 2;  // User Test purpose
 
         // Get every question for every tab and place the question into tab
         for(var i = 0; i < this.tabData.length; i++){
