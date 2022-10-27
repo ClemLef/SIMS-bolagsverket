@@ -79,7 +79,7 @@
 
         <v-row class="ma-15">
             <v-col>
-                <v-btn class="pt-2 font-weight-bold  white--text " color="green darken-3" elevation="5" x-large
+                <v-btn class="mt-1 font-weight-bold  white--text " color="green darken-3" elevation="5" x-large
                     @click="redirect()">
                     <v-icon left> mdi-chevron-left </v-icon>
                     <v-icon left> mdi-form-select </v-icon>
