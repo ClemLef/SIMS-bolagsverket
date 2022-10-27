@@ -129,7 +129,9 @@ export default {
         copyCode() {
             this.copyIcon = "mdi-checkbox-marked-outline"
             this.copySuccess = true
-            navigator.clipboard.writeText(this.result.data.result_code);
+            //the commented function should be the one used but is not working for demonstration purposes over http
+            //navigator.clipboard.writeText(this.result.data.result_code);
+            document.execCommand('copy')
         },
 
         async loadArticles() {

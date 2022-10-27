@@ -18,17 +18,16 @@
 
         <v-row class="ma-10">
             <v-col>
-                <v-btn class="pa-6 mt-12 font-weight-bold  white--text " color="green darken-3" elevation="5" x-large @click="redirect()">
+                <v-btn class="font-weight-bold  white--text " color="green darken-3" elevation="5" x-large @click="redirect()">
                     <v-icon left> mdi-form-select </v-icon>
                     Take the test!
                 </v-btn>
             </v-col>
-            <v-col>
-                <p class="text-h6 text-left"> Enter your code below to access your previous results! </p>
+            <v-col class="pr-15">
                 <v-text-field :error="this.setError" v-model="resultsCode" append-icon="mdi-chevron-right" outlined
-                    label="Result Code" @keydown.enter="loadResult()" @click:append="loadResult()">
+                    label="Enter your code here to access your results!" @keydown.enter="loadResult()" @click:append="loadResult()">
                 </v-text-field>
-                <v-alert dense text type="error" v-show="this.setError">
+                <v-alert  dense text type="error" v-show="this.setError">
                     No result found with this code. Make sure you entered the correct one.
                 </v-alert>
             </v-col>
