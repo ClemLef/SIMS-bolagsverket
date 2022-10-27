@@ -8,7 +8,7 @@
                 <v-row>
                     <v-col v-for="(article, index) in articles" :key="article[index]" cols="12" md="4">
                         <v-item>
-                            <v-card :img="require('../assets/card_background_transparent.png')" elevation="5"
+                            <v-card color="orange lighten-5" elevation="5"
                                 class="mx-auto d-flex flex-column" height="100%" max-width="400">
                                 <v-card-title class="justify-center justify-center font-weight-medium"> {{ article.title }} </v-card-title>
                                 <v-divider></v-divider>
