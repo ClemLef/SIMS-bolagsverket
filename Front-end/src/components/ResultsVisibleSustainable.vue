@@ -1,6 +1,6 @@
 <template>
     <v-expansion-panel-content class="mt-5">
-        Your answers show that your business idea is sustainable for the social part.
+        Your answers show that your business idea is sustainable for the {{ category }} part.
         <br />You can find additional ressources here :
         <v-item-group class="mt-8">
             <v-container>
@@ -36,6 +36,7 @@ export default {
 
     props: {
         articles: Array,
+        category: String,
     },
 
     data: () => ({

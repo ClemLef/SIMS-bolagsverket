@@ -1,6 +1,6 @@
 <template>
     <v-expansion-panel-content class="mt-5">
-        Your answers show that you still have progress to make in the environmental part of
+        Your answers show that you still have progress to make in the {{ category }} part of
         sustainability.
         Don't worry, we've gathered some useful links for you to read and explore.
         <v-item-group class="mt-8">
@@ -34,6 +34,7 @@
 export default {
     props: {
         articles: Array,
+        category: String,
     },
 
     data: () => ({
