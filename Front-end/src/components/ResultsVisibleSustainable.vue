@@ -7,20 +7,21 @@
                 <v-row>
                     <v-col v-for="(article, index) in articles" :key="article[index]" cols="12" md="4">
                         <v-item>
-                            <v-card elevation="5" class="mx-auto d-flex flex-column" height="100%" max-width="400">
-                                <v-img :src="require('../assets/card_background_transparent.png')">
-                                    <v-card-title class="justify-center font-weight-medium">  {{ article.title }}  </v-card-title>
-                                    <v-divider></v-divider>
-                                    <v-card-text class="text--primary text-body-1">
-                                        <div>{{ article.description }}</div>
-                                    </v-card-text>
-                                    <v-spacer></v-spacer>
-                                    <v-card-actions style="position: absolute, bottom: 0">
-                                        <v-btn class="font-weight-bold text-decoration-underline" color="blue" text @click="redirect_link(article.url)">
-                                            Read more
-                                        </v-btn>
-                                    </v-card-actions>
-                                </v-img>
+                            <v-card :img="require('../assets/card_background_transparent.png')" elevation="5"
+                                class="mx-auto d-flex flex-column" height="100%" max-width="400">
+                                <v-card-title class="justify-center font-weight-medium"> {{ article.title }}
+                                </v-card-title>
+                                <v-divider></v-divider>
+                                <v-card-text class="text--primary text-body-1">
+                                    <div>{{ article.description }}</div>
+                                </v-card-text>
+                                <v-spacer></v-spacer>
+                                <v-card-actions style="position: absolute, bottom: 0">
+                                    <v-btn class="font-weight-bold text-decoration-underline" color="blue" text
+                                        @click="redirect_link(article.url)">
+                                        Read more
+                                    </v-btn>
+                                </v-card-actions>
                             </v-card>
                         </v-item>
                     </v-col>
