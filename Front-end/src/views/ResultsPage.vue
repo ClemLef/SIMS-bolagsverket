@@ -60,7 +60,7 @@ export default {
 
         createUrl() {
             let baseUrl = window.location.href.split('?')[0]
-            let params = '?code=' + this.result_code
+            let params = '?code=' + this.$route.query.code
             console.log(baseUrl + params)
             return baseUrl + params;
         },
