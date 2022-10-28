@@ -1,23 +1,33 @@
 <template>
-    <div class="pa-10">
+    <div class="pt-10">
         <v-flex my-10>
             <v-img class="mx-auto" max-height="200" max-width="200" :src="require('../assets/missing-form.png')">
             </v-img>
         </v-flex>
-        <h1 class="my-5">Looks like you haven't taken the test</h1>
-        <h3><span style="color: orange">You can do it now </span>or enter your code to <span style="color: orange">access your result: </span></h3>
+        <h1 class="my-3">Looks like you haven't taken the test</h1>
+
+        <h2 class="text-h5">
+            <span class="orange--text text--darken-2">
+                You can do it now 
+            </span> 
+            or enter your code to 
+            <span class="orange--text text--darken-2">
+                access your result: 
+            </span>
+        </h2>
 
         <v-row class="ma-10">
             <v-col>
-                <v-btn class="pa-6 white--text " color="blue-grey" elevation="5" x-large rounded @click="redirect()">
-                    Take the test !
+                <v-btn class="font-weight-bold  white--text " color="green darken-3" elevation="5" x-large @click="redirect()">
+                    <v-icon left> mdi-form-select </v-icon>
+                    Take the test!
                 </v-btn>
             </v-col>
-            <v-col>
-                <v-text-field :color="this.getErrorColor" v-model="resultsCode" append-icon="mdi-chevron-right" outlined
-                    label="Result Code" @keydown.enter="loadResult()" @click:append="loadResult()">
+            <v-col class="pr-15">
+                <v-text-field :error="this.setError" v-model="resultsCode" append-icon="mdi-chevron-right" outlined
+                    label="Enter your code here to access your results!" @keydown.enter="loadResult()" @click:append="loadResult()">
                 </v-text-field>
-                <v-alert dense text type="error" v-show="this.getErrorColor">
+                <v-alert  dense text type="error" v-show="this.setError">
                     No result found with this code. Make sure you entered the correct one.
                 </v-alert>
             </v-col>
@@ -41,28 +51,28 @@ export default {
         },
         async loadResult() {
             let result_code = this.getTextInput
-            let result = await ResultsAPI.getResult(result_code);
-            console.log(result)
-            if (result.data != "") {
-                window.$cookies.config("1d");
-                window.$cookies.set("isSustainable", result.data);
-                this.$router.go()
+            if (result_code != "") {
+                let result = await ResultsAPI.getResult(result_code);
+                if (result.data != "") {
+                    this.$router.push({ path: 'results', query: { code: result_code } })
+                } else {
+                    this.error = true
+                }
             } else {
                 this.error = true
             }
-
         },
-
     },
+
     computed: {
         getTextInput() {
             return this.resultsCode;
         },
-        getErrorColor() {
+        setError() {
             if (this.error) {
-                return 'red'
+                return true
             } else {
-                return ''
+                return false
             }
         }
     }

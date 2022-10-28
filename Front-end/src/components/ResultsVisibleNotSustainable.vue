@@ -1,6 +1,6 @@
 <template>
     <v-expansion-panel-content class="mt-5">
-        Your answers show that you still have progress to make in the environmental part of
+        Your answers show that you still have progress to make in the {{ category }} part of
         sustainability.
         Don't worry, we've gathered some useful links for you to read and explore.
         <v-item-group class="mt-8">
@@ -8,16 +8,16 @@
                 <v-row>
                     <v-col v-for="(article, index) in articles" :key="article[index]" cols="12" md="4">
                         <v-item>
-                            <v-card :img="require('../assets/card_background_transparent.png')" elevation="5"
+                            <v-card color="orange lighten-5" elevation="5"
                                 class="mx-auto d-flex flex-column" height="100%" max-width="400">
-                                <v-card-title class="justify-center"> {{ article.title }} </v-card-title>
+                                <v-card-title class="justify-center justify-center font-weight-medium"> {{ article.title }} </v-card-title>
                                 <v-divider></v-divider>
-                                <v-card-text class="text--primary">
+                                <v-card-text class="text--primary text-body-1">
                                     <div>{{ article.description }}</div>
                                 </v-card-text>
                                 <v-spacer></v-spacer>
                                 <v-card-actions>
-                                    <v-btn color="green" text @click="redirect_link(article.url)">
+                                    <v-btn class="font-weight-bold text-decoration-underline" color="blue" text @click="redirect_link(article.url)">
                                         Read more
                                     </v-btn>
                                 </v-card-actions>
@@ -34,6 +34,7 @@
 export default {
     props: {
         articles: Array,
+        category: String,
     },
 
     data: () => ({
@@ -48,7 +49,6 @@ export default {
             window.open(link);
         },
         redirect() {
-            window.$cookies.remove('isSustainable');
             this.$router.push('/form');
         },
 
