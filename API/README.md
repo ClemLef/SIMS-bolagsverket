@@ -10,13 +10,12 @@
 -	Install SAIL : Sail is already installed with Laravel
 ### Starting the API
 -	Start sail : 
-o	Move to the Laravel folder
-o	Execute 
-```./vendor/bin/sail up```
+    -   Move to the Laravel folder
+    -   To start the program, execute : 
+```
+./vendor/bin/sail up
+```
 
-```
-npm install
-```
 
 ## Documentation
 The api has a number of routes implemented : 
