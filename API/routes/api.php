@@ -35,9 +35,11 @@ Route::get('answer_sets', [AnswerSetController::class, 'index']);
 Route::get('categories', [CategoryController::class, 'index']);
 
 Route::get('articles', [ArticleController::class, 'index']);
+Route::get('articles/{id}', [ArticleController::class, 'show']);
+Route::post('articles', [ArticleController::class, 'add']);
 
 Route::get('ai_results', [AiResultController::class, 'index']);
-Route::get('ai_results/{result_code}', [AiResultController::class, 'find']);
+Route::get('ai_results/{result_code}', [AiResultController::class, 'show']);
 
 /* Route::get('questions', function() {
     // If the Content-Type and Accept headers are set to 'application/json', 

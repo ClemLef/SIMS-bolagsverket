@@ -12,7 +12,7 @@ class AiResultController extends Controller
     {
         return AiResults::all();
     }
-    public function find($result_code) {
+    public function show($result_code) {
         return AiResults::where('result_code', $result_code)->first();
     }
 }
