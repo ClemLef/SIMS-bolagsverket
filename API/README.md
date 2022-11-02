@@ -73,7 +73,7 @@ To get one AI results with a user result code :
 ```
 GET /api/ai_results/"result_code"
 ```
-To add one AI result in the database : 
+To add one AI result in the database :  
 `Note` : all of these parameters are integers, result_code must be unique
 ```
 POST /api/ai_results?result_code="result_code"&global="global"&social_flag="social_flag"&economical_flag="economical_flag"&environment_flag="environment_flag"&influence_flag="influence_flag"&active="active")
