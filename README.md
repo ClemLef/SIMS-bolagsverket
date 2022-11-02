@@ -3,4 +3,4 @@ This repository is about the Project-based product development, done in coordina
 
 # Organization of the repository
 Every component is separated into its own folder, and each have its own documentation in a readme.md file. 
-
+For more information about the project, see Documentation folder.
