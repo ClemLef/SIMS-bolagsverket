@@ -1,9 +1,9 @@
 <?php
 
+use App\Http\Controllers\QuestionController;
 use App\Models\AnswerSets;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\QuestionController;
 use App\Models\Categories;
 use App\Models\Article;
 use App\Models\AiResults;
@@ -22,9 +22,8 @@ use App\Models\AiResults;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
-
-Route::get('questions', 'QuestionController@index');
-Route::get('questions/{id}', 'QuestionController@show');
+Route::get('questions', [QuestionController::class, 'index']);
+Route::get('questions/{id}', [QuestionController::class, 'show']);
 
 /* Route::get('questions', function() {
     // If the Content-Type and Accept headers are set to 'application/json', 
