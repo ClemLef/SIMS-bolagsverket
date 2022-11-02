@@ -40,6 +40,7 @@ Route::post('articles', [ArticleController::class, 'add']);
 
 Route::get('ai_results', [AiResultController::class, 'index']);
 Route::get('ai_results/{result_code}', [AiResultController::class, 'show']);
+Route::post('ai_results', [AiResultController::class, 'add']);
 
 /* Route::get('questions', function() {
     // If the Content-Type and Accept headers are set to 'application/json', 
@@ -64,18 +65,18 @@ Route::get('questions/{id}', function($id) {
     return Categories::all();
 }); */
 
-Route::post('articles', function(Request $request) {
+/* Route::post('articles', function(Request $request) {
     return Article::create($request->all());
-});
+}); */
 
 /* Route::get('articles', function() {
     return Article::all();
 }); */
 
-Route::post('ai_results', function(Request $request) {
+/* Route::post('ai_results', function(Request $request) {
     return AiResults::create($request->all());
 });
-
+ */
 //not the most secure but needed for the ai program to generated a unique random code
 /* Route::get('ai_results', function() {
     return AiResults::all();
