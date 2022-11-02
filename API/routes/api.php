@@ -3,7 +3,7 @@
 use App\Models\AnswerSets;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Models\Questions;
+use Http\Controllers\QuestionController;
 use App\Models\Categories;
 use App\Models\Article;
 use App\Models\AiResults;
