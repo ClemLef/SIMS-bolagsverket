@@ -46,7 +46,7 @@ if __name__ == "__main__":
     app.run()
  
 def send_results_db(resultAi):
-	data = {'global': resultAi['global'], 'result_code': resultAi['result_code'], 'social_flag': resultAi['social_flag'], 'economical_flag': resultAi['economical_flag'], 'environment_flag': resultAi['environment_flag'], "influence_flag": resultAi['influence_flag']}
+	data = {'global': resultAi['global'], 'result_code': resultAi['result_code'], 'social_flag': resultAi['social_flag'], 'economical_flag': resultAi['economical_flag'], 'environment_flag': resultAi['environment_flag'], 'influence_flag': resultAi['influence_flag'], 'active': 1}
 	for i in range(10):
 		try:
 			time.sleep(0.3) 
