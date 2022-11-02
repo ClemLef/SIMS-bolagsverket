@@ -23,7 +23,10 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('questions', function() {
+Route::get('questions', 'QuestionController@index');
+Route::get('questions/{id}', 'QuestionController@show');
+
+/* Route::get('questions', function() {
     // If the Content-Type and Accept headers are set to 'application/json', 
     // this will return a JSON structure. This will be cleaned up later.
     return Questions::all();
@@ -31,7 +34,7 @@ Route::get('questions', function() {
  
 Route::get('questions/{id}', function($id) {
     return Questions::find($id);
-});
+}); */
 
 Route::get('answer_sets', function() {
     // If the Content-Type and Accept headers are set to 'application/json', 
