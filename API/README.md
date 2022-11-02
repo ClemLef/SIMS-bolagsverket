@@ -37,8 +37,8 @@ This table describes the endpoints and their function.
 | Answer Sets | /answer_sets | Contains all the answer sets to be displayed in the form on the front end |
 | Categories | /categories | Contains the main categories (social, environemental, economical, positive influence) to be displayed on the front end |
 
-The api has a number of routes implemented : 
-Note : Only the necessary routes were implemented.
+The api has a number of routes implemented :  
+`Note` : Only the necessary routes were implemented.
 
 ### Questions
 To get all the questions : 
@@ -74,7 +74,7 @@ To get one AI results with a user result code :
 GET /api/ai_results/"result_code"
 ```
 To add one AI result in the database : 
-Note : all of these parameters are integers, result_code must be unique
+`Note` : all of these parameters are integers, result_code must be unique
 ```
 POST /api/ai_results?result_code="result_code"&global="global"&social_flag="social_flag"&economical_flag="economical_flag"&environment_flag="environment_flag"&influence_flag="influence_flag"&active="active")
 ```
