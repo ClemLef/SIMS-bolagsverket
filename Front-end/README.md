@@ -1,5 +1,5 @@
 # Front end developped with the VueJS framework (Vue 2.6.14)
-## Uses Vue router (3.5.1) and Vuetify (2.6.0)
+Uses Vue router (3.5.1) and Vuetify (2.6.0)
 
 ## Project setup
 ```
