@@ -30,6 +30,10 @@ npm install -g @vue/cli
 ```
 Vue add vuetify
 ```
+### Install vuex
+```
+npm install vuex@next --save
+```
 ### Install vue-router
 ```
 Vue add vue-router
