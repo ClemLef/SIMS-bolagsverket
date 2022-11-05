@@ -1,4 +1,5 @@
 <template>
+    <!-- Contains the application header and navigation drawer -->
     <div>
         <v-app-bar color="green darken-4">
             <v-app-bar-nav-icon class="white--text" @click="drawer = true"></v-app-bar-nav-icon>
@@ -29,6 +30,7 @@ export default {
     data() {
         return {
             drawer: false,
+            // Items to be displayed on the navigation drawer
             items: [
                 { title: 'Home', icon: 'mdi-home-circle-outline', path: '/' },
                 { title: 'Sustainability Test', icon: 'mdi-leaf-circle-outline', path: '/form' },
@@ -38,7 +40,9 @@ export default {
         }
     },
     methods: {
+        // Redirect to the corresponding page
         redirect(item) {
+            // Check if the page is not the current page to prevent looping navigation
             if (this.$route.path != item.path) {
                 this.$router.push(item.path)
             }

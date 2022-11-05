@@ -1,4 +1,5 @@
 <template>
+    <!-- Error component used when an error occured while sending data to the AI -->
     <v-alert prominent type="error">
         <v-row align="center">
             <v-col class="grow">
@@ -17,7 +18,7 @@
 export default {
     methods: {
         redirect() {
-            this.$router.push("/info");
+            // Provide some way for the user to contact site owner or admin
         }
     }
 }

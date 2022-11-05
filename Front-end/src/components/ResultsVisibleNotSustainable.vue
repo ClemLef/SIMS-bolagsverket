@@ -1,4 +1,5 @@
 <template>
+    <!-- Sub component of the results visible page, used to display a category not sustainable -->
     <v-expansion-panel-content class="mt-5">
         Your answers show that you still have progress to make in the {{ category }} part of
         sustainability.
@@ -6,18 +7,21 @@
         <v-item-group class="mt-8">
             <v-container>
                 <v-row>
+                    <!-- Display all 3 articles in different vcard -->
                     <v-col v-for="(article, index) in articles" :key="article[index]" cols="12" md="4">
                         <v-item>
-                            <v-card color="orange lighten-5" elevation="5"
-                                class="mx-auto d-flex flex-column" height="100%" max-width="400">
-                                <v-card-title class="justify-center justify-center font-weight-medium"> {{ article.title }} </v-card-title>
+                            <v-card color="orange lighten-5" elevation="5" class="mx-auto d-flex flex-column"
+                                height="100%" max-width="400">
+                                <v-card-title class="justify-center justify-center font-weight-medium"> {{ article.title
+                                }} </v-card-title>
                                 <v-divider></v-divider>
                                 <v-card-text class="text--primary text-body-1">
                                     <div>{{ article.description }}</div>
                                 </v-card-text>
                                 <v-spacer></v-spacer>
                                 <v-card-actions>
-                                    <v-btn class="font-weight-bold text-decoration-underline" color="blue" text @click="redirect_link(article.url)">
+                                    <v-btn class="font-weight-bold text-decoration-underline" color="blue" text
+                                        @click="redirectLink(article.url)">
                                         Read more
                                     </v-btn>
                                 </v-card-actions>
@@ -32,26 +36,17 @@
 
 <script>
 export default {
+    // These props are the data transmitted from the parent component (ResultsVisible)
     props: {
         articles: Array,
         category: String,
     },
 
-    data: () => ({
-        cards: [
-            /*  { title: 'What is sustainable investing ?', img_src: 'https://cloudinary.hbs.edu/hbsit/image/upload/s--YvTQW8XL--/f_auto,c_fill,h_375,w_750,/v20200101/9DD1E295483AB53C37A95A0D4BFE6F5D.jpg', source: "online.hbs.edu", description: "Investors can use several strategies to build and diversify their portfolios to ensure financial success. One emerging trend changing the way businesses and investors think about investing is a concept known as sustainable investing.", link: "https://online.hbs.edu/blog/post/sustainable-investing" },
-             { title: 'F-skatt', img_src: 'https://skatteverket.se/images/18.1c68351d170ce554527e35/1584713519347/Logo_vit_bakgrund_FB.png', source: "skatteverket.se", description: "Om du bedriver näringsverksamhet i Sverige kan du efter ansökan hos Skatteverket bli godkänd för F-skatt", link: "https://www.skatteverket.se/foretag/etjansterochblanketter/svarpavanligafragor/fskatt/foretagfskattfaq/vemkanbligodkandforfskattochvadinnebardet.5.18e1b10334ebe8bc8000118949.html" },
-             { title: 'Sustainable funds', img_src: 'https://www.fondbolagen.se/globalassets/om-oss/hallbarhet-artikelbild2-ny-webb.jpg?preset=jumbotron', source: "fondbolagen.se", description: "Knowing that the money they invest contributes to sustainable development is becoming increasingly important to savers.", link: "https://www.fondbolagen.se/en/Facts_Indices/sustainable-funds/" }, */
-        ],
-    }),
     methods: {
-        redirect_link(link) {
+        // Redirect to the linked article
+        redirectLink(link) {
             window.open(link);
         },
-        redirect() {
-            this.$router.push('/form');
-        },
-
     },
 }
 </script>
