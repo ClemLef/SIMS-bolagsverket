@@ -10,7 +10,7 @@
                 sustainable</span>.<br />You can look at the articles below to try and improve the sustainability of
             your business idea.</h1>
 
-        <h3 class="text-h6 mb-10"> You can copy the at the end of the page to access your result at a later time ! </h3>
+        <h3 class="text-h6 mb-10"> You can copy the result code at the end of the page to access your result at a later time ! </h3>
 
         <h2 class="text-md-h5 mb-10 ">You can see your results for each category below, just click on a section to
             display
