@@ -1,5 +1,5 @@
-# Front end developped with the VueJS framework (Vue 2.6.14)
-# Uses Vue router (3.5.1) and Vuetify (2.6.0)
+# Front end developped with the VueJS framework (Vue 2.7.10)
+Uses Vuetify (2.6.12), Vuex (3.6.2), Vue-router (3.6.5) and axios (1.1.3)
 
 ## Project setup
 ```
@@ -20,6 +20,25 @@ npm run build
 ```
 npm run lint
 ```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+## Install modules 
+### Install vue and vue-cli into the project
+```
+npm install vue
+npm install -g @vue/cli
+```
+### Install vuetify
+```
+Vue add vuetify
+```
+### Install vuex
+```
+npm install vuex@next --save
+```
+### Install vue-router
+```
+Vue add vue-router
+```
+### Install axios
+```
+npm install axios
+```

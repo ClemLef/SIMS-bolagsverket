@@ -1,2 +1,6 @@
-This is a repository for the SIMS project at Mid Sweden University. 
-The different parts of the project are divided into folders. 
+# Presentation
+This repository is about the Project-based product development, done in coordination between Mid Sweden University and a company, in this case Bolagsverket. The core of the problem given was to find a solution to improve the sustainability of companies. The project was conducted by a group of 5 students from different backgrounds. To solve this problem, multiple reflection phases were conducted following the scrum agile method, and led to the sustainability barometer. It’s a website on which the entrepreneur can take a form containing questions about sustainability. Based on his answers, an artificial intelligence will assess the sustainability of his business idea and give educational material depending on the points to improve. The website is using a headless approach, meaning that every component is separated for better scalability. In order for the different parts to do their job, languages and frameworks such as VueJS, .NET, Python, Laravel were used. The result of this project is a fully functional website, with a tested and accessible user interface. A lot of thought was put on having it as user-friendly as possible. The work produced here will serve as a solid base for Bolagsverket to build on and add features. 
+
+# Organization of the repository
+Every component is separated into its own folder, and each have its own documentation in a readme.md file. 
+For more information about the project, see Documentation folder.
