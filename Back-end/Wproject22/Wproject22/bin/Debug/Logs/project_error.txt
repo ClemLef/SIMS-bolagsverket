@@ -1,0 +1,308 @@
+Error Message: 2022-10-04 20:12:25 :Det går inte att utföra åtgärden Like på System.Int32 och System.String.
+Stack Trace: 2022-10-04 20:12:25 :   vid System.Data.LikeNode.Eval(DataRow row, DataRowVersion version)
+   vid System.Data.DataExpression.Invoke(DataRow row, DataRowVersion version)
+   vid System.Data.Index.AcceptRecord(Int32 record, IFilter filter)
+   vid System.Data.Index.InitRecords(IFilter filter)
+   vid System.Data.Index..ctor(DataTable table, IndexField[] indexFields, Comparison`1 comparison, DataViewRowState recordStates, IFilter rowFilter)
+   vid System.Data.DataTable.GetIndex(IndexField[] indexDesc, DataViewRowState recordStates, IFilter rowFilter)
+   vid System.Data.DataView.UpdateIndex(Boolean force, Boolean fireEvent)
+   vid System.Data.DataView.UpdateIndex(Boolean force)
+   vid System.Data.DataView.SetIndex2(String newSort, DataViewRowState newRowStates, IFilter newRowFilter, Boolean fireEvent)
+   vid System.Data.DataView.SetIndex(String newSort, DataViewRowState newRowStates, IFilter newRowFilter)
+   vid System.Data.DataView.set_RowFilter(String value)
+   vid System.Data.DataView.System.ComponentModel.IBindingListView.set_Filter(String value)
+   vid System.Windows.Forms.BindingSource.set_InnerListFilter(String value)
+   vid System.Windows.Forms.BindingSource.set_Filter(String value)
+   vid Wproject22.GUI.Question.OnSearchCategoryQuestion_Clicked(Object sender, EV_Question e) i C:\Users\Dell-5480\source\repos\Wproject22\Wproject22\GUI\Question.cs:rad 256/n
+Error Message: 2022-10-04 20:17:20 :Det går inte att utföra åtgärden Like på System.Int32 och System.String.
+Stack Trace: 2022-10-04 20:17:20 :   vid System.Data.LikeNode.Eval(DataRow row, DataRowVersion version)
+   vid System.Data.DataExpression.Invoke(DataRow row, DataRowVersion version)
+   vid System.Data.Index.AcceptRecord(Int32 record, IFilter filter)
+   vid System.Data.Index.InitRecords(IFilter filter)
+   vid System.Data.Index..ctor(DataTable table, IndexField[] indexFields, Comparison`1 comparison, DataViewRowState recordStates, IFilter rowFilter)
+   vid System.Data.DataTable.GetIndex(IndexField[] indexDesc, DataViewRowState recordStates, IFilter rowFilter)
+   vid System.Data.DataView.UpdateIndex(Boolean force, Boolean fireEvent)
+   vid System.Data.DataView.UpdateIndex(Boolean force)
+   vid System.Data.DataView.SetIndex2(String newSort, DataViewRowState newRowStates, IFilter newRowFilter, Boolean fireEvent)
+   vid System.Data.DataView.SetIndex(String newSort, DataViewRowState newRowStates, IFilter newRowFilter)
+   vid System.Data.DataView.set_RowFilter(String value)
+   vid System.Data.DataView.System.ComponentModel.IBindingListView.set_Filter(String value)
+   vid System.Windows.Forms.BindingSource.set_InnerListFilter(String value)
+   vid System.Windows.Forms.BindingSource.set_Filter(String value)
+   vid Wproject22.GUI.Question.OnSearchCategoryQuestion_Clicked(Object sender, EV_Question e) i C:\Users\Dell-5480\source\repos\Wproject22\Wproject22\GUI\Question.cs:rad 256/n
+Error Message: 2022-10-04 20:25:31 :Det går inte att utföra åtgärden Like på System.Int32 och System.String.
+Stack Trace: 2022-10-04 20:25:31 :   vid System.Data.LikeNode.Eval(DataRow row, DataRowVersion version)
+   vid System.Data.DataExpression.Invoke(DataRow row, DataRowVersion version)
+   vid System.Data.Index.AcceptRecord(Int32 record, IFilter filter)
+   vid System.Data.Index.InitRecords(IFilter filter)
+   vid System.Data.Index..ctor(DataTable table, IndexField[] indexFields, Comparison`1 comparison, DataViewRowState recordStates, IFilter rowFilter)
+   vid System.Data.DataTable.GetIndex(IndexField[] indexDesc, DataViewRowState recordStates, IFilter rowFilter)
+   vid System.Data.DataView.UpdateIndex(Boolean force, Boolean fireEvent)
+   vid System.Data.DataView.UpdateIndex(Boolean force)
+   vid System.Data.DataView.SetIndex2(String newSort, DataViewRowState newRowStates, IFilter newRowFilter, Boolean fireEvent)
+   vid System.Data.DataView.SetIndex(String newSort, DataViewRowState newRowStates, IFilter newRowFilter)
+   vid System.Data.DataView.set_RowFilter(String value)
+   vid System.Data.DataView.System.ComponentModel.IBindingListView.set_Filter(String value)
+   vid System.Windows.Forms.BindingSource.set_InnerListFilter(String value)
+   vid System.Windows.Forms.BindingSource.set_Filter(String value)
+   vid Wproject22.GUI.Question.OnSearchCategoryQuestion_Clicked(Object sender, EV_Question e) i C:\Users\Dell-5480\source\repos\Wproject22\Wproject22\GUI\Question.cs:rad 256/n
+Error Message: 2022-10-04 21:36:25 :Det går inte att utföra åtgärden Like på System.Int32 och System.String.
+Stack Trace: 2022-10-04 21:36:25 :   vid System.Data.LikeNode.Eval(DataRow row, DataRowVersion version)
+   vid System.Data.DataExpression.Invoke(DataRow row, DataRowVersion version)
+   vid System.Data.Index.AcceptRecord(Int32 record, IFilter filter)
+   vid System.Data.Index.InitRecords(IFilter filter)
+   vid System.Data.Index..ctor(DataTable table, IndexField[] indexFields, Comparison`1 comparison, DataViewRowState recordStates, IFilter rowFilter)
+   vid System.Data.DataTable.GetIndex(IndexField[] indexDesc, DataViewRowState recordStates, IFilter rowFilter)
+   vid System.Data.DataView.UpdateIndex(Boolean force, Boolean fireEvent)
+   vid System.Data.DataView.UpdateIndex(Boolean force)
+   vid System.Data.DataView.SetIndex2(String newSort, DataViewRowState newRowStates, IFilter newRowFilter, Boolean fireEvent)
+   vid System.Data.DataView.SetIndex(String newSort, DataViewRowState newRowStates, IFilter newRowFilter)
+   vid System.Data.DataView.set_RowFilter(String value)
+   vid System.Data.DataView.System.ComponentModel.IBindingListView.set_Filter(String value)
+   vid System.Windows.Forms.BindingSource.set_InnerListFilter(String value)
+   vid System.Windows.Forms.BindingSource.set_Filter(String value)
+   vid Wproject22.GUI.Question.OnSearchCategoryQuestion_Clicked(Object sender, EV_Question e) i C:\Users\Dell-5480\source\repos\Wproject22\Wproject22\GUI\Question.cs:rad 259/n
+Error Message: 2022-10-10 22:40:39 :Objektreferensen har inte angetts till en instans av ett objekt.
+Stack Trace: 2022-10-10 22:40:39 :   vid Wproject22.GUI.Question.DGV_Question_RowEnter(Object sender, DataGridViewCellEventArgs e) i C:\Users\Dell-5480\source\repos\Wproject22\Wproject22\GUI\Question.cs:rad 185/n
+Error Message: 2022-10-10 22:52:38 :Det gick inte att hitta kolumnen med namnet ID.
+Parameternamn: columnName
+Stack Trace: 2022-10-10 22:52:39 :   vid System.Windows.Forms.DataGridViewCellCollection.get_Item(String columnName)
+   vid Wproject22.GUI.Question.DGV_Question_RowEnter(Object sender, DataGridViewCellEventArgs e) i C:\Users\Dell-5480\source\repos\Wproject22\Wproject22\GUI\Question.cs:rad 182/n
+Error Message: 2022-10-10 22:54:54 :Det gick inte att hitta kolumnen med namnet qid.
+Parameternamn: columnName
+Stack Trace: 2022-10-10 22:54:54 :   vid System.Windows.Forms.DataGridViewCellCollection.get_Item(String columnName)
+   vid Wproject22.GUI.Question.DGV_Question_RowEnter(Object sender, DataGridViewCellEventArgs e) i C:\Users\Dell-5480\source\repos\Wproject22\Wproject22\GUI\Question.cs:rad 182/n
+Error Message: 2022-10-10 22:56:40 :Det gick inte att hitta kolumnen med namnet active.
+Parameternamn: columnName
+Stack Trace: 2022-10-10 22:56:40 :   vid System.Windows.Forms.DataGridViewCellCollection.get_Item(String columnName)
+   vid Wproject22.GUI.Question.DGV_Question_RowEnter(Object sender, DataGridViewCellEventArgs e) i C:\Users\Dell-5480\source\repos\Wproject22\Wproject22\GUI\Question.cs:rad 187/n
+Error Message: 2022-10-10 22:57:45 :Det gick inte att hitta kolumnen med namnet questiontext.
+Parameternamn: columnName
+Stack Trace: 2022-10-10 22:57:45 :   vid System.Windows.Forms.DataGridViewCellCollection.get_Item(String columnName)
+   vid Wproject22.GUI.Question.DGV_Question_RowEnter(Object sender, DataGridViewCellEventArgs e) i C:\Users\Dell-5480\source\repos\Wproject22\Wproject22\GUI\Question.cs:rad 191/n
+Error Message: 2022-10-10 23:01:46 :Det gick inte att hitta kolumnen med namnet questiontext.
+Parameternamn: columnName
+Stack Trace: 2022-10-10 23:01:46 :   vid System.Windows.Forms.DataGridViewCellCollection.get_Item(String columnName)
+   vid Wproject22.GUI.Question.DGV_Question_RowEnter(Object sender, DataGridViewCellEventArgs e) i C:\Users\Dell-5480\source\repos\Wproject22\Wproject22\GUI\Question.cs:rad 191/n
+Error Message: 2022-10-11 11:30:38 :Det gick inte att hitta kolumnen med namnet qsubcategory.
+Parameternamn: columnName
+Stack Trace: 2022-10-11 11:30:38 :   vid System.Windows.Forms.DataGridViewCellCollection.get_Item(String columnName)
+   vid Wproject22.GUI.Question.DGV_Question_RowEnter(Object sender, DataGridViewCellEventArgs e) i C:\Miun-HT22\ProjectNet\Wproject22\Wproject22\GUI\Question.cs:rad 192/n
+Error Message: 2022-10-11 11:34:19 :Det gick inte att hitta kolumnen med namnet qsubcategory.
+Parameternamn: columnName
+Stack Trace: 2022-10-11 11:34:19 :   vid System.Windows.Forms.DataGridViewCellCollection.get_Item(String columnName)
+   vid Wproject22.GUI.Question.DGV_Question_RowEnter(Object sender, DataGridViewCellEventArgs e) i C:\Miun-HT22\ProjectNet\Wproject22\Wproject22\GUI\Question.cs:rad 192/n
+Error Message: 2022-10-11 11:38:31 :Det gick inte att hitta kolumnen med namnet qsubcategory.
+Parameternamn: columnName
+Stack Trace: 2022-10-11 11:38:31 :   vid System.Windows.Forms.DataGridViewCellCollection.get_Item(String columnName)
+   vid Wproject22.GUI.Question.DGV_Question_RowEnter(Object sender, DataGridViewCellEventArgs e) i C:\Miun-HT22\ProjectNet\Wproject22\Wproject22\GUI\Question.cs:rad 192/n
+Error Message: 2022-10-11 11:40:18 :Det gick inte att hitta kolumnen med namnet qsubcategory.
+Parameternamn: columnName
+Stack Trace: 2022-10-11 11:40:18 :   vid System.Windows.Forms.DataGridViewCellCollection.get_Item(String columnName)
+   vid Wproject22.GUI.Question.DGV_Question_RowEnter(Object sender, DataGridViewCellEventArgs e) i C:\Miun-HT22\ProjectNet\Wproject22\Wproject22\GUI\Question.cs:rad 192/n
+Error Message: 2022-10-11 11:41:29 :Det gick inte att hitta kolumnen med namnet qsubcategory.
+Parameternamn: columnName
+Stack Trace: 2022-10-11 11:41:29 :   vid System.Windows.Forms.DataGridViewCellCollection.get_Item(String columnName)
+   vid Wproject22.GUI.Question.DGV_Question_RowEnter(Object sender, DataGridViewCellEventArgs e) i C:\Miun-HT22\ProjectNet\Wproject22\Wproject22\GUI\Question.cs:rad 194/n
+Error Message: 2022-10-11 22:31:05 :Strängen identifierades inte som en giltig Boolean-sträng.
+Stack Trace: 2022-10-11 22:31:05 :   vid System.Boolean.Parse(String value)
+   vid Wproject22.GUI.Question.DGV_Question_RowEnter(Object sender, DataGridViewCellEventArgs e) i C:\Miun-HT22\ProjectNet\Wproject22\Wproject22\GUI\Question.cs:rad 276/n
+Error Message: 2022-10-12 00:36:19 :Det gick inte att hitta kolumnen [category].
+Stack Trace: 2022-10-12 00:36:19 :   vid System.Data.NameNode.Bind(DataTable table, List`1 list)
+   vid System.Data.FunctionNode.Bind(DataTable table, List`1 list)
+   vid System.Data.BinaryNode.Bind(DataTable table, List`1 list)
+   vid System.Data.DataExpression.Bind(DataTable table)
+   vid System.Data.DataExpression..ctor(DataTable table, String expression, Type type)
+   vid System.Data.DataView.set_RowFilter(String value)
+   vid System.Data.DataView.System.ComponentModel.IBindingListView.set_Filter(String value)
+   vid System.Windows.Forms.BindingSource.set_InnerListFilter(String value)
+   vid System.Windows.Forms.BindingSource.set_Filter(String value)
+   vid Wproject22.GUI.iquestion.OnSearchAnswer_Clicked(Object sender, EV_Answer e) i C:\Miun-HT22\ProjectNet\Wproject22\Wproject22\GUI\iquestion.cs:rad 158/n
+Error Message: 2022-10-12 12:43:34 :Det gick inte att hitta kolumnen med namnet qid.
+Parameternamn: columnName
+Stack Trace: 2022-10-12 12:43:34 :   vid System.Windows.Forms.DataGridViewCellCollection.get_Item(String columnName)
+   vid Wproject22.GUI.Question.DGV_Question_RowEnter(Object sender, DataGridViewCellEventArgs e) i C:\Miun-HT22\ProjectNet\Wproject22\Wproject22\GUI\Question.cs:rad 263/n
+Error Message: 2022-10-12 12:45:11 :Det gick inte att hitta kolumnen med namnet qid.
+Parameternamn: columnName
+Stack Trace: 2022-10-12 12:45:11 :   vid System.Windows.Forms.DataGridViewCellCollection.get_Item(String columnName)
+   vid Wproject22.GUI.Question.DGV_Question_RowEnter(Object sender, DataGridViewCellEventArgs e) i C:\Miun-HT22\ProjectNet\Wproject22\Wproject22\GUI\Question.cs:rad 263/n
+Error Message: 2022-10-12 12:54:09 :Det gick inte att hitta kolumnen med namnet value.
+Parameternamn: columnName
+Stack Trace: 2022-10-12 12:54:09 :   vid System.Windows.Forms.DataGridViewCellCollection.get_Item(String columnName)
+   vid Wproject22.GUI.GSetName.DGV_GSN_RowEnter(Object sender, DataGridViewCellEventArgs e) i C:\Miun-HT22\ProjectNet\Wproject22\Wproject22\GUI\GSetName.cs:rad 39/n
+Error Message: 2022-10-14 10:16:56 :Det gick inte att hitta kolumnen med namnet show_subquestion_group.
+Parameternamn: columnName
+Stack Trace: 2022-10-14 10:16:57 :   vid System.Windows.Forms.DataGridViewCellCollection.get_Item(String columnName)
+   vid Wproject22.GUI.Question.DGV_Question_RowEnter(Object sender, DataGridViewCellEventArgs e) i C:\Miun-HT22\ProjectNet\Wproject22\Wproject22\GUI\Question.cs:rad 280/n
+Error Message: 2022-10-14 11:55:30 :Objektreferensen har inte angetts till en instans av ett objekt.
+Stack Trace: 2022-10-14 11:55:30 :   vid Wproject22.GUI.Question.DGV_Question_RowEnter(Object sender, DataGridViewCellEventArgs e) i C:\Miun-HT22\ProjectNet\Wproject22\Wproject22\GUI\Question.cs:rad 290/n
+Error Message: 2022-10-14 13:59:21 :Objektreferensen har inte angetts till en instans av ett objekt.
+Stack Trace: 2022-10-14 13:59:21 :   vid Wproject22.GUI.Question.DGV_Question_RowEnter(Object sender, DataGridViewCellEventArgs e) i C:\Miun-HT22\ProjectNet\Wproject22\Wproject22\GUI\Question.cs:rad 292/n
+Error Message: 2022-10-14 13:59:25 :Objektreferensen har inte angetts till en instans av ett objekt.
+Stack Trace: 2022-10-14 13:59:25 :   vid Wproject22.GUI.Question.DGV_Question_RowEnter(Object sender, DataGridViewCellEventArgs e) i C:\Miun-HT22\ProjectNet\Wproject22\Wproject22\GUI\Question.cs:rad 292/n
+Error Message: 2022-10-14 14:01:32 :Objektreferensen har inte angetts till en instans av ett objekt.
+Stack Trace: 2022-10-14 14:01:32 :   vid Wproject22.GUI.Question.DGV_Question_RowEnter(Object sender, DataGridViewCellEventArgs e) i C:\Miun-HT22\ProjectNet\Wproject22\Wproject22\GUI\Question.cs:rad 294/n
+Error Message: 2022-10-14 14:01:36 :Objektreferensen har inte angetts till en instans av ett objekt.
+Stack Trace: 2022-10-14 14:01:36 :   vid Wproject22.GUI.Question.DGV_Question_RowEnter(Object sender, DataGridViewCellEventArgs e) i C:\Miun-HT22\ProjectNet\Wproject22\Wproject22\GUI\Question.cs:rad 294/n
+Error Message: 2022-10-14 14:01:37 :Objektreferensen har inte angetts till en instans av ett objekt.
+Stack Trace: 2022-10-14 14:01:37 :   vid Wproject22.GUI.Question.DGV_Question_RowEnter(Object sender, DataGridViewCellEventArgs e) i C:\Miun-HT22\ProjectNet\Wproject22\Wproject22\GUI\Question.cs:rad 294/n
+Error Message: 2022-10-14 14:12:13 :Det gick inte att hitta kolumnen med namnet q_id.
+Parameternamn: columnName
+Stack Trace: 2022-10-14 14:12:13 :   vid System.Windows.Forms.DataGridViewCellCollection.get_Item(String columnName)
+   vid Wproject22.GUI.Question.DGV_Question_RowEnter(Object sender, DataGridViewCellEventArgs e) i C:\Miun-HT22\ProjectNet\Wproject22\Wproject22\GUI\Question.cs:rad 271/n
+Error Message: 2022-10-14 14:12:21 :Det gick inte att hitta kolumnen med namnet q_id.
+Parameternamn: columnName
+Stack Trace: 2022-10-14 14:12:21 :   vid System.Windows.Forms.DataGridViewCellCollection.get_Item(String columnName)
+   vid Wproject22.GUI.Question.DGV_Question_RowEnter(Object sender, DataGridViewCellEventArgs e) i C:\Miun-HT22\ProjectNet\Wproject22\Wproject22\GUI\Question.cs:rad 271/n
+Error Message: 2022-10-14 14:12:23 :Det gick inte att hitta kolumnen med namnet q_id.
+Parameternamn: columnName
+Stack Trace: 2022-10-14 14:12:23 :   vid System.Windows.Forms.DataGridViewCellCollection.get_Item(String columnName)
+   vid Wproject22.GUI.Question.DGV_Question_RowEnter(Object sender, DataGridViewCellEventArgs e) i C:\Miun-HT22\ProjectNet\Wproject22\Wproject22\GUI\Question.cs:rad 271/n
+Error Message: 2022-10-14 14:20:10 :Det gick inte att hitta kolumnen med namnet q_id.
+Parameternamn: columnName
+Stack Trace: 2022-10-14 14:20:10 :   vid System.Windows.Forms.DataGridViewCellCollection.get_Item(String columnName)
+   vid Wproject22.GUI.Question.DGV_Questions_RowEnter(Object sender, DataGridViewCellEventArgs e) i C:\Miun-HT22\ProjectNet\Wproject22\Wproject22\GUI\Question.cs:rad 271/n
+Error Message: 2022-10-14 14:20:17 :Det gick inte att hitta kolumnen med namnet q_id.
+Parameternamn: columnName
+Stack Trace: 2022-10-14 14:20:17 :   vid System.Windows.Forms.DataGridViewCellCollection.get_Item(String columnName)
+   vid Wproject22.GUI.Question.DGV_Questions_RowEnter(Object sender, DataGridViewCellEventArgs e) i C:\Miun-HT22\ProjectNet\Wproject22\Wproject22\GUI\Question.cs:rad 271/n
+Error Message: 2022-10-14 14:20:18 :Det gick inte att hitta kolumnen med namnet q_id.
+Parameternamn: columnName
+Stack Trace: 2022-10-14 14:20:18 :   vid System.Windows.Forms.DataGridViewCellCollection.get_Item(String columnName)
+   vid Wproject22.GUI.Question.DGV_Questions_RowEnter(Object sender, DataGridViewCellEventArgs e) i C:\Miun-HT22\ProjectNet\Wproject22\Wproject22\GUI\Question.cs:rad 271/n
+Error Message: 2022-10-14 14:20:28 :Det gick inte att hitta kolumnen med namnet q_id.
+Parameternamn: columnName
+Stack Trace: 2022-10-14 14:20:28 :   vid System.Windows.Forms.DataGridViewCellCollection.get_Item(String columnName)
+   vid Wproject22.GUI.Question.DGV_Questions_RowEnter(Object sender, DataGridViewCellEventArgs e) i C:\Miun-HT22\ProjectNet\Wproject22\Wproject22\GUI\Question.cs:rad 271/n
+Error Message: 2022-10-14 14:21:56 :Objektreferensen har inte angetts till en instans av ett objekt.
+Stack Trace: 2022-10-14 14:21:56 :   vid Wproject22.GUI.Question.DGV_Questions_RowEnter(Object sender, DataGridViewCellEventArgs e) i C:\Miun-HT22\ProjectNet\Wproject22\Wproject22\GUI\Question.cs:rad 294/n
+Error Message: 2022-10-14 14:22:14 :Objektreferensen har inte angetts till en instans av ett objekt.
+Stack Trace: 2022-10-14 14:22:14 :   vid Wproject22.GUI.Question.DGV_Questions_RowEnter(Object sender, DataGridViewCellEventArgs e) i C:\Miun-HT22\ProjectNet\Wproject22\Wproject22\GUI\Question.cs:rad 294/n
+Error Message: 2022-10-14 14:22:17 :Objektreferensen har inte angetts till en instans av ett objekt.
+Stack Trace: 2022-10-14 14:22:17 :   vid Wproject22.GUI.Question.DGV_Questions_RowEnter(Object sender, DataGridViewCellEventArgs e) i C:\Miun-HT22\ProjectNet\Wproject22\Wproject22\GUI\Question.cs:rad 294/n
+Error Message: 2022-10-14 14:22:59 :Det gick inte att hitta kolumnen med namnet q_setcategorys.
+Parameternamn: columnName
+Stack Trace: 2022-10-14 14:22:59 :   vid System.Windows.Forms.DataGridViewCellCollection.get_Item(String columnName)
+   vid Wproject22.GUI.Question.DGV_Questions_RowEnter(Object sender, DataGridViewCellEventArgs e) i C:\Miun-HT22\ProjectNet\Wproject22\Wproject22\GUI\Question.cs:rad 295/n
+Error Message: 2022-10-14 14:23:03 :Det gick inte att hitta kolumnen med namnet q_setcategorys.
+Parameternamn: columnName
+Stack Trace: 2022-10-14 14:23:03 :   vid System.Windows.Forms.DataGridViewCellCollection.get_Item(String columnName)
+   vid Wproject22.GUI.Question.DGV_Questions_RowEnter(Object sender, DataGridViewCellEventArgs e) i C:\Miun-HT22\ProjectNet\Wproject22\Wproject22\GUI\Question.cs:rad 295/n
+Error Message: 2022-10-14 14:23:06 :Det gick inte att hitta kolumnen med namnet q_setcategorys.
+Parameternamn: columnName
+Stack Trace: 2022-10-14 14:23:06 :   vid System.Windows.Forms.DataGridViewCellCollection.get_Item(String columnName)
+   vid Wproject22.GUI.Question.DGV_Questions_RowEnter(Object sender, DataGridViewCellEventArgs e) i C:\Miun-HT22\ProjectNet\Wproject22\Wproject22\GUI\Question.cs:rad 295/n
+Error Message: 2022-10-21 09:28:25 :Det gick inte att hitta kolumnen med namnet q_id.
+Parameternamn: columnName
+Stack Trace: 2022-10-21 09:28:25 :   vid System.Windows.Forms.DataGridViewCellCollection.get_Item(String columnName)
+   vid Wproject22.GUI.Question.DGV_Questions_RowEnter(Object sender, DataGridViewCellEventArgs e) i C:\Miun-HT22\ProjectNet\Localhost\Wproject22\Wproject22\GUI\Question.cs:rad 266/n
+Error Message: 2022-10-21 09:29:09 :Det gick inte att hitta kolumnen med namnet qquestiontext.
+Parameternamn: columnName
+Stack Trace: 2022-10-21 09:29:09 :   vid System.Windows.Forms.DataGridViewCellCollection.get_Item(String columnName)
+   vid Wproject22.GUI.Question.DGV_Questions_RowEnter(Object sender, DataGridViewCellEventArgs e) i C:\Miun-HT22\ProjectNet\Localhost\Wproject22\Wproject22\GUI\Question.cs:rad 288/n
+Error Message: 2022-10-21 09:31:32 :Det gick inte att hitta kolumnen med namnet qhassubquestion.
+Parameternamn: columnName
+Stack Trace: 2022-10-21 09:31:32 :   vid System.Windows.Forms.DataGridViewCellCollection.get_Item(String columnName)
+   vid Wproject22.GUI.Question.DGV_Questions_RowEnter(Object sender, DataGridViewCellEventArgs e) i C:\Miun-HT22\ProjectNet\Localhost\Wproject22\Wproject22\GUI\Question.cs:rad 289/n
+Error Message: 2022-10-21 09:32:27 :Det gick inte att hitta kolumnen med namnet qsetcategorys.
+Parameternamn: columnName
+Stack Trace: 2022-10-21 09:32:27 :   vid System.Windows.Forms.DataGridViewCellCollection.get_Item(String columnName)
+   vid Wproject22.GUI.Question.DGV_Questions_RowEnter(Object sender, DataGridViewCellEventArgs e) i C:\Miun-HT22\ProjectNet\Localhost\Wproject22\Wproject22\GUI\Question.cs:rad 290/n
+Error Message: 2022-10-21 09:32:47 :Det gick inte att hitta kolumnen med namnet qsetcategorys.
+Parameternamn: columnName
+Stack Trace: 2022-10-21 09:32:47 :   vid System.Windows.Forms.DataGridViewCellCollection.get_Item(String columnName)
+   vid Wproject22.GUI.Question.DGV_Questions_RowEnter(Object sender, DataGridViewCellEventArgs e) i C:\Miun-HT22\ProjectNet\Localhost\Wproject22\Wproject22\GUI\Question.cs:rad 290/n
+Error Message: 2022-10-22 01:40:14 :Det gick inte att hitta kolumnen med namnet qid.
+Parameternamn: columnName
+Stack Trace: 2022-10-22 01:40:14 :   vid System.Windows.Forms.DataGridViewCellCollection.get_Item(String columnName)
+   vid Wproject22.GUI.Questions.DGV_Questions_RowEnter(Object sender, DataGridViewCellEventArgs e) i C:\Miun-HT22\ProjectNet\Localhost\Wproject22\Wproject22\GUI\Questions.cs:rad 273/n
+Error Message: 2022-10-22 08:41:09 :Det gick inte att hitta kolumnen med namnet qquestion.
+Parameternamn: columnName
+Stack Trace: 2022-10-22 08:41:09 :   vid System.Windows.Forms.DataGridViewCellCollection.get_Item(String columnName)
+   vid Wproject22.GUI.Questions.DGV_Questions_RowEnter(Object sender, DataGridViewCellEventArgs e) i C:\Miun-HT22\ProjectNet\Localhost\Wproject22\Wproject22\GUI\Questions.cs:rad 275/n
+Error Message: 2022-10-22 08:42:18 :Det gick inte att hitta kolumnen med namnet qquestion.
+Parameternamn: columnName
+Stack Trace: 2022-10-22 08:42:18 :   vid System.Windows.Forms.DataGridViewCellCollection.get_Item(String columnName)
+   vid Wproject22.GUI.Questions.DGV_Questions_RowEnter(Object sender, DataGridViewCellEventArgs e) i C:\Miun-HT22\ProjectNet\Localhost\Wproject22\Wproject22\GUI\Questions.cs:rad 275/n
+Error Message: 2022-10-22 08:43:29 :Det gick inte att hitta kolumnen med namnet qhassubquestions.
+Parameternamn: columnName
+Stack Trace: 2022-10-22 08:43:29 :   vid System.Windows.Forms.DataGridViewCellCollection.get_Item(String columnName)
+   vid Wproject22.GUI.Questions.DGV_Questions_RowEnter(Object sender, DataGridViewCellEventArgs e) i C:\Miun-HT22\ProjectNet\Localhost\Wproject22\Wproject22\GUI\Questions.cs:rad 276/n
+Error Message: 2022-10-22 11:50:20 :Indexet låg utanför gränserna för matrisen.
+Stack Trace: 2022-10-22 11:50:20 :   vid Wproject22.GUI.Questions.SetGet_info(String[] SGinput_question) i C:\Miun-HT22\ProjectNet\Localhost\Wproject22\Wproject22\GUI\Questions.cs:rad 400/n
+Error Message: 2022-10-23 07:31:31 :Indexet låg utanför gränserna för matrisen.
+Stack Trace: 2022-10-23 07:31:31 :   vid Wproject22.GUI.Questions.SetGet_info(String[] SGinput_question) i C:\Miun-HT22\ProjectNet\Localhost\Wproject22\Wproject22\GUI\Questions.cs:rad 414/n
+Error Message: 2022-10-23 08:50:34 :Det gick inte att hitta kolumnen [question].
+Stack Trace: 2022-10-23 08:50:34 :   vid System.Data.NameNode.Bind(DataTable table, List`1 list)
+   vid System.Data.BinaryNode.Bind(DataTable table, List`1 list)
+   vid System.Data.DataExpression.Bind(DataTable table)
+   vid System.Data.DataExpression..ctor(DataTable table, String expression, Type type)
+   vid System.Data.DataView.set_RowFilter(String value)
+   vid System.Data.DataView.System.ComponentModel.IBindingListView.set_Filter(String value)
+   vid System.Windows.Forms.BindingSource.set_InnerListFilter(String value)
+   vid System.Windows.Forms.BindingSource.set_Filter(String value)
+   vid Wproject22.GUI.Questions.OnSearchCategoryQuestion_Clicked(Object sender, EV_Question e) i C:\Miun-HT22\ProjectNet\Localhost\Wproject22\Wproject22\GUI\Questions.cs:rad 361/n
+Error Message: 2022-10-26 00:28:11 :Det gick inte att hitta kolumnen med namnet cid.
+Parameternamn: columnName
+Stack Trace: 2022-10-26 00:28:11 :   vid System.Windows.Forms.DataGridViewCellCollection.get_Item(String columnName)
+   vid Wproject22.GUI.User.DGV_Users_RowEnter(Object sender, DataGridViewCellEventArgs e) i C:\Miun-HT22\ProjectNet\Localhost\Wproject22\Wproject22\GUI\User.cs:rad 40/n
+Error Message: 2022-10-26 01:11:37 :Det gick inte att hitta kolumnen med namnet user_urc.
+Parameternamn: columnName
+Stack Trace: 2022-10-26 01:11:37 :   vid System.Windows.Forms.DataGridViewCellCollection.get_Item(String columnName)
+   vid Wproject22.GUI.User.DGV_Users_RowEnter(Object sender, DataGridViewCellEventArgs e) i C:\Miun-HT22\ProjectNet\Localhost\Wproject22\Wproject22\GUI\User.cs:rad 42/n
+Error Message: 2022-10-26 01:11:40 :Det gick inte att hitta kolumnen med namnet user_urc.
+Parameternamn: columnName
+Stack Trace: 2022-10-26 01:11:40 :   vid System.Windows.Forms.DataGridViewCellCollection.get_Item(String columnName)
+   vid Wproject22.GUI.User.DGV_Users_RowEnter(Object sender, DataGridViewCellEventArgs e) i C:\Miun-HT22\ProjectNet\Localhost\Wproject22\Wproject22\GUI\User.cs:rad 42/n
+Error Message: 2022-10-29 08:43:26 :Indexet låg utanför gränserna för matrisen.
+Stack Trace: 2022-10-29 08:43:26 :   vid Wproject22.GUI.User.DGV_Users_RowEnter(Object sender, DataGridViewCellEventArgs e) i C:\Miun-HT22\ProjectNet\Localhost\Wproject22\Wproject22\GUI\User.cs:rad 47/n
+Error Message: 2022-10-29 08:46:39 :Indexet låg utanför gränserna för matrisen.
+Stack Trace: 2022-10-29 08:46:39 :   vid Wproject22.GUI.User.DGV_Users_RowEnter(Object sender, DataGridViewCellEventArgs e) i C:\Miun-HT22\ProjectNet\Localhost\Wproject22\Wproject22\GUI\User.cs:rad 47/n
+Error Message: 2022-11-03 09:25:19 :Objektreferensen har inte angetts till en instans av ett objekt.
+Stack Trace: 2022-11-03 09:25:19 :   vid Wproject22.GUI.User.DGV_Users_RowEnter(Object sender, DataGridViewCellEventArgs e) i C:\Miun-HT22\ProjectNet\Localhost\Wproject22\Wproject22\GUI\User.cs:rad 157/n
+Error Message: 2022-11-03 09:26:52 :Index låg utanför intervallet. Det får inte vara negativt och måste vara mindre än mängdens storlek.
+Parameternamn: index
+Stack Trace: 2022-11-03 09:26:52 :   vid System.Collections.ArrayList.get_Item(Int32 index)
+   vid System.Windows.Forms.DataGridViewSelectedRowCollection.get_Item(Int32 index)
+   vid Wproject22.GUI.User.DGV_Users_RowEnter(Object sender, DataGridViewCellEventArgs e) i C:\Miun-HT22\ProjectNet\Localhost\Wproject22\Wproject22\GUI\User.cs:rad 157/n
+Error Message: 2022-11-03 09:28:26 :Index låg utanför intervallet. Det får inte vara negativt och måste vara mindre än mängdens storlek.
+Parameternamn: index
+Stack Trace: 2022-11-03 09:28:26 :   vid System.Collections.ArrayList.get_Item(Int32 index)
+   vid System.Windows.Forms.DataGridViewSelectedRowCollection.get_Item(Int32 index)
+   vid Wproject22.GUI.User.DGV_Users_RowEnter(Object sender, DataGridViewCellEventArgs e) i C:\Miun-HT22\ProjectNet\Localhost\Wproject22\Wproject22\GUI\User.cs:rad 159/n
+Error Message: 2022-11-03 09:29:32 :Index låg utanför intervallet. Det får inte vara negativt och måste vara mindre än mängdens storlek.
+Parameternamn: index
+Stack Trace: 2022-11-03 09:29:32 :   vid System.Collections.ArrayList.get_Item(Int32 index)
+   vid System.Windows.Forms.DataGridViewSelectedRowCollection.get_Item(Int32 index)
+   vid Wproject22.GUI.User.DGV_Users_RowEnter(Object sender, DataGridViewCellEventArgs e) i C:\Miun-HT22\ProjectNet\Localhost\Wproject22\Wproject22\GUI\User.cs:rad 159/n
+Error Message: 2022-11-03 09:33:22 :Objektreferensen har inte angetts till en instans av ett objekt.
+Stack Trace: 2022-11-03 09:33:22 :   vid Wproject22.GUI.User.DGV_Users_RowEnter(Object sender, DataGridViewCellEventArgs e) i C:\Miun-HT22\ProjectNet\Localhost\Wproject22\Wproject22\GUI\User.cs:rad 158/n
+Error Message: 2022-11-03 09:35:04 :Index låg utanför intervallet. Det får inte vara negativt och måste vara mindre än mängdens storlek.
+Parameternamn: index
+Stack Trace: 2022-11-03 09:35:04 :   vid System.Collections.ArrayList.get_Item(Int32 index)
+   vid System.Windows.Forms.DataGridViewSelectedRowCollection.get_Item(Int32 index)
+   vid Wproject22.GUI.User.DGV_Users_RowEnter(Object sender, DataGridViewCellEventArgs e) i C:\Miun-HT22\ProjectNet\Localhost\Wproject22\Wproject22\GUI\User.cs:rad 159/n
+Error Message: 2022-11-03 09:36:30 :Index låg utanför intervallet. Det får inte vara negativt och måste vara mindre än mängdens storlek.
+Parameternamn: index
+Stack Trace: 2022-11-03 09:36:30 :   vid System.Collections.ArrayList.get_Item(Int32 index)
+   vid System.Windows.Forms.DataGridViewSelectedRowCollection.get_Item(Int32 index)
+   vid Wproject22.GUI.User.DGV_Users_RowEnter(Object sender, DataGridViewCellEventArgs e)/n
+Error Message: 2022-11-03 09:39:43 :Index låg utanför intervallet. Det får inte vara negativt och måste vara mindre än mängdens storlek.
+Parameternamn: index
+Stack Trace: 2022-11-03 09:39:43 :   vid System.Collections.ArrayList.get_Item(Int32 index)
+   vid System.Windows.Forms.DataGridViewSelectedRowCollection.get_Item(Int32 index)
+   vid Wproject22.GUI.User.DGV_Users_RowEnter(Object sender, DataGridViewCellEventArgs e) i C:\Miun-HT22\ProjectNet\Localhost\Wproject22\Wproject22\GUI\User.cs:rad 159/n
+Error Message: 2022-11-03 09:44:30 :Objektreferensen har inte angetts till en instans av ett objekt.
+Stack Trace: 2022-11-03 09:44:30 :   vid Wproject22.GUI.User.DGV_Users_RowEnter(Object sender, DataGridViewCellEventArgs e) i C:\Miun-HT22\ProjectNet\Localhost\Wproject22\Wproject22\GUI\User.cs:rad 158/n
+Error Message: 2022-11-03 09:46:49 :Index låg utanför intervallet. Det får inte vara negativt och måste vara mindre än mängdens storlek.
+Parameternamn: index
+Stack Trace: 2022-11-03 09:46:49 :   vid System.Collections.ArrayList.get_Item(Int32 index)
+   vid System.Windows.Forms.DataGridViewSelectedRowCollection.get_Item(Int32 index)
+   vid Wproject22.GUI.User.DGV_Users_RowEnter(Object sender, DataGridViewCellEventArgs e) i C:\Miun-HT22\ProjectNet\Localhost\Wproject22\Wproject22\GUI\User.cs:rad 162/n
+Error Message: 2022-11-03 09:47:40 :Index låg utanför intervallet. Det får inte vara negativt och måste vara mindre än mängdens storlek.
+Parameternamn: index
+Stack Trace: 2022-11-03 09:47:40 :   vid System.Collections.ArrayList.get_Item(Int32 index)
+   vid System.Windows.Forms.DataGridViewSelectedRowCollection.get_Item(Int32 index)
+   vid Wproject22.GUI.User.DGV_Users_RowEnter(Object sender, DataGridViewCellEventArgs e)/n
+Error Message: 2022-11-04 12:05:13 :Objektreferensen har inte angetts till en instans av ett objekt.
+Stack Trace: 2022-11-04 12:05:13 :   vid Wproject22.GUI.Categories.DGW_Categories_RowEnter(Object sender, DataGridViewCellEventArgs e) i C:\Miun-HT22\ProjectNet\Localhost\Wproject22\Wproject22\GUI\Categories.cs:rad 220/n

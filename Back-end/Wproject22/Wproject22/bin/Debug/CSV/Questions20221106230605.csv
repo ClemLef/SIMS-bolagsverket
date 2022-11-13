@@ -1,0 +1,53 @@
+id,category,active,set_question,help_information,answer_set,has_sub_question,sub_question_group
+1,0,Will responsible purchasing policies be used within your business?    ,Responsible purchasing is about buying goods and services whose life cycle has a positive environmental\, social and economic impact\, more respectful to people and the planet.https://www.abeautifulgreen.com/en/responsible-purchasing-policy/,3,0,0,1
+2,0,Do you plan to use F-skattsedel for your business? ,Approved for F-tax means that you are responsible for paying preliminary tax and self-employed contributions on your income from any work you carry out. If you are approved for F-tax\, your clients should not deduct tax from your earnings or pay employer contributions on them. Om du visar med ett registerutdrag att du Ã¤r godkÃ¤nd fÃ¶r F-skatt eller anger att du Ã¤r godkÃ¤nd fÃ¶r F-skatt pÃ¥ faktura\, offert\, anbud eller liknande\, ska utbetalaren inte dra skatt eller betala socialavgifter. https://www.skatteverket.se/servicelankar/otherlanguages/inenglish/businessesandemployers/startingandrunningaswedishbusiness/registeringabusiness/approvalforftax.4.676f4884175c97df4192308.html,3,0,0,1
+3,0,Is it likely for your business to expand in the next few years? ,e.g hiring employees\, generating more profit\, expanding office or area of work,3,0,0,1
+4,0,Would your business idea help generate profit for other companies ?,,3,0,0,1
+5,0,Is it possible for the business to be developped without additional investments and infrastructure ?,Is it possible for the business to expand without changing the major structure of the company. Having a planned scalable business from the start could improve the success of growing the business. ,3,0,0,1
+6,0,Are the produced services or goods affordable for the targeted customer ?,The price the customer pay might change\, the price at the supplier might change. Keeping records and comparing prices against other similar business might help indicate a resonable price for at certain product or service.,3,0,0,1
+7,0,How many existing competing market solutions would you estimate exist ? ,,5,0,0,1
+8,0,How much energy do you estimate your business will use ?,100\,000-500\,000 kWh/â€‹year is considered normal for small industries\, BRFs and larger office landscapes. https://www.fortum.se/foretag/elavtal/teckna-elavtal-till-foretaget/medelstor-elforbrukning,5,0,0,1
+9,0,Do you plan to use renewable energy for most of the energy consumption ? ,Renewable energy consumption is the ratio between the gross inland consumption of energy from renewable sources and the total (primary) gross inland energy consumption calculated for a calendar year. https://www.eea.europa.eu/data-and-maps/indicators/renewable-energy-consumption-outlook-from-iea,3,0,0,1
+10,0,Do you plan to invest to make your business more green ?,For a company that wants to invest in green energy there is allowence to apply for that could help developing a business in a more sustainable way.,3,0,0,1
+11,0,Is it ahead of the technology compared to existing market solutions?,,3,0,0,1
+12,0,By changing your processes to be more ecological\, would your company still be able to satisfy customer needs?,,3,0,0,1
+13,1,Are there any measures taken to improve working conditions ? ,Good working conditions are employees e.g are given the opportunity to work from home\, participate in the planning of their schedule and have a reasonable workload.,4,0,0,1
+14,1,Are there any measures taken to improve safety in the work environment ?,e.g having a safety representative\, risks assesments\, annual follow-ups \, https://www.av.se/en/work-environment-work-and-inspections/work-with-the-work-environment/tips-and-guidance-for-your-work-environment-management/,4,0,0,1
+15,1,Are there planned measures to prevent risks of child labour or social damage? ,,4,0,0,1
+16,1,Are there any risks today or in the future of an unhealthy work environment ? ,,4,0,0,1
+17,1,Is there a plan to allow for employees to have an health care hour (friskvärd),1,3,0,0,1
+18,1,Does the company plan to pay travel expenses to the employees?,,3,0,0,1
+19,1,To what extent do you plan to include the employees in the company s decision making?,,4,0,0,1
+20,1,Is the working environment suitable for people with disabilities?,,3,0,0,1
+21,1,Do you have a strategy in order to support employment of staff with diverging ages\, gender and religious views?,,3,0,0,1
+22,1,Do you have a stategy to ensure equal pay regardless of gender?,,3,0,0,1
+23,1,Do you plan to hire people from diverging age groups ?,,3,0,0,1
+24,1,Is there any plan to allow for interships and aprentices?,,3,0,0,1
+25,1,Are there any collective agreements for employees ? ,A collective agreement is a written agreement between an employer and a union and contains rules on\, among other things\, salary and employment conditions.,4,0,0,1
+26,2,Is the process going to use extracted raw materials?,Material extraction is the creation\, collection\, or extraction of raw material for the production of goods and services\, especially directly from the natural environment. This includes all activities such as harvesting\, mining\, lumbering\, fishing\, etc. Common raw matereals are metal\, coal\, oil. ,2,0,0,1
+27,2,Are fossil fuels planned to be used in some parts of the business process ?,A fossil fuel is a hydrocarbon-containing material formed naturally in the earth's crust from the remains of dead plants and animals that is extracted and burned as a fuel. Common fossil fules are e.g coal\, crude oil and natural gas. https://en.wikipedia.org/wiki/Fossil_fuel ,5,0,0,1
+28,2,Are carbon dioxide emissions going to occur in some parts of the business process ?,Industry and transportation has the highest impact on carbon dioxide emission in sweden kÃ¤lla:Energimyndigheten PDF sida:15,2,0,0,1
+29,2,Will your business be able to switch to a more green energy source in the near future?,e.g generating electricity from solar panels\, changing a fossil fuel driven vehicle for an electric vehicle,3,0,0,1
+30,2,Does your buisness idea involves direct or indirect animal use?,,1,1,1,1
+31,2,Are there any measures taken against animal exploitation?,,4,0,1,0
+32,2,Will there be animal product in your transformed goods ?,Produced products can contain animal products where there is no obvious connection\, e.g products like shampoo\, face masks and candy can contain gelatine,2,0,1,0
+33,2,Do you plan to propose alternative for meat-based products? ,Vegetarian or vegan products could be an alternative to meat based products,3,0,1,0
+34,2,Do your business idea plan to support locally sourced products or services?,,3,0,0,1
+35,2,Are there releases of persistent or bioaccumulating chemicals in use or production of products ?,The terms persistent\, bioaccumulative and toxic (PBT) refer to substances of very high concern for the environment because of their persistence\, their ability to accumulate in living organisms and their toxicity.https://www.ema.europa.eu/en/documents/scientific-guideline/guideline-assessment-persistent-bioaccumulative-toxic-pbt-very-persistent-very-bioaccumulative-vpvb_en.pdf ,5,0,0,1
+36,2,Does your businss idea involves physical degradation of nature ? ,Natural environment degradation refers to the destruction and loss of native species and natural processes such that only certain components of the original biodiversity and ecological functions persist. Usual example of degradation is taking down trees.  http://encyclopedia.uia.org/en/problem/132867 ,2,0,0,1
+37,2,Is your business idea about producing goods ?,,1,1,2,1
+38,2,Does the process or product contain any toxic chemicals? Ex : iding suppliers,A toxic substance is a substance that can be poisonous or cause health effects. The question also regard processes of any supplier. ,2,0,2,0
+39,2,Is the product designed with repairability in mind ? ,,3,0,2,0
+40,2,Is the process going to use the Reduce\, Reuse\, Recycle method ?,Reuse\, Reduce\, Recycle is a working method with the aim to keep as much material out of the landfill as possible. This is done by reuse: cutting back on the amount of trash we generate\,  reduce: finding new ways to use things that otherwise would have been thrown out and recycle: turning old and useless things into something new and useful. https://roguedisposal.com/resources/education/recycling/exploring-the-three-rs-of-waste-management-reduce-reuse-recycle ,3,0,2,0
+41,2,Are there any dangerous residual products during the end-of-life cycle?,,2,0,2,0
+43,2,Is it possible for waste product to be reused in order to save resources?,Waste product are material discarded as useless in the process of producing something.,4,0,2,0
+44,2,Willl the company take responsibility for the product life cycle?,,3,0,0,1
+45,3,Do you plan to cooperate with other entepreneurs or companies with assignments regarding sustainibility?,,3,0,0,1
+46,3,Do you plan to be a member in a union who work in order to promote sustainibility work?,,3,0,0,1
+47,3,Do you plan to share information on how you work with sustainibility to other companies?,,3,0,0,1
+48,3,Do you plan to have a representative for the company's sustainability work?,,3,0,0,1
+49,3,Do you produce services or products that improve sustainability for other people/companies ?,,3,0,0,1
+50,3,Do you plan on promoting sustainability with the purpose to inspire other companies and people to make more sustainable choices?,,3,0,0,1
+51,3,Do you have guidelines that could be shared for other companies to futher develop their social strategies?,A guideline could be a new reform for improving the working environment. ,3,0,0,1
+52,3,Do you organize/take part in sustainability related conferences\, talks\, hackathons...?,,3,0,0,1
+53,3,Is your business idea open for new innovations\, technologies\, methods regarding sustainability work from other organizations,,3,0,0,1
