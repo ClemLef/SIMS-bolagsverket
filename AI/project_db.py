@@ -306,17 +306,17 @@ def hello_valll(form_results):
         ans_final=0
     elif thislist_val[0] == "notsustainabil" and thislist_i[0]== 0 and sum== 0:
         ans_final=0
-    elif thislist_val[0] == "notsustainabil" and thislist_i[0]== 0 and sum== 1:
+    #elif thislist_val[0] == "notsustainabil" and thislist_i[0]== 0 and sum== 1:
         ans_final=0
-    elif thislist_val[0] == "notsustainabil" and thislist_i[0]== 1 and sum== 0:
+    #elif thislist_val[0] == "notsustainabil" and thislist_i[0]== 1 and sum== 0:
         ans_final=0
     elif thislist_val[1] == "notsustainabil" and thislist_i[1]== 1 and sum== 1:
      ans_final=0
     elif thislist_val[1] == "notsustainabil" and thislist_i[1]== 0 and sum== 0:
         ans_final=0
-    elif thislist_val[1] == "notsustainabil" and thislist_i[1]== 1 and sum== 0:
+    #elif thislist_val[1] == "notsustainabil" and thislist_i[1]== 1 and sum== 0:
         ans_final=0
-    elif thislist_val[1] == "notsustainabil" and thislist_i[1]== 0 and sum== 1:
+    #elif thislist_val[1] == "notsustainabil" and thislist_i[1]== 0 and sum== 1:
         ans_final=0 # 0 = not sustainable
     else: 
         ans_final=1 # 1 = sustainable
