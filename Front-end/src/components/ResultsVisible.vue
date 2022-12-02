@@ -3,7 +3,7 @@
     Only show this component when all data has been loaded -->
     <div v-if="dataLoaded" class="pa-10">
         <!-- Display a title depending on the result -->
-        <h1 v-if="this.titleSustainable()">Great results ! Your business idea is <span style="color: orangered">
+        <h1 v-if="this.titleSustainable()">Great results ! Your business idea is <span style="color: green">
                 sustainable</span>.</h1>
         <h1 v-if="!this.titleSustainable()" class="mb-10">You are almost there ! Your business idea is <span
                 style="color: orangered">not
